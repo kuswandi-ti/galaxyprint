@@ -1,27 +1,4 @@
 <nav class="page-sidebar" data-pages="sidebar">
-    <div class="sidebar-overlay-slide from-top" id="appMenu">
-        <div class="row">
-            <div class="col-xs-6 no-padding">
-                <a href="#" class="p-l-40"><img src="assets/img/demo/social_app.svg" alt="socail">
-                </a>
-            </div>
-            <div class="col-xs-6 no-padding">
-                <a href="#" class="p-l-10"><img src="assets/img/demo/email_app.svg" alt="socail">
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 m-t-20 no-padding">
-                <a href="#" class="p-l-40"><img src="assets/img/demo/calendar_app.svg" alt="socail">
-                </a>
-            </div>
-            <div class="col-xs-6 m-t-20 no-padding">
-                <a href="#" class="p-l-10"><img src="assets/img/demo/add_more.svg" alt="socail">
-                </a>
-            </div>
-        </div>
-    </div>
-
     <div class="sidebar-header">
         <img src="assets/img/logo_white.png" alt="logo" class="brand" data-src="assets/img/logo_white.png" data-src-retina="assets/img/logo_white_2x.png" width="78" height="22">
         <div class="sidebar-header-controls">
@@ -38,9 +15,230 @@
             <li class="m-t-30 ">
                 <a href="index.html" class="detailed">
                     <span class="title">Dashboard</span>
-                    <span class="details">12 New Updates</span>
                 </a>
                 <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Preferensi</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url('master/currency')?>">Mata Uang</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Supplier</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Customer</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Subcon</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Satuan</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Bahan Baku & Penolong</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Barang Jadi</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Barang Sisa</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Master Akun</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Akun Default</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Buku Besar</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url()?>">Jurnal Umum</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Kas &Bank</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url()?>">Pembayaran</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Penerimaan</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Pembelian</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url()?>">Pesanan Pembelian/PO</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Faktur Pembelian</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Pembayaran Pembelian</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Warehouse</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url()?>">Penerimaan Barang</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Pemakaian Bahan Baku</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Stok Opname</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Produksi</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url()?>">Work Order</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Bill of Material Master</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Permintaan Bahan Baku</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Pencatatan Scrap</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Penyelesaian Scrap</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">SO Scrap</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Hasil Produksi</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Penjualan</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url()?>">Pengiriman Barang</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Faktur Penjualan</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Penerimaan Penjualan</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Stock Opname</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Assets</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url()?>">Aktiva Tetap</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Penerimaan</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Pengeluaran</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Stock Opname</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Laporan</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url()?>">Laporan Keuangan</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Laporan IT Inventory</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Utility</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url()?>">User Groups</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Users</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
             </li>
         </ul>
         <div class="clearfix"></div>

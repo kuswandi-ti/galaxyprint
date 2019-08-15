@@ -36,7 +36,7 @@
     </script>
 </head>
 
-  <body class="fixed-header menu-pin menu-behind">
+  <body class="fixed-header  windows desktop menu-pin pace-done">
     <?php echo $body; ?>
     <script type="text/javascript">
       var base_url = "<?=base_url()?>"
