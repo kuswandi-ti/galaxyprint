@@ -1,10 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Currency extends MX_Controller {
+class Faktur extends MX_Controller {
     public $data;
-    var $module = 'Master';
-    var $title = 'Currency';
-    var $file_name = 'Currency';
+    var $module = 'Pembelian';
+    var $title = 'Faktur';
+    var $file_name = 'Faktur';
     var $table_name = '';
     function __construct()
     {
@@ -16,7 +16,7 @@ class Currency extends MX_Controller {
     public function index()
     {
         // permission();
-        $data = array();
+        $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
     }
 
@@ -27,10 +27,15 @@ class Currency extends MX_Controller {
         $no = $_POST['start'];
         foreach ($list as $r) {
             $row = array();
-            $row[] = $r->id;
-            $row[] = $r->nama_currency;
-            $row[] = $r->nilai_kurs_idr;
-            $row[] = $r->update_terakhir;
+            $row[] = $r->tgl_hutang;
+            $row[] = $r->no_referensi;
+            $row[] = $r->no_invoice;
+            $row[] = $r->supplier;
+            $row[] = $r->total_hutang;
+            $row[] = $r->currency;
+            $row[] = $r->keterangan;
+            $row[] = $r->jatuh_tempo;
+            $row[] = $r->status_input;
  
             //add html for action
             $row[] = '<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>
@@ -58,8 +63,8 @@ class Currency extends MX_Controller {
     public function ajax_add()
     {
         $data = array(
-                'nama_currency' => $this->input->post('nama_currency'),
-                'nilai_kurs_idr' => $this->input->post('nilai_kurs_idr'),
+                'nama_Faktur' => $this->input->POST('nama_Faktur'),
+                'nilai_kurs_idr' => $this->input->POST('nilai_kurs_idr'),
                 'update_terakhir' => dateNow()
             );
         $insert = $this->main->save($data);
@@ -69,11 +74,11 @@ class Currency extends MX_Controller {
     public function ajax_update()
     {
          $data = array(
-                'nama_currency' => $this->input->post('nama_currency'),
-                'nilai_kurs_idr' => $this->input->post('nilai_kurs_idr'),
+                'nama_Faktur' => $this->input->POST('nama_Faktur'),
+                'nilai_kurs_idr' => $this->input->POST('nilai_kurs_idr'),
                 'update_terakhir' => dateNow()
             );
-        $this->main->update(array('id' => $this->input->post('id')), $data);
+        $this->main->update(array('id' => $this->input->POST('id')), $data);
         echo json_encode(array("status" => TRUE));
     }
  
@@ -97,24 +102,7 @@ class Currency extends MX_Controller {
                     $this->template->add_plugin_css('jquery-datatable\media\css\dataTables.bootstrap.min.css');
                     $this->template->add_plugin_js('jquery-datatable\media\js\jquery.dataTables.min.js'); 
                     $this->template->add_plugin_js('jquery-datatable\media\js\dataTables.bootstrap.js'); 
-                    $this->template->add_js('master/currency.js'); 
-                }
-
-                if(in_array($view, array($this->file_name.'/table')))
-                {
-                    $this->template->set_layout('default'); 
-                    // $this->template->add_css($this->module.'/User.css?v4.0.1');
-                    $this->template->add_plugin_css('data-table/css/jquery.dataTables.css');
-                    $this->template->add_plugin_css('data-table/css/dataTables.bootstrap4.min.css');
-                    $this->template->add_plugin_css('data-table/css/responsive.bootstrap.min.css');
-                    $this->template->add_plugin_css('data-table/css/responsive.jqueryui.min.css');
-                    $this->template->add_plugin_js('data-table/js/jquery.dataTables.js'); 
-                    $this->template->add_plugin_js('data-table/js/jquery.dataTables.min.js'); 
-                    $this->template->add_plugin_js('data-table/js/dataTables.bootstrap4.min.js'); 
-                    $this->template->add_plugin_js('data-table/js/dataTables.responsive.min.js'); 
-                    $this->template->add_plugin_js('data-table/js/responsive.bootstrap.min.js'); 
-                    $this->template->add_js('init/data-table.js'); 
-                    $this->template->add_js('master/user/index.js'); 
+                    $this->template->add_js($this->module.'/'.$this->file_name.'.js'); 
                 }
 
             if ( ! empty($data['title']))

@@ -3,20 +3,21 @@
         <div class=" container-fluid   container-fixed-lg bg-white">
             <div class="card card-transparent">
                 <div class="card-header ">
-                    <div class="card-title">Master Currency</div>
+                    <div class="card-title">Master <?=$title?></div>
                     <div class="clearfix"></div>
                     </div>
                     <div class="card-body">
                         <div class="col-xs-12">
-                            <button class="btn btn-success" onclick="add()"><i class="fa fa-plus"></i> Tambah Currency</button>
+                            <button class="btn btn-success" onclick="add()"><i class="fa fa-plus"></i> Tambah <?=$title?></button>
                             <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> Refresh</button>
                             <table id="table" class="table table-condensed" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Nama Currency</th>
-                                        <th>Kurs IDR</th>
-                                        <th>Last Update</th>
+                                        <th>Kode Barang</th>
+                                        <th>Nama Barang</th>
+                                        <th>Spesifikasi</th>
+                                        <th>Kategori</th>
+                                        <th>Satuan</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -24,13 +25,14 @@
                                 </tbody>
                      
                                 <tfoot>
-                                <tr>
-                                   <th>ID</th>
-                                    <th>Nama Currency</th>
-                                    <th>Kurs IDR</th>
-                                    <th>Last Update</th>
-                                    <th>Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>Kode Barang</th>
+                                        <th>Nama Barang</th>
+                                        <th>Spesifikasi</th>
+                                        <th>Kategori</th>
+                                        <th>Satuan</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -47,7 +49,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title">Form Tambah Currency</h3>
+                <h3 class="modal-title"></h3>
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">

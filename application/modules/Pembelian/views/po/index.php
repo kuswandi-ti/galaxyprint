@@ -3,20 +3,23 @@
         <div class=" container-fluid   container-fixed-lg bg-white">
             <div class="card card-transparent">
                 <div class="card-header ">
-                    <div class="card-title">Master Currency</div>
+                    <div class="card-title">Po</div>
                     <div class="clearfix"></div>
                     </div>
                     <div class="card-body">
                         <div class="col-xs-12">
-                            <button class="btn btn-success" onclick="add()"><i class="fa fa-plus"></i> Tambah Currency</button>
+                            <button class="btn btn-success" onclick="add()"><i class="fa fa-plus"></i> Tambah Po</button>
                             <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> Refresh</button>
                             <table id="table" class="table table-condensed" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Nama Currency</th>
-                                        <th>Kurs IDR</th>
-                                        <th>Last Update</th>
+                                        <th>No Po</th>
+                                        <th>Tgl</th>
+                                        <th>Supplier</th>
+                                        <th>Total</th>
+                                        <th>Mata Uang</th>
+                                        <th>Jml Detail</th>
+                                        <th>Status Po</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -24,13 +27,16 @@
                                 </tbody>
                      
                                 <tfoot>
-                                <tr>
-                                   <th>ID</th>
-                                    <th>Nama Currency</th>
-                                    <th>Kurs IDR</th>
-                                    <th>Last Update</th>
-                                    <th>Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>No Po</th>
+                                        <th>Tgl</th>
+                                        <th>Supplier</th>
+                                        <th>Total</th>
+                                        <th>Mata Uang</th>
+                                        <th>Jml Detail</th>
+                                        <th>Status Po</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>

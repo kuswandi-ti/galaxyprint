@@ -44,7 +44,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Bahan Baku & Penolong</a>
+                        <a href="<?=base_url('master/bahan_baku')?>">Bahan Baku & Penolong</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -52,7 +52,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Barang Sisa</a>
+                        <a href="<?=base_url('master/barang_sisa')?>">Barang Sisa</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -77,7 +77,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;"><span class="title">Kas &Bank</span>
+                <a href="javascript:;"><span class="title">Kas & Bank</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
@@ -97,15 +97,15 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url()?>">Pesanan Pembelian/PO</a>
+                        <a href="<?=base_url('pembelian/po')?>">Pesanan Pembelian/PO</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Faktur Pembelian</a>
+                        <a href="<?=base_url('pembelian/faktur')?>">Faktur Pembelian</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Pembayaran Pembelian</a>
+                        <a href="<?=base_url('pembelian/pembayaran')?>">Pembayaran Pembelian</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
