@@ -36,7 +36,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Subcon</a>
+                        <a href="<?=base_url('master/subcon')?>">Subcon</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
