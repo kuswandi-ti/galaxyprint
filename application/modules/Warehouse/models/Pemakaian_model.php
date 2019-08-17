@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Currency_model extends CI_Model {
  
     var $table = 'master_currency';
-    var $column_order = array('id','nama_currency','nilai_kurs_idr','update_terakhir',null);
-    var $column_search = array('id','nama_currency','nilai_kurs_idr');
+    var $column_order = array('id','nama_currency','nilai_kurs_idr','update_terakhir',null); //set column field database for datatable orderable
+    var $column_search = array('id','nama_currency','nilai_kurs_idr'); //set column field database for datatable searchable just firstname , lastname , address are searchable
     var $order = array('id' => 'asc'); // default order 
  
     public function __construct()

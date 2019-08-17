@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Currency_model extends CI_Model {
+class Satuan_model extends CI_Model {
  
-    var $table = 'master_currency';
-    var $column_order = array('id','nama_currency','nilai_kurs_idr','update_terakhir',null);
-    var $column_search = array('id','nama_currency','nilai_kurs_idr');
+    var $table = 'master_satuan';
+    var $column_order = array('id','kode_satuan', 'nama_satuan',null);
+    var $column_search = array('id','kode_satuan', 'nama_satuan');
     var $order = array('id' => 'asc'); // default order 
  
     public function __construct()

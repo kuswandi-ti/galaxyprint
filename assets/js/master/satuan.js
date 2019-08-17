@@ -12,7 +12,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": base_url+'master/currency/ajax_list',
+            "url": base_url+'master/satuan/ajax_list',
             "type": "POST"
         },
  
@@ -39,7 +39,7 @@ function add()
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Tambah Currency'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Tambah Satuan'); // Set Title to Bootstrap modal title
 }
 
 function edit(id)
@@ -51,17 +51,17 @@ function edit(id)
  
     //Ajax Load data from ajax
     $.ajax({
-        url : base_url+"master/currency/ajax_edit/" + id,
+        url : base_url+"master/satuan/ajax_edit/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
  
             $('[name="id"]').val(data.id);
-            $('[name="nama_currency"]').val(data.nama_currency);
-            $('[name="nilai_kurs_idr"]').val(data.nilai_kurs_idr);
+            $('[name="kode_satuan"]').val(data.kode_satuan);
+            $('[name="nama_satuan"]').val(data.nama_satuan);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Currency'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Edit Satuan'); // Set title to Bootstrap modal title
  
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -78,9 +78,9 @@ function save()
     var url;
  
     if(save_method == 'add') {
-        url = base_url+"master/currency/ajax_add";
+        url = base_url+"master/satuan/ajax_add";
     } else {
-        url = base_url+"master/currency/ajax_update";
+        url = base_url+"master/satuan/ajax_update";
     }
  
     // ajax adding data to database
@@ -119,7 +119,7 @@ function hapus(id)
     {
         // ajax delete data to database
         $.ajax({
-            url : base_url+"master/currency/ajax_delete/"+id,
+            url : base_url+"master/satuan/ajax_delete/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)

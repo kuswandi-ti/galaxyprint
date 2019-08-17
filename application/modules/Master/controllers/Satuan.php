@@ -1,10 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Currency extends MX_Controller {
+class Satuan extends MX_Controller {
     public $data;
-    var $module = 'master';
-    var $title = 'Currency';
-    var $file_name = 'Currency';
+    var $module = 'Master';
+    var $title = 'Satuan';
+    var $file_name = 'Satuan';
     var $table_name = '';
     function __construct()
     {
@@ -28,10 +28,10 @@ class Currency extends MX_Controller {
         foreach ($list as $r) {
             $row = array();
             $row[] = $r->id;
-            $row[] = $r->nama_currency;
-            $row[] = $r->nilai_kurs_idr;
-            $row[] = $r->update_terakhir;
+            $row[] = $r->kode_satuan;
+            $row[] = $r->nama_satuan;
  
+            //add html for action
             $row[] = '<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>
                   <a class="btn btn-sm btn-danger btn-xs" href="javascript:void(0)" title="Hapus" onclick="hapus('."'".$r->id."'".')"><i class="fa fa-trash"></i> Delete</a>';
  
@@ -44,6 +44,7 @@ class Currency extends MX_Controller {
                         "recordsFiltered" => $this->main->count_filtered(),
                         "data" => $data,
                 );
+        //output to json format
         echo json_encode($output);
     }
 
@@ -56,9 +57,8 @@ class Currency extends MX_Controller {
     public function ajax_add()
     {
         $data = array(
-                'nama_currency' => $this->input->post('nama_currency'),
-                'nilai_kurs_idr' => $this->input->post('nilai_kurs_idr'),
-                'update_terakhir' => dateNow()
+                'kode_satuan' => $this->input->post('kode_satuan'),
+                'nama_satuan' => $this->input->post('nama_satuan')
             );
         $insert = $this->main->save($data);
         echo json_encode(array("status" => TRUE));
@@ -67,9 +67,8 @@ class Currency extends MX_Controller {
     public function ajax_update()
     {
          $data = array(
-                'nama_currency' => $this->input->post('nama_currency'),
-                'nilai_kurs_idr' => $this->input->post('nilai_kurs_idr'),
-                'update_terakhir' => dateNow()
+                'kode_satuan' => $this->input->post('kode_satuan'),
+                'nama_satuan' => $this->input->post('nama_satuan')
             );
         $this->main->update(array('id' => $this->input->post('id')), $data);
         echo json_encode(array("status" => TRUE));
