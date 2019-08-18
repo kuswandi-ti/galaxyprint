@@ -32,11 +32,11 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Customer</a>
+                    <a href="<?=base_url('master/customer')?>">Customer</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Subcon</a>
+                        <a href="<?=base_url('master/subcon')?>">Subcon</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -48,7 +48,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Barang Jadi</a>
+                    <a href="<?=base_url('master/barang_jadi')?>">Barang Jadi</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">

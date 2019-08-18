@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Subcon_model extends CI_Model {
+class Barang_Jadi_model extends CI_Model {
  
-    var $table = 'master_subcon';
-    var $column_order = array('id','subcon_id','subcon_name','subcon_address','subcon_country','subcon_contact','subcon_phone','currency',null);
-    var $column_search = array('id','subcon_id','subcon_name','subcon_address','subcon_country','subcon_contact','subcon_phone','currency');
+    var $table = 'master_barang';
+    var $column_order = array('id','kode_barang','nama_barang','kode_kategori','satuan','currency','aktif', null);
+    var $column_search = array('id','kode_barang','nama_barang','kode_kategori','satuan','currency','aktif');
     var $order = array('id' => 'asc'); // default order 
  
     public function __construct()
@@ -16,8 +16,10 @@ class Subcon_model extends CI_Model {
  
     private function _get_datatables_query()
     {
-         
-        $this->db->from($this->table);
+        $this->db->select('a.id,a.kode_barang,a.nama_barang,a.kode_kategori,b.nama_kategori,a.spesifikasi_barang,a.hs_barang,a.satuan,a.hpp,a.harga_barang,a.currency,a.aktif');
+        $this->db->from('master_barang a');
+        $this->db->join('master_kategori b','a.kode_kategori = b.kode_kategori');
+        //$this->db->from($this->table);
  
         $i = 0;
      
@@ -103,10 +105,10 @@ class Subcon_model extends CI_Model {
     }
  
     /* Combo (select2) */
-    function get_negara()
+    function get_kategori_barang()
     {
         $this->db->select('*');
-        $query = $this->db->get('master_negara');
+        $query = $this->db->get('master_kategori');
         return $query->result();
     }
 
@@ -114,6 +116,13 @@ class Subcon_model extends CI_Model {
     {
         $this->db->select('*');
         $query = $this->db->get('master_currency');
+        return $query->result();
+    }
+
+    function get_satuan()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_satuan');
         return $query->result();
     }
 }
