@@ -170,15 +170,15 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url()?>">Pengiriman Barang</a>
+                        <a href="<?=base_url('penjualan/Pengiriman')?>">Pengiriman Barang</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Faktur Penjualan</a>
+                        <a href="<?=base_url('penjualan/faktur')?>">Faktur Penjualan</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Penerimaan Penjualan</a>
+                        <a href="<?=base_url('penjualan/penerimaan')?>">Penerimaan Penjualan</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
