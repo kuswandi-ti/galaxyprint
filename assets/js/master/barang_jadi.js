@@ -12,7 +12,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": base_url+'master/subcon/ajax_list',
+            "url": base_url+'master/barang_jadi/ajax_list',
             "type": "POST"
         },
  
@@ -39,7 +39,7 @@ function add()
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Tambah Subcon'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Tambah Barang Jadi'); // Set Title to Bootstrap modal title
 }
 
 function edit(id)
@@ -51,27 +51,30 @@ function edit(id)
  
     //Ajax Load data from ajax
     $.ajax({
-        url : base_url+"master/subcon/ajax_edit/" + id,
+        url : base_url+"master/barang_jadi/ajax_edit/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         { 
             $('[name="id"]').val(data.id);
-            $('[name="subcon_id"]').val(data.subcon_id);
-            $('[name="subcon_name"]').val(data.subcon_name);
-            $('[name="subcon_address"]').val(data.subcon_address);
-            $("#subcon_country").data('select2').trigger('select', {
-                data: {"id": data.subcon_country, "text": data.subcon_country }
+            $('[name="kode_barang"]').val(data.kode_barang);
+            $('[name="nama_barang"]').val(data.nama_barang);
+            $("#kode_kategori").data('select2').trigger('select', {
+                data: {"id": data.kode_kategori, "text": data.nama_kategori }
             });
-            $('[name="subcon_contact"]').val(data.subcon_contact);
-            $('[name="subcon_phone"]').val(data.subcon_phone);
+            $('[name="spesifikasi_barang"]').val(data.spesifikasi_barang);
+            $('[name="hs_barang"]').val(data.hs_barang);
+            $("#satuan").data('select2').trigger('select', {
+                data: {"id": data.satuan, "text": data.satuan }
+            });
+            $('[name="hpp"]').val(data.hpp);
+            $('[name="harga_barang"]').val(data.harga_barang);
             $("#currency").data('select2').trigger('select', {
                 data: {"id": data.currency, "text": data.currency }
             });
-            $('[name="tempo"]').val(data.tempo);
             $('[name="active"]').val(data.active);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Subcon'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Edit Barang Jadi'); // Set title to Bootstrap modal title
  
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -88,9 +91,9 @@ function save()
     var url;
  
     if(save_method == 'add') {
-        url = base_url+"master/subcon/ajax_add";
+        url = base_url+"master/barang_jadi/ajax_add";
     } else {
-        url = base_url+"master/subcon/ajax_update";
+        url = base_url+"master/barang_jadi/ajax_update";
     }
  
     // ajax adding data to database
@@ -129,7 +132,7 @@ function hapus(id)
     {
         // ajax delete data to database
         $.ajax({
-            url : base_url+"master/subcon/ajax_delete/"+id,
+            url : base_url+"master/barang_jadi/ajax_delete/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)

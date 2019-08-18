@@ -48,7 +48,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Barang Jadi</a>
+                    <a href="<?=base_url('master/barang_jadi')?>">Barang Jadi</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
