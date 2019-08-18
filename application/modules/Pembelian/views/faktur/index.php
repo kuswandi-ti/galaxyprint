@@ -3,20 +3,25 @@
         <div class=" container-fluid   container-fixed-lg bg-white">
             <div class="card card-transparent">
                 <div class="card-header ">
-                    <div class="card-title">Master Currency</div>
+                    <div class="card-title">Daftar Hutang (<?=$title?> Pembelian)</div>
                     <div class="clearfix"></div>
                     </div>
                     <div class="card-body">
                         <div class="col-xs-12">
-                            <button class="btn btn-success" onclick="add()"><i class="fa fa-plus"></i> Tambah Currency</button>
+                            <button class="btn btn-success" onclick="add()"><i class="fa fa-plus"></i> Tambah <?=$title?></button>
                             <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> Refresh</button>
                             <table id="table" class="table table-condensed" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Nama Currency</th>
-                                        <th>Kurs IDR</th>
-                                        <th>Last Update</th>
+                                        <th>Tgl</th>
+                                        <th>No Ref</th>
+                                        <th>No Inv</th>
+                                        <th>Supplier</th>
+                                        <th>Total</th>
+                                        <th>Mata Uang</th>
+                                        <th>Keterangan</th>
+                                        <th>Jatuh Tempo</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -24,13 +29,18 @@
                                 </tbody>
                      
                                 <tfoot>
-                                <tr>
-                                   <th>ID</th>
-                                    <th>Nama Currency</th>
-                                    <th>Kurs IDR</th>
-                                    <th>Last Update</th>
-                                    <th>Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>Tgl</th>
+                                        <th>No Ref</th>
+                                        <th>No Inv</th>
+                                        <th>Supplier</th>
+                                        <th>Total</th>
+                                        <th>Mata Uang</th>
+                                        <th>Keterangan</th>
+                                        <th>Jatuh Tempo</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -47,7 +57,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title">Form Tambah Currency</h3>
+                <h3 class="modal-title">Form Tambah <?=$title?></h3>
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
@@ -55,7 +65,7 @@
                     <div class="form-body">
                             <label class="control-label col-md-3">Nama Curr</label>
                             <div class="col-md-9">
-                                <input name="nama_currency" placeholder="Nama Currency" class="form-control" type="text">
+                                <input name="nama_<?=$title?>" placeholder="Nama <?=$title?>" class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
                             <label class="control-label col-md-3">Kurs IDR</label>
