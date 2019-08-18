@@ -32,7 +32,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Customer</a>
+                    <a href="<?=base_url('master/customer')?>">Customer</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
