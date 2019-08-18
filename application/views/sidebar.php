@@ -32,7 +32,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                    <a href="<?=base_url('master/customer')?>">Customer</a>
+                        <a href="<?=base_url('master/customer')?>">Customer</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -60,7 +60,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Akun Default</a>
+                        <a href="<?=base_url('master/akun_default')?>">Akun Default</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
