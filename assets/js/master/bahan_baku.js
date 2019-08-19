@@ -58,11 +58,27 @@ function edit(id)
         {
  
             $('[name="id"]').val(data.id);
-            $('[name="kode_satuan"]').val(data.kode_satuan);
-            $('[name="nama_satuan"]').val(data.nama_satuan);
+            $('[name="kode_barang"]').val(data.kode_barang);
+            $('[name="nama_barang"]').val(data.nama_barang);
+            $('[name="hs_barang"]').val(data.hs_barang);
+            $('[name="spesifikasi_barang"]').val(data.spesifikasi_barang);
+            $('[name="content"]').val(data.content);
+            $('[name="harga_satuan_besar"]').val(data.harga_satuan_besar);
+            $('[name="harga_satuan_kecil"]').val(data.harga_satuan_kecil);
+            $("#kode_kategori").data('select2').trigger('select', {
+                data: {"id": data.kode_kategori, "text": data.kode_kategori }
+            });
+            $("#satuan_besar").data('select2').trigger('select', {
+                data: {"id": data.satuan_besar, "text": data.satuan_besar }
+            });
+            $("#satuan_kecil").data('select2').trigger('select', {
+                data: {"id": data.satuan_kecil, "text": data.satuan_kecil }
+            });
+            $("#currency").data('select2').trigger('select', {
+                data: {"id": data.currency, "text": data.currency }
+            });
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Satuan'); // Set title to Bootstrap modal title
- 
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
