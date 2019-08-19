@@ -4,7 +4,7 @@ class Subcon extends MX_Controller {
     public $data;
     var $module = 'master';
     var $title = 'Subcon';
-    var $file_name = 'Subcon';
+    var $file_name = 'subcon';
     var $table_name = '';
     function __construct()
     {

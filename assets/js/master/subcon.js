@@ -12,7 +12,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": base_url+'master/subcon/ajax_list',
+            "url": base_url+'Master/Subcon/ajax_list',
             "type": "POST"
         },
  
@@ -51,7 +51,7 @@ function edit(id)
  
     //Ajax Load data from ajax
     $.ajax({
-        url : base_url+"master/subcon/ajax_edit/" + id,
+        url : base_url+"Master/Subcon/ajax_edit/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
@@ -88,9 +88,9 @@ function save()
     var url;
  
     if(save_method == 'add') {
-        url = base_url+"master/subcon/ajax_add";
+        url = base_url+"Master/Subcon/ajax_add";
     } else {
-        url = base_url+"master/subcon/ajax_update";
+        url = base_url+"Master/Subcon/ajax_update";
     }
  
     // ajax adding data to database
@@ -129,7 +129,7 @@ function hapus(id)
     {
         // ajax delete data to database
         $.ajax({
-            url : base_url+"master/subcon/ajax_delete/"+id,
+            url : base_url+"Master/Subcon/ajax_delete/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)

@@ -4,7 +4,7 @@ class Customer extends MX_Controller {
     public $data;
     var $module = 'master';
     var $title = 'Customer';
-    var $file_name = 'Customer';
+    var $file_name = 'customer';
     var $table_name = '';
     function __construct()
     {

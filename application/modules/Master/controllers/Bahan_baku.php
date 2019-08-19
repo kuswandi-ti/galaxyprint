@@ -4,7 +4,7 @@ class Bahan_baku extends MX_Controller {
     public $data;
     var $module = 'Master';
     var $title = 'Bahan_baku';
-    var $file_name = 'Bahan_baku';
+    var $file_name = 'bahan_baku';
     var $table_name = '';
     function __construct()
     {
@@ -16,7 +16,11 @@ class Bahan_baku extends MX_Controller {
     public function index()
     {
         // permission();
-        $data = array();
+        $data = array(
+            'get_kategori_barang' => $this->main->get_kategori_barang(),
+            'get_currency' => $this->main->get_currency(),
+            'get_satuan' => $this->main->get_satuan()
+        );
         $this->_render_page($this->file_name.'/index', $data);
     }
 

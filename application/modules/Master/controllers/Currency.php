@@ -4,7 +4,7 @@ class Currency extends MX_Controller {
     public $data;
     var $module = 'master';
     var $title = 'Currency';
-    var $file_name = 'Currency';
+    var $file_name = 'currency';
     var $table_name = '';
     function __construct()
     {

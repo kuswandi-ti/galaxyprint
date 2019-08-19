@@ -3,7 +3,7 @@ var save_method; //for save method string
 $(document).ready(function() {
     $("#alert").hide();
     $.ajax({
-        url : base_url+"master/akun_default/get_data",
+        url : base_url+"Master/Akun_default/get_data",
         type: "GET",
         dataType: "JSON",
         success: function(data)
@@ -73,7 +73,7 @@ function save()
     $('#btnSave').attr('disabled',true); //set button disable 
 
     var url;
-    url = base_url+"master/akun_default/save";
+    url = base_url+"Master/Akun_default/save";
  
     // ajax adding data to database
     $.ajax({

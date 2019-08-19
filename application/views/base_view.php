@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-<!-- Mirrored from pages.revox.io/dashboard/4.1.0/html/corporate/builder.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Aug 2019 08:06:33 GMT -->
-
 <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta charset="utf-8" />
-    <title>Pages - Admin Dashboard UI Kit - Blank Page</title>
+    <title>RMA - Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <script src="../../../../cdn-cgi/apps/head/fo9YPCqcjBazcqFmSokXapoL5xU.js"></script>
     <link rel="apple-touch-icon" href="pages/ico/60.png">

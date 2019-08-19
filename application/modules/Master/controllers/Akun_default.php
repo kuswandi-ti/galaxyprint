@@ -4,7 +4,7 @@ class Akun_Default extends MX_Controller {
     public $data;
     var $module = 'master';
     var $title = 'Akun Default';
-    var $file_name = 'Akun_default';
+    var $file_name = 'akun_default';
     var $table_name = '';
 
     function __construct()

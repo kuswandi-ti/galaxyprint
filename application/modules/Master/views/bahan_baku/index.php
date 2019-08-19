@@ -63,14 +63,83 @@
                 <form action="#" id="form" class="form-horizontal">
                     <input type="hidden" value="" name="id"/> 
                     <div class="form-body">
-                            <label class="control-label col-md-3">Nama Curr</label>
+                            <label class="control-label col-md-3">Kode Barang</label>
                             <div class="col-md-9">
-                                <input name="nama_currency" placeholder="Nama Currency" class="form-control" type="text">
+                                <input name="kode_barang" placeholder="Kode Barang" class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
-                            <label class="control-label col-md-3">Kurs IDR</label>
+                            <label class="control-label col-md-3">Nama Barang</label>
                             <div class="col-md-9">
-                                <input name="nilai_kurs_idr" placeholder="Kurs IDR" class="form-control" type="text">
+                                <input name="nama_barang" placeholder="Nama Barang" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-4">Kategori</label>
+                            <div class="col-md-12">
+                                <select class="full-width select2" required data-init-plugin="select2" id='kode_kategori' name="kode_kategori">
+                                    <?php                                
+                                        foreach ($get_kategori_barang as $row) {  
+                                            echo "<option value='".$row->kode_kategori."'>".$row->nama_kategori."</option>";
+                                        }
+                                    ?>
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-3">Kode HS</label>
+                            <div class="col-md-9">
+                                <input name="hs_barang" placeholder="Kode HS" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-3">Spesifikasi Barang</label>
+                            <div class="col-md-9">
+                                <textarea class="form-control" name="spesifikasi_barang"></textarea>
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-4">Satuan Besar</label>
+                            <div class="col-md-12">
+                                <select class="full-width select2" required data-init-plugin="select2" id='satuan_besar' name="satuan_besar">
+                                    <?php                                
+                                        foreach ($get_satuan as $row) {  
+                                            echo "<option value='".$row->nama_satuan."'>".$row->nama_satuan."</option>";
+                                        }
+                                    ?>
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-4">Satuan Kecil</label>
+                            <div class="col-md-12">
+                                <select class="full-width select2" required data-init-plugin="select2" id='satuan_kecil' name="satuan_kecil">
+                                    <?php                                
+                                        foreach ($get_satuan as $row) {  
+                                            echo "<option value='".$row->nama_satuan."'>".$row->nama_satuan."</option>";
+                                        }
+                                    ?>
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-3">Content/Konversi</label>
+                            <div class="col-md-9">
+                                <input name="content" placeholder="Content" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-3">Harga Satuan Besar</label>
+                            <div class="col-md-9">
+                                <input name="harga_satuan_besar" placeholder="" class="form-control text-right" type="text" value="0">
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-3">Harga Satuan Kecil</label>
+                            <div class="col-md-9">
+                                <input name="harga_satuan_kecil" placeholder="" class="form-control text-right" type="text" value="0">
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-4">Currency</label>
+                            <div class="col-md-12">
+                                <select class="full-width" required data-init-plugin="select2" id='currency' name="currency">
+                                    <?php                                
+                                        foreach ($get_currency as $row) {  
+                                            echo "<option value='".$row->nama_currency."'>".$row->nama_currency."</option>";
+                                        }
+                                    ?>
+                                </select>
                                 <span class="help-block"></span>
                             </div>
                     </div>

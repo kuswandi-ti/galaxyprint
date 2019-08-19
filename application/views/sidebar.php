@@ -24,7 +24,7 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url('master/currency')?>">Mata Uang</a>
+                        <a href="<?=base_url('Master/Currency')?>">Mata Uang</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -32,27 +32,27 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('master/customer')?>">Customer</a>
+                        <a href="<?=base_url('Master/Customer')?>">Customer</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('master/subcon')?>">Subcon</a>
+                        <a href="<?=base_url('Master/Subcon')?>">Subcon</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('master/satuan')?>">Satuan</a>
+                        <a href="<?=base_url('Master/Satuan')?>">Satuan</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('master/bahan_baku')?>">Bahan Baku & Penolong</a>
+                        <a href="<?=base_url('Master/Bahan_baku')?>">Bahan Baku & Penolong</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                    <a href="<?=base_url('master/barang_jadi')?>">Barang Jadi</a>
+                    <a href="<?=base_url('Master/Barang_jadi')?>">Barang Jadi</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('master/barang_sisa')?>">Barang Sisa</a>
+                        <a href="<?=base_url('Master/Barang_sisa')?>">Barang Sisa</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -60,7 +60,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('master/akun_default')?>">Akun Default</a>
+                        <a href="<?=base_url('Master/Akun_default')?>">Akun Default</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>

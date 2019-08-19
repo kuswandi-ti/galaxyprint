@@ -4,7 +4,7 @@ class Satuan extends MX_Controller {
     public $data;
     var $module = 'Master';
     var $title = 'Satuan';
-    var $file_name = 'Satuan';
+    var $file_name = 'satuan';
     var $table_name = '';
     function __construct()
     {

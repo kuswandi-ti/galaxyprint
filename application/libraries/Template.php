@@ -9,7 +9,7 @@ class Template {
 
     private $_ci;
 
-    protected $brand_name = 'GUT-ADMIN';
+    protected $brand_name = 'RMA-Admin';
     protected $title_separator = '-';
     protected $ga_id = FALSE; // UA-XXXXX-X
 

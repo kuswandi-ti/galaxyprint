@@ -4,7 +4,7 @@ class Barang_Jadi extends MX_Controller {
     public $data;
     var $module = 'master';
     var $title = 'Barang Jadi';
-    var $file_name = 'Barang_Jadi';
+    var $file_name = 'barang_Jadi';
     var $table_name = '';
     function __construct()
     {
