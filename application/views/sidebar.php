@@ -139,7 +139,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Bill of Material Master</a>
+                        <a href="<?=base_url('Produksi/Bill_of_material')?>">Bill of Material Master</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
