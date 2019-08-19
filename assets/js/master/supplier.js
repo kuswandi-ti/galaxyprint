@@ -12,7 +12,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": base_url+'Master/Barang_sisa/ajax_list',
+            "url": base_url+'Master/Supplier/ajax_list',
             "type": "POST"
         },
  
@@ -39,7 +39,7 @@ function add()
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Tambah Data'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Tambah Supplier'); // Set Title to Bootstrap modal title
 }
 
 function edit(id)
@@ -51,27 +51,25 @@ function edit(id)
  
     //Ajax Load data from ajax
     $.ajax({
-        url : base_url+"Master/Barang_sisa/ajax_edit/" + id,
+        url : base_url+"Master/Supplier/ajax_edit/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
-        {
- 
+        { 
             $('[name="id"]').val(data.id);
-            $('[name="kode_barang"]').val(data.kode_barang);
-            $('[name="nama_barang"]').val(data.nama_barang);
-            $('[name="hs_barang"]').val(data.hs_barang);
-            $('[name="spesifikasi_barang"]').val(data.spesifikasi_barang);
-            $('[name="harga_barang"]').val(data.harga_barang);
-            $("#kode_kategori").data('select2').trigger('select', {
-                data: {"id": data.kode_kategori, "text": data.kode_kategori }
+            $('[name="supplier_id"]').val(data.supplier_id);
+            $('[name="supplier_name"]').val(data.supplier_name);
+            $('[name="supplier_address"]').val(data.supplier_address);
+            $("#supplier_country").data('select2').trigger('select', {
+                data: {"id": data.supplier_country, "text": data.supplier_country }
             });
-            $("#satuan").data('select2').trigger('select', {
-                data: {"id": data.satuan, "text": data.satuan }
-            });
+            $('[name="supplier_contact"]').val(data.supplier_contact);
+            $('[name="supplier_phone"]').val(data.supplier_phone);
             $("#currency").data('select2').trigger('select', {
                 data: {"id": data.currency, "text": data.currency }
             });
+            $('[name="tempo"]').val(data.tempo);
+            $('[name="active"]').val(data.active);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Data'); // Set title to Bootstrap modal title
  
@@ -90,9 +88,9 @@ function save()
     var url;
  
     if(save_method == 'add') {
-        url = base_url+"Master/Barang_sisa/ajax_add";
+        url = base_url+"Master/Supplier/ajax_add";
     } else {
-        url = base_url+"Master/Barang_sisa/ajax_update";
+        url = base_url+"Master/Supplier/ajax_update";
     }
  
     // ajax adding data to database
@@ -131,7 +129,7 @@ function hapus(id)
     {
         // ajax delete data to database
         $.ajax({
-            url : base_url+"Master/Barang_sisa/ajax_delete/"+id,
+            url : base_url+"Master/Supplier/ajax_delete/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)
@@ -147,4 +145,5 @@ function hapus(id)
         });
  
     }
+    
 }

@@ -13,10 +13,12 @@
                             <table id="table" class="table table-condensed" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Nama Currency</th>
-                                        <th>Kurs IDR</th>
-                                        <th>Last Update</th>
+                                        <th>Supplier ID</th>
+                                        <th>Supplier Nama</th>
+                                        <th>Address</th>
+                                        <th>Country</th>
+                                        <th>Contact</th>
+                                        <th>Phone</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -43,7 +45,7 @@
 
 <!-- Bootstrap modal -->
 <div class="modal fade" id="modal_form" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -53,14 +55,58 @@
                 <form action="#" id="form" class="form-horizontal">
                     <input type="hidden" value="" name="id"/> 
                     <div class="form-body">
-                            <label class="control-label col-md-3">Nama Curr</label>
+                            <label class="control-label col-md-3">Supplier ID</label>
                             <div class="col-md-9">
-                                <input name="nama_currency" placeholder="Nama Currency" class="form-control" type="text">
+                                <input name="supplier_id" placeholder="Supplier ID" class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
-                            <label class="control-label col-md-3">Kurs IDR</label>
+                            <label class="control-label col-md-3">Supplier Name</label>
                             <div class="col-md-9">
-                                <input name="nilai_kurs_idr" placeholder="Kurs IDR" class="form-control" type="text">
+                                <input name="supplier_name" placeholder="Supplier Name" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                             <label class="control-label col-md-4">Alamat</label>
+                            <div class="col-md-12">
+                                <input name="supplier_address" placeholder="Alamat" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-4">Negara</label>
+                            <div class="col-md-12">
+                                <select class="full-width select2" required data-init-plugin="select2" id='supplier_country' name="supplier_country">
+                                    <!--<option value="0" disabled selected>-- Pilih Negara --</option>-->
+                                    <?php                                
+                                        foreach ($get_negara as $row) {  
+                                            echo "<option value='".$row->nama_negara."'>".$row->nama_negara."</option>";
+                                        }
+                                    ?>
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-3">Contact Name</label>
+                            <div class="col-md-9">
+                                <input name="supplier_contact" placeholder="Supplier ID" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-3">Phone</label>
+                            <div class="col-md-9">
+                                <input name="supplier_phone" placeholder="Supplier ID" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-4">Currency</label>
+                            <div class="col-md-12">
+                                <select class="full-width" required data-init-plugin="select2" id='currency' name="currency">
+                                    <!--<option value="0" disabled selected>-- Pilih Currency --</option>-->
+                                    <?php                                
+                                        foreach ($get_currency as $row) {  
+                                            echo "<option value='".$row->nama_currency."'>".$row->nama_currency."</option>";
+                                        }
+                                    ?>
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-label col-md-3">Due Date (Days)</label>
+                            <div class="col-md-9">
+                                <input name="tempo" class="form-control text-right" type="text" value="0">
                                 <span class="help-block"></span>
                             </div>
                     </div>

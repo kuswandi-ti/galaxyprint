@@ -39,7 +39,7 @@ function add()
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Tambah Satuan'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Tambah Data'); // Set Title to Bootstrap modal title
 }
 
 function edit(id)
@@ -78,7 +78,7 @@ function edit(id)
                 data: {"id": data.currency, "text": data.currency }
             });
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Satuan'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Edit Data'); // Set title to Bootstrap modal title
         },
         error: function (jqXHR, textStatus, errorThrown)
         {

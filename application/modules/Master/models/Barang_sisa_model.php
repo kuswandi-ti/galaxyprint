@@ -101,6 +101,28 @@ class Barang_sisa_model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete($this->table);
     }
+
+    /* Combo (select2) */
+    function get_kategori_barang()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_kategori');
+        return $query->result();
+    }
+
+    function get_currency()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_currency');
+        return $query->result();
+    }
+
+    function get_satuan()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_satuan');
+        return $query->result();
+    }
  
  
 }

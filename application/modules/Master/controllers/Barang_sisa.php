@@ -16,6 +16,11 @@ class Barang_sisa extends MX_Controller {
     public function index()
     {
         // permission();
+        $data = array(
+            'get_kategori_barang' => $this->main->get_kategori_barang(),
+            'get_currency' => $this->main->get_currency(),
+            'get_satuan' => $this->main->get_satuan()
+        );
         $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
     }
@@ -59,8 +64,14 @@ class Barang_sisa extends MX_Controller {
     public function ajax_add()
     {
         $data = array(
-                'kode_satuan' => $this->input->post('kode_satuan'),
-                'nama_satuan' => $this->input->post('nama_satuan')
+                'kode_barang' => $this->input->post('kode_barang'),
+                'nama_barang' => $this->input->post('nama_barang'),
+                'kode_kategori' => $this->input->post('kode_kategori'),
+                'hs_barang' => $this->input->post('hs_barang'),
+                'spesifikasi_barang' => $this->input->post('spesifikasi_barang'),
+                'satuan' => $this->input->post('satuan'),
+                'harga_barang' => $this->input->post('harga_barang'),
+                'currency' => $this->input->post('currency'),
             );
         $insert = $this->main->save($data);
         echo json_encode(array("status" => TRUE));
@@ -69,8 +80,14 @@ class Barang_sisa extends MX_Controller {
     public function ajax_update()
     {
          $data = array(
-                'kode_satuan' => $this->input->post('kode_satuan'),
-                'nama_satuan' => $this->input->post('nama_satuan')
+                'kode_barang' => $this->input->post('kode_barang'),
+                'nama_barang' => $this->input->post('nama_barang'),
+                'kode_kategori' => $this->input->post('kode_kategori'),
+                'hs_barang' => $this->input->post('hs_barang'),
+                'spesifikasi_barang' => $this->input->post('spesifikasi_barang'),
+                'satuan' => $this->input->post('satuan'),
+                'harga_barang' => $this->input->post('harga_barang'),
+                'currency' => $this->input->post('currency'),
             );
         $this->main->update(array('id' => $this->input->post('id')), $data);
         echo json_encode(array("status" => TRUE));
