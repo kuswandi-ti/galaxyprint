@@ -55,67 +55,75 @@
                     <form action="#" id="form" class="form-horizontal">
                         <input type="hidden" value="" name="id"/> 
                         <div class="form-body">
-                            <label class="control-label col-md-4">Kode Subcon</label>
-                            <div class="col-md-12">
-                                <input name="subcon_id" placeholder="Kode Subcon" class="form-control" type="text">
-                                <span class="help-block"></span>
-                            </div>
-                            <label class="control-label col-md-4">Nama Subcon</label>
-                            <div class="col-md-12">
-                                <input name="subcon_name" placeholder="Nama Subcon" class="form-control" type="text">
-                                <span class="help-block"></span>
-                            </div>
-                            <label class="control-label col-md-4">Alamat</label>
-                            <div class="col-md-12">
-                                <input name="subcon_address" placeholder="Alamat" class="form-control" type="text">
-                                <span class="help-block"></span>
-                            </div>
-                            <label class="control-label col-md-4">Negara</label>
-                            <div class="col-md-12">
-                                <select class="full-width select2" required data-init-plugin="select2" id='subcon_country' name="subcon_country">
-        	                        <!--<option value="0" disabled selected>-- Pilih Negara --</option>-->
-                                    <?php                                
-                                        foreach ($get_negara as $row) {  
-                                            echo "<option value='".$row->nama_negara."'>".$row->nama_negara."</option>";
-                                        }
-                                    ?>
-		                        </select>
-                                <span class="help-block"></span>
-                            </div>
-                            <label class="control-label col-md-4">Kontak</label>
-                            <div class="col-md-12">
-                                <input name="subcon_contact" placeholder="Kontak" class="form-control" type="text">
-                                <span class="help-block"></span>
-                            </div>
-                            <label class="control-label col-md-4">No. Telepon</label>
-                            <div class="col-md-12">
-                                <input name="subcon_phone" placeholder="No. Telepon" class="form-control" type="text">
-                                <span class="help-block"></span>
-                            </div>
-                            <label class="control-label col-md-4">Currency</label>
-                            <div class="col-md-12">
-                                <select class="full-width" required data-init-plugin="select2" id='currency' name="currency">
-        	                        <!--<option value="0" disabled selected>-- Pilih Currency --</option>-->
-                                    <?php                                
-                                        foreach ($get_currency as $row) {  
-		                                    echo "<option value='".$row->nama_currency."'>".$row->nama_currency."</option>";
-                                        }
-                                    ?>
-		                        </select>
-                                <span class="help-block"></span>
-                            </div>
-                            <label class="control-label col-md-4">Tempo</label>
-                            <div class="col-md-12">
-                                <input name="tempo" placeholder="Tempo" class="form-control" type="text">
-                                <span class="help-block"></span>
-                            </div>
-                            <label class="control-label col-md-4">Aktif</label>
-                            <div class="col-md-12">
-                                <select class="full-width" required data-init-plugin="select2" id='active' name="active">
-        	                        <option value="Y" selected>Y</option>
-                                    <option value="N">N</option>
-		                        </select>
-                                <span class="help-block"></span>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-6 col-example"  style="padding-right:20px; border-right: 1px solid #ccc;">
+                                        <label class="control-label col-md-4">Kode Subcon</label>
+                                        <div class="col-md-12">
+                                            <input name="subcon_id" placeholder="Kode Subcon" class="form-control" type="text">
+                                            <span class="help-block"></span>
+                                        </div>
+                                        <label class="control-label col-md-4">Nama Subcon</label>
+                                        <div class="col-md-12">
+                                            <input name="subcon_name" placeholder="Nama Subcon" class="form-control" type="text">
+                                            <span class="help-block"></span>
+                                        </div>
+                                        <label class="control-label col-md-4">Alamat</label>
+                                        <div class="col-md-12">
+                                            <input name="subcon_address" placeholder="Alamat" class="form-control" type="text">
+                                            <span class="help-block"></span>
+                                        </div>
+                                        <label class="control-label col-md-4">Negara</label>
+                                        <div class="col-md-12">
+                                            <select class="full-width select2" required data-init-plugin="select2" id='subcon_country' name="subcon_country">
+                                                <!--<option value="0" disabled selected>-- Pilih Negara --</option>-->
+                                                <?php                                
+                                                    foreach ($get_negara as $row) {  
+                                                        echo "<option value='".$row->nama_negara."'>".$row->nama_negara."</option>";
+                                                    }
+                                                ?>
+                                            </select>
+                                            <span class="help-block"></span>
+                                        </div>
+                                        <label class="control-label col-md-4">Kontak</label>
+                                        <div class="col-md-12">
+                                            <input name="subcon_contact" placeholder="Kontak" class="form-control" type="text">
+                                            <span class="help-block"></span>
+                                        </div>
+                                        <label class="control-label col-md-4">No. Telepon</label>
+                                        <div class="col-md-12">
+                                            <input name="subcon_phone" placeholder="No. Telepon" class="form-control" type="text">
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ml-auto col-example">
+                                        <label class="control-label col-md-4">Currency</label>
+                                        <div class="col-md-12">
+                                            <select class="full-width" required data-init-plugin="select2" id='currency' name="currency">
+                                                <!--<option value="0" disabled selected>-- Pilih Currency --</option>-->
+                                                <?php                                
+                                                    foreach ($get_currency as $row) {  
+                                                        echo "<option value='".$row->nama_currency."'>".$row->nama_currency."</option>";
+                                                    }
+                                                ?>
+                                            </select>
+                                            <span class="help-block"></span>
+                                        </div>
+                                        <label class="control-label col-md-4">Tempo</label>
+                                        <div class="col-md-12">
+                                            <input name="tempo" placeholder="Tempo" class="form-control" type="text">
+                                            <span class="help-block"></span>
+                                        </div>
+                                        <label class="control-label col-md-4">Aktif</label>
+                                        <div class="col-md-12">
+                                            <select class="full-width" required data-init-plugin="select2" id='active' name="active">
+                                                <option value="Y" selected>Y</option>
+                                                <option value="N">N</option>
+                                            </select>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
