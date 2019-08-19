@@ -16,10 +16,16 @@ class Barang_Jadi_model extends CI_Model {
  
     private function _get_datatables_query()
     {
-        $this->db->select('a.id,a.kode_barang,a.nama_barang,a.kode_kategori,b.nama_kategori,a.spesifikasi_barang,a.hs_barang,a.satuan,a.hpp,a.harga_barang,a.currency,a.aktif');
-        $this->db->from('master_barang a');
-        $this->db->join('master_kategori b','a.kode_kategori = b.kode_kategori');
-        //$this->db->from($this->table);
+        /*
+        $this->db->select('a.id as id,a.kode_barang as kode_barang,a.nama_barang as nama_barang,
+                           a.kode_kategori as kode_kategori,b.nama_kategori as nama_kategori,
+                           a.spesifikasi_barang as spesifikasi_barang,a.hs_barang as hs_barang,
+                           a.satuan as satuan,a.hpp as hpp,a.harga_barang as harga_barang,
+                           a.currency as currency,a.aktif as aktif');
+        //$this->db->from('master_barang a');
+        //$this->db->join('master_kategori b','a.kode_kategori = b.kode_kategori', 'inner');
+        */
+        $this->db->from($this->table);
  
         $i = 0;
      

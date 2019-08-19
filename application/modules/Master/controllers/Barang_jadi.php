@@ -33,7 +33,6 @@ class Barang_Jadi extends MX_Controller {
             $row = array();
             $row[] = $r->kode_barang;
             $row[] = $r->nama_barang;
-            $row[] = $r->nama_kategori;
             $row[] = $r->spesifikasi_barang;
             $row[] = $r->satuan;
             $row[] = $r->aktif;

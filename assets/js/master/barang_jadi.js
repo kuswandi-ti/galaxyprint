@@ -72,7 +72,7 @@ function edit(id)
             $("#currency").data('select2').trigger('select', {
                 data: {"id": data.currency, "text": data.currency }
             });
-            $('[name="active"]').val(data.active);
+            $('[name="aktif"]').val(data.aktif);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Barang Jadi'); // Set title to Bootstrap modal title
  
