@@ -25,6 +25,7 @@
     <link href="<?php echo assets_url()?>plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo assets_url()?>css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="<?php echo assets_url()?>css/themes/corporate.css" rel="stylesheet" type="text/css" />
+    <?php echo $plugin_css; ?>
     <script type="text/javascript">
         window.onload = function() {
             // fix for windows 8
@@ -57,9 +58,6 @@
 
     <script src="<?php echo assets_url()?>js/pages.js"></script>
 
-    <script src="<?php echo assets_url()?>js/scripts.js" type="text/javascript"></script>
-
-    <script src="<?php echo assets_url()?>js/demo.js" type="text/javascript"></script>
     <script src="<?php echo assets_url()?>js/scripts.js" type="text/javascript"></script>
     <?php echo $plugin_js; ?>
     <?php echo $js; ?>

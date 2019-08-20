@@ -141,7 +141,7 @@
                                         <span class="help-block"></span>
                                     </td>
                                     <td style="width:8%">
-                                        <input name="kode_material" id="kode_material" placeholder="Kode Material" class="form-control" type="text" disabled>
+                                        <input name="kode_material" id="kode_material" placeholder="Kode Material" class="form-control" type="text" readonly="">
                                         <span class="help-block"></span>
                                     </td>
                                     <td style="width:17%">
@@ -149,15 +149,15 @@
                                         <span class="help-block"></span>
                                     </td>
                                     <td style="width:10%">
-                                        <input name="hs_material" id="hs_material" placeholder="HS Code" class="form-control" type="text" disabled>
+                                        <input name="hs_material" id="hs_material" placeholder="HS Code" class="form-control" type="text" readonly="">
                                         <span class="help-block"></span>
                                     </td>
                                     <td style="width:10%">
-                                        <input name="qty_material" id="qty_material" placeholder="Qty" class="form-control" type="text">
+                                        <input name="qty_material" id="qty_material" placeholder="Qty" class="form-control text-right" type="text">
                                         <span class="help-block"></span>
                                     </td>
                                     <td style="width:10%">
-                                        <input name="unit_material" id="unit_material" placeholder="Satuan" class="form-control" type="text" disabled>
+                                        <input name="unit_material" id="unit_material" placeholder="Satuan" class="form-control text-right" type="text" readonly="">
                                         <span class="help-block"></span>
                                     </td>
                                     <td style="width:10%">

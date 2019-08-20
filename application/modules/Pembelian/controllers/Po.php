@@ -16,7 +16,11 @@ class Po extends MX_Controller {
     public function index()
     {
         // permission();
-        $data = array();
+        $data = array(
+            'get_supplier' => $this->main->get_supplier(),
+            'get_material' => $this->main->get_material(),
+            'get_currency' => $this->main->get_currency(),
+        );
         $this->_render_page($this->file_name.'/index', $data);
     }
 
@@ -98,8 +102,11 @@ class Po extends MX_Controller {
                     $this->template->set_layout('default'); 
                     // $this->template->add_css($this->module.'/User.css?v4.0.1');
                     $this->template->add_plugin_css('jquery-datatable\media\css\dataTables.bootstrap.min.css');
+                    $this->template->add_plugin_css('bootstrap-datepicker/css/datepicker3.css');
                     $this->template->add_plugin_js('jquery-datatable\media\js\jquery.dataTables.min.js'); 
                     $this->template->add_plugin_js('jquery-datatable\media\js\dataTables.bootstrap.js'); 
+                    $this->template->add_plugin_js('bootstrap-datepicker/js/bootstrap-datepicker.js'); 
+                    $this->template->add_plugin_js('moment/moment.min.js'); 
                     $this->template->add_js($this->module.'/'.$this->file_name.'.js'); 
                 }
 
@@ -114,5 +121,21 @@ class Po extends MX_Controller {
         {
             return $this->load->view($view, $data, TRUE);
         }
+    }
+
+    function get_info_supplier() {
+        $supplier_id = $this->input->post('supplier');
+        $res = $this->db->where('supplier_id', $supplier_id)->get('master_supplier');
+        if ($res->num_rows() > 0) {
+            $data['result'] = 'done';
+            $data['currency'] = $res->row()->currency;
+            $data['tempo'] = $res->row()->tempo;
+        } else {
+            $data['result'] = '';
+            $data['currency'] = '';
+            $data['tempo'] = '';
+        }
+        
+        echo json_encode($data);
     }
 }

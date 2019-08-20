@@ -1,8 +1,91 @@
 var save_method; //for save method string
 var table;
  
+ function numberRows($t) {
+    var c = 0;
+    $t.find("tbody tr").each(function(ind, el) {
+        $(el).find("td:eq(0)").html(++c + ".");
+    });
+}
+
+ function add_detail()
+{
+    /* https://stackoverflow.com/questions/50262073/dynamically-add-table-row-number-using-jquery */
+    var nama_material = $('#nama_material').select2('data');
+    var $row = $("<tr>");
+    $row.append($("<td>"));
+    $row.append($("<td>").html(nama_material[0].text));
+    $row.append($("<td>").html($('#kode_material').val()));
+    $row.append($("<td>").html($('#qty_material').val()));
+    $row.append($("<td>").html($('#unit_material').val()));
+    $row.append($("<td>").html($('#hargapersat_material').val()));
+    $row.append($("<td>").html($('#total').val()));
+    $row.appendTo($("#tbl_detail tbody"));
+    numberRows($("#tbl_detail"));
+}
+
+function getTotal(){
+    total = parseFloat($('[name="qty_material"]').val()) * parseFloat($('[name="hargapersat_material"]').val());
+    $('[name="total"]').val(total);
+}
+
+
 $(document).ready(function() {
- 
+    $('#date').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true
+    });
+
+    $("body").on("change", "#nama_material", function() {
+        $.ajax({
+            url: base_url + "Produksi/Bill_Of_Material/get_info_material",
+            data: {
+                'kode_barang': $('#nama_material').val()
+            },
+            dataType: 'json',
+            type: 'post',
+            success: function(data) {
+                if (data.result == 'done') {
+                    $('[name="kode_material"]').val(data.res_kode_material);
+                    $('[name="qty_material"]').val('0');
+                    $('[name="unit_material"]').val(data.res_unit_material);
+                    $('[name="hargapersat_material"]').val(data.res_hargapersat_material);
+                } else {
+                    $('[name="kode_material"]').val('');
+                    $('[name="qty_material"]').val('0');
+                    $('[name="unit_material"]').val('');
+                    $('[name="hargapersat_material"]').val('');
+                }
+            },
+            error: function() {
+                alert('failure');
+            }
+        });
+    });
+
+    $("body").on("change", "#supplier", function() {
+        $.ajax({
+            url: base_url + "Pembelian/Po/get_info_supplier",
+            data: {
+                'supplier': $('#supplier').val()
+            },
+            dataType: 'json',
+            type: 'post',
+            success: function(data) {
+                if (data.result == 'done') {
+                    $('[name="currency"]').val(data.currency);
+                    $('[name="tempo"]').val(data.tempo);
+                } else {
+                    $('[name="currency"]').val('');
+                    $('[name="tempo"]').val('');
+                }
+            },
+            error: function() {
+                alert('failure');
+            }
+        });
+    });
+
     //datatables
     table = $('#table').DataTable({ 
         "dom": '<"row view-pager"<"col-sm-12"<"pull-left"f><"pull-right"i><"clearfix">>>t<"row view-pager"<"col-sm-12"<"pull-left"l><"pull-right"p><"clearfix">>>',
@@ -39,7 +122,7 @@ function add()
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Tambah Satuan'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Tambah PO'); // Set Title to Bootstrap modal title
 }
 
 function edit(id)

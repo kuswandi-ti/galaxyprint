@@ -101,6 +101,28 @@ class Po_model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete($this->table);
     }
+
+    /* Combo (select2) */
+    function get_supplier()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_supplier');
+        return $query->result();
+    }
+
+    function get_material()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_material');
+        return $query->result();
+    }
+
+    function get_currency()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_currency');
+        return $query->result();
+    }
  
  
 }
