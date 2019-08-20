@@ -14,11 +14,11 @@ var table;
     var nama_material = $('#nama_material').select2('data');
     var $row = $("<tr>");
     $row.append($("<td>"));
-    $row.append($("<td>").html(nama_material[0].text));
-    $row.append($("<td>").html($('#kode_material').val()));
-    $row.append($("<td>").html($('#qty_material').val()));
-    $row.append($("<td>").html($('#unit_material').val()));
-    $row.append($("<td>").html($('#hargapersat_material').val()));
+    $row.append($("<td>").html('<input type="text" name="nama_barang_detail[]" class="" readonly value="'+nama_material[0].text+'">'));
+    $row.append($("<td>").html('<input type="text" name="kode_barang_detail[]" class="" readonly value="'+$('#kode_material').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class="" readonly value="'+$('#qty_material').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="satuan_detail[]" class="" readonly value="'+$('#unit_material').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class="" readonly value="'+$('#hargapersat_material').val()+'">'));
     $row.append($("<td>").html($('#total').val()));
     $row.appendTo($("#tbl_detail tbody"));
     numberRows($("#tbl_detail"));
@@ -38,7 +38,7 @@ $(document).ready(function() {
 
     $("body").on("change", "#nama_material", function() {
         $.ajax({
-            url: base_url + "Produksi/Bill_Of_Material/get_info_material",
+            url: base_url + "Pembelian/Po/get_info_material",
             data: {
                 'kode_barang': $('#nama_material').val()
             },

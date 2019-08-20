@@ -65,11 +65,34 @@ class Po extends MX_Controller {
     public function ajax_add()
     {
         $data = array(
-                'nama_Po' => $this->input->post('nama_Po'),
-                'nilai_kurs_idr' => $this->input->post('nilai_kurs_idr'),
-                'update_terakhir' => dateNow()
+                'tgl_po' => $this->input->post('tgl_po'),
+                'no_po' => $this->input->post('no_po'),
+                'supplier' => $this->input->post('supplier'),
+                'supplier' => $this->input->post('supplier'),
+                'currency' => $this->input->post('currency'),
+                'tempo' => $this->input->post('tempo'),
+                'total' => $this->input->post('total'),
+                'potongan' => $this->input->post('potongan'),
+                'ppn' => $this->input->post('ppn'),
+                'grand_total' => $this->input->post('grand_total')
             );
-        $insert = $this->main->save($data);
+
+        $this->db->insert('trans_po_header', $data);
+        $po_id = $this->db->insert_id();
+        $kode_barang_detail = $_POST['kode_barang_detail'];
+        for ($i=0; $i < sizeof($kode_barang_detail); $i++) { 
+            $data2 = array(
+                        'id_header' => $po_id, 
+                        'kode_barang' => $_POST['kode_barang_detail'][$i], 
+                        'kode_barang' => $_POST['kode_barang_detail'][$i], 
+                        'nama_barang' => $_POST['nama_barang_detail'][$i], 
+                        'satuan' => $_POST['satuan_detail'][$i], 
+                        'qty' => $_POST['qty_detail'][$i], 
+                        'harga' => $_POST['harga_detail'][$i], 
+                        'currency' => $_POST['currency'], 
+                    );
+            $this->db->insert('trans_po_detail', $data2);
+        }
         echo json_encode(array("status" => TRUE));
     }
 
@@ -121,6 +144,30 @@ class Po extends MX_Controller {
         {
             return $this->load->view($view, $data, TRUE);
         }
+    }
+
+    function get_info_material() {
+        $kode_barang = $this->input->post('kode_barang');
+        $res = $this->db->where('kode_barang', $kode_barang)->get('master_material');
+        if ($res->num_rows() > 0) {
+            foreach ($res->result_array() as $row) {
+                $data['result'] = 'done';
+                $data['res_kode_material'] = $row['kode_barang'];
+                $data['res_spesifikasi_material'] = $row['spesifikasi_barang'];
+                $data['res_hs_material'] = $row['hs_barang'];                
+                $data['res_unit_material'] = $row['satuan_besar'];
+                $data['res_hargapersat_material'] = $row['harga_satuan_besar'];
+            }
+        } else {
+            $data['result'] = '';
+            $data['res_kode_material'] = '';
+            $data['res_spesifikasi_material'] = '';
+            $data['res_hs_material'] = '';                
+            $data['res_unit_material'] = '';
+            $data['res_hargapersat_material'] = '0';
+        }
+        
+        echo json_encode($data);
     }
 
     function get_info_supplier() {

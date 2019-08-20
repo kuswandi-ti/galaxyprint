@@ -66,7 +66,7 @@
                                         <label class="control-label col-md-3">Tgl PO</label>
                                         <div class="col-md-9">
                                             <div class="input-group date col-md-8 p-l-0">
-                                                <input type="text" class="form-control" id="date" autocomplete="off" value="<?=date('Y-m-d')?>">
+                                                <input type="text" class="form-control" id="date" name="tgl_po" autocomplete="off" value="<?=date('Y-m-d')?>">
                                                 <div class="input-group-append ">
                                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                 </div>
@@ -163,7 +163,7 @@
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
-                                    <button type="button" id="btnSave" onclick="add_detail()" class="btn btn-warning">Add</button>
+                                    <button type="button" id="" onclick="add_detail()" class="btn btn-warning">Add</button>
                                 </td>
                             </tr>
                         </table>
@@ -188,7 +188,7 @@
                                     <td colspan="5" align="right">Sub Total</td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
-                                        <input name="hargapersat_material" id="hargapersat_material" placeholder="Total" class="form-control text-right" type="text" value="0.00">
+                                        <input name="total" id="total" placeholder="Total" class="form-control text-right" type="text" value="0.00">
                                         <span class="help-block"></span>
                                     </td>
                                 </tr>
@@ -196,7 +196,7 @@
                                     <td colspan="5" align="right">Potongan (%)</td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
-                                        <input name="hargapersat_material" id="hargapersat_material" placeholder="Total" class="form-control text-right" type="text" value="0.00">
+                                        <input name="potongan" id="potongan" placeholder="0" class="form-control text-right" type="text" value="0.00">
                                         <span class="help-block"></span>
                                     </td>
                                 </tr>
@@ -204,7 +204,7 @@
                                     <td colspan="5" align="right">PPN(%)</td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
-                                        <input name="hargapersat_material" id="hargapersat_material" placeholder="Total" class="form-control text-right" type="text" value="0.00">
+                                        <input name="ppn" id="ppn" placeholder="0" class="form-control text-right" type="text" value="0.00">
                                         <span class="help-block"></span>
                                     </td>
                                 </tr>
@@ -212,7 +212,7 @@
                                     <td colspan="5" align="right">Grand Total</td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
-                                        <input name="hargapersat_material" id="hargapersat_material" placeholder="Total" class="form-control text-right" type="text" value="0.00">
+                                        <input name="grand_total" id="grand_total" placeholder="0" class="form-control text-right" type="text" value="0.00">
                                         <span class="help-block"></span>
                                     </td>
                                 </tr>
