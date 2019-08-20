@@ -28,7 +28,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Supplier</a>
+                        <a href="<?=base_url('Master/Supplier')?>">Supplier</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">

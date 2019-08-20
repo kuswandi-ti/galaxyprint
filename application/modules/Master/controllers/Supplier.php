@@ -17,6 +17,7 @@ class Supplier extends MX_Controller {
     {
         // permission();
         $data = array(
+            'title' => $this->title,
             'get_negara' => $this->main->get_negara(),
             'get_currency' => $this->main->get_currency()
         );

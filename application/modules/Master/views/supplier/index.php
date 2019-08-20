@@ -3,12 +3,12 @@
         <div class=" container-fluid   container-fixed-lg bg-white">
             <div class="card card-transparent">
                 <div class="card-header ">
-                    <div class="card-title">Master Currency</div>
+                    <div class="card-title">Master <?=$title?></div>
                     <div class="clearfix"></div>
                     </div>
                     <div class="card-body">
                         <div class="col-xs-12">
-                            <button class="btn btn-success" onclick="add()"><i class="fa fa-plus"></i> Tambah Currency</button>
+                            <button class="btn btn-success" onclick="add()"><i class="fa fa-plus"></i> Tambah <?=$title?></button>
                             <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> Refresh</button>
                             <table id="table" class="table table-condensed" cellspacing="0" width="100%">
                                 <thead>
