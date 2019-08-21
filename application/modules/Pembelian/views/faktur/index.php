@@ -70,7 +70,7 @@
                                         <label class="control-label col-md-3">Tanggal</label>
                                         <div class="col-md-9">
                                             <div class="input-group date col-md-8 p-l-0">
-                                                <input type="text" class="form-control" id="date" name="tgl_po" autocomplete="off" value="<?=date('Y-m-d')?>">
+                                                <input type="text" class="form-control" id="date" name="tgl_hutang" autocomplete="off" value="<?=date('Y-m-d')?>">
                                                 <div class="input-group-append ">
                                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                 </div>
@@ -81,7 +81,7 @@
                                     <div class="row">
                                         <label class="control-label col-md-3">No Invoice</label>
                                         <div class="col-md-9">
-                                            <input name="no_po" placeholder="No PO" class="form-control" type="text">
+                                            <input name="no_invoice" placeholder="No Invoice" class="form-control" type="text">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
@@ -102,7 +102,7 @@
                                     <div class="row">
                                         <label class="control-label col-md-3">No PO</label>
                                         <div class="col-md-9">
-                                            <select class="full-width select2" required data-init-plugin="select2" id='supplier' name="supplier">
+                                            <select class="full-width select2" required data-init-plugin="select2" id='no_po' name="no_po">
                                                 <option value="0" selected>-- Pilih No PO --</option>
                                             </select>
                                             <span class="help-block"></span>
@@ -114,19 +114,19 @@
                                     <div class="row">
                                         <label class="control-label col-md-3">Currency</label>
                                         <div class="col-md-3">
-                                            <input name="currency" placeholder="Currency" class="form-control" type="text" readonly="">
+                                            <input id="currency" name="currency" placeholder="Currency" class="form-control" type="text" readonly="">
                                             <span class="help-block"></span>
                                         </div>
                                         <label class="control-label col-md-3">Kurs</label>
                                         <div class="col-md-3">
-                                            <input name="currency" placeholder="Currency" class="form-control" type="text" readonly="">
+                                            <input id="kurs" name="kurs" placeholder="Currency" class="form-control" type="text" readonly="">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <label class="control-label col-md-3">Tempo (Hari)</label>
                                         <div class="col-md-9">
-                                            <input name="tempo" placeholder="tempo" class="form-control" type="text" value="">
+                                            <input id="tempo" name="tempo" placeholder="tempo" class="form-control" type="text" value="">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
@@ -159,13 +159,20 @@
                                 </tr>
                             <thead>
                             <tbody>
-                                <tr>
+                                <tr id="tr-null">
                                     <td colspan="8" class="text-center">Belum ada data</td>
                                 </tr>
                             </tbody>
                             <tfoot style="font-weight: 800">
                                 <tr>
-                                    <td colspan="5" align="right">Sub Total</td>
+                                    <td colspan="" ></td>
+                                    <td colspan="" >Akun Persediaan</td>
+                                    <td colspan="2" >
+                                        <select style="width: 100%" class="select2">
+                                            <option>-- Pilih Akun --</option>
+                                        </select>
+                                    </td>
+                                    <td colspan="" align="right">Sub Total</td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
                                         <input name="total" id="total" placeholder="Total" class="form-control text-right" type="text" value="0.00">
@@ -173,7 +180,14 @@
                                     </td>
                                 </tr>
                                  <tr>
-                                    <td colspan="5" align="right">Potongan (%)</td>
+                                    <td colspan="" ></td>
+                                    <td colspan="" >Akun Hutang</td>
+                                    <td colspan="2" >
+                                        <select style="width: 100%" class="select2">
+                                            <option>-- Pilih Akun --</option>
+                                        </select>
+                                    </td>
+                                    <td colspan="" align="right">Potongan (%)</td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
                                         <input name="potongan" id="potongan" placeholder="0" class="form-control text-right" type="text" value="0.00">

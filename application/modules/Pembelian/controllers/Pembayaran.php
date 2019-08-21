@@ -16,6 +16,12 @@ class Pembayaran extends MX_Controller {
     public function index()
     {
         // permission();
+        $data = array(
+            'get_supplier' => $this->main->get_supplier(),
+            'get_kode_akun' => $this->main->get_kode_akun(),
+            'get_kode_akun_terbayar' => $this->main->get_kode_akun_terbayar(),
+            'get_currency' => $this->main->get_currency(),
+        );
         $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
     }
@@ -63,11 +69,33 @@ class Pembayaran extends MX_Controller {
     public function ajax_add()
     {
         $data = array(
-                'nama_Pembayaran' => $this->input->POST('nama_Pembayaran'),
-                'nilai_kurs_idr' => $this->input->POST('nilai_kurs_idr'),
-                'update_terakhir' => dateNow()
+                'tgl_transaksi' => $this->input->post('tgl_po'),
+                'kode_penerima' => $this->input->post('supplier'),
+                'kode_akun' => $this->input->post('kode_akun'),
+                'kode_akun_terbayar' => $this->input->post('kode_akun_terbayar'),
+                'currency' => $this->input->post('currency'),
+                'no_cek' => $this->input->post('no_cek'),
+                'tgl_cek' => $this->input->post('tgl_cek'),
+                'keterangan' => $this->input->post('keterangan'),
+                'total_pembayaran' => $this->input->post('total_pembayaran'),
+                'created_at' => dateNow(),
             );
-        $insert = $this->main->save($data);
+
+        $this->db->insert('acc_pembayaran_header', $data);
+        $id_header = $this->db->insert_id();
+        $kode_barang_detail = $_POST['no_invoice_detail'];
+        for ($i=0; $i < sizeof($kode_barang_detail); $i++) { 
+            $data2 = array(
+                        'id_header' => $id_header, 
+                        'no_invoice' => $_POST['no_invoice_detail'][$i], 
+                        'tgl_invoice' => $_POST['tgl_invoice_detail'][$i], 
+                        'jatuh_tempo' => $_POST['jatuh_tempo_detail'][$i], 
+                        'total_invoice' => $_POST['total_detail'][$i], 
+                        'keterangan' => $_POST['keterangan_detail'][$i],
+                        'currency' => $_POST['currency_detail'][$i], 
+                    );
+            $this->db->insert('acc_pembayaran_detail', $data2);
+        }
         echo json_encode(array("status" => TRUE));
     }
 
@@ -98,11 +126,13 @@ class Pembayaran extends MX_Controller {
                 if(in_array($view, array($this->file_name.'/index')))
                 {
                     $this->template->set_layout('default'); 
-                    // $this->template->add_css($this->module.'/User.css?v4.0.1');
                     $this->template->add_plugin_css('jquery-datatable\media\css\dataTables.bootstrap.min.css');
+                    $this->template->add_plugin_css('bootstrap-datepicker/css/datepicker3.css');
                     $this->template->add_plugin_js('jquery-datatable\media\js\jquery.dataTables.min.js'); 
                     $this->template->add_plugin_js('jquery-datatable\media\js\dataTables.bootstrap.js'); 
-                    $this->template->add_js($this->module.'/'.$this->file_name.'.js'); 
+                    $this->template->add_plugin_js('bootstrap-datepicker/js/bootstrap-datepicker.js'); 
+                    $this->template->add_plugin_js('moment/moment.min.js');
+                    $this->template->add_js($this->module.'/'.$this->file_name.'.js');  
                 }
 
             if ( ! empty($data['title']))
@@ -116,5 +146,24 @@ class Pembayaran extends MX_Controller {
         {
             return $this->load->view($view, $data, TRUE);
         }
+    }
+
+    function get_info_inv(){
+        $supplier_id = $this->input->post('supplier_id',TRUE);
+        $data = $this->db->query("
+            SELECT * FROM ACC_HUTANG
+            WHERE STATUS_HUTANG <> 'PAID'
+            and supplier = '$supplier_id'
+        ")->result();
+        echo json_encode($data);
+    }
+
+    function get_info_from_inv(){
+        $no_invoice = $this->input->post('no_invoice',TRUE);
+        $data = $this->db->query("
+            SELECT tgl_hutang, jatuh_tempo, total_hutang, kurs FROM ACC_HUTANG
+            WHERE no_invoice  = '$no_invoice'
+        ")->row();
+        echo json_encode($data);
     }
 }

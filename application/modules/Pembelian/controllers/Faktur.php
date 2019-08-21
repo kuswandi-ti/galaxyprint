@@ -16,6 +16,9 @@ class Faktur extends MX_Controller {
     public function index()
     {
         // permission();
+        $data = array(
+            'get_supplier' => $this->main->get_supplier()
+        );
         $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
     }
@@ -35,7 +38,7 @@ class Faktur extends MX_Controller {
             $row[] = $r->currency;
             $row[] = $r->keterangan;
             $row[] = $r->jatuh_tempo;
-            $row[] = $r->status_input;
+            $row[] = $r->status_hutang;
  
             //add html for action
             $row[] = '<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>
@@ -63,11 +66,37 @@ class Faktur extends MX_Controller {
     public function ajax_add()
     {
         $data = array(
-                'nama_Faktur' => $this->input->POST('nama_Faktur'),
-                'nilai_kurs_idr' => $this->input->POST('nilai_kurs_idr'),
-                'update_terakhir' => dateNow()
+                'tgl_hutang' => $this->input->post('tgl_hutang'),
+                'supplier' => $this->input->post('supplier'),
+                'no_referensi' => $this->input->post('no_po'),
+                'no_invoice' => $this->input->post('no_invoice'),
+                'keterangan' => $this->input->post('keterangan'),
+                'kurs' => $this->input->post('kurs'),
+                'currency' => $this->input->post('currency'),
+                // 'jatuh_tempo' => $this->input->post('tempo'),
+                'total_hutang' => $this->input->post('total'),
+                'potongan' => $this->input->post('potongan'),
+                'ppn' => $this->input->post('ppn'),
+                'grand_total' => $this->input->post('grand_total'),
+                'created_at' => dateNow(),
             );
-        $insert = $this->main->save($data);
+
+        $this->db->insert('acc_hutang', $data);
+        $id_header = $this->db->insert_id();
+        $kode_barang_detail = $_POST['kode_barang_detail'];
+        for ($i=0; $i < sizeof($kode_barang_detail); $i++) { 
+            $data2 = array(
+                        'id_header' => $id_header, 
+                        'kode_barang' => $_POST['kode_barang_detail'][$i], 
+                        'nama_barang' => $_POST['nama_barang_detail'][$i], 
+                        'satuan' => $_POST['satuan_detail'][$i], 
+                        'qty' => $_POST['qty_detail'][$i], 
+                        'harga' => $_POST['harga_detail'][$i], 
+                        'currency' => $_POST['currency'], 
+                        'kurs' => $_POST['kurs'], 
+                    );
+            $this->db->insert('acc_hutang_detail', $data2);
+        }
         echo json_encode(array("status" => TRUE));
     }
 
@@ -119,5 +148,31 @@ class Faktur extends MX_Controller {
         {
             return $this->load->view($view, $data, TRUE);
         }
+    }
+
+    function get_info_po(){
+        $supplier_id = $this->input->post('supplier_id',TRUE);
+        $data = $this->db->query("
+            SELECT * FROM TRANS_PO_HEADER
+            WHERE STATUS_PO <> 'Close'
+            and supplier = '$supplier_id'
+        ")->result();
+        echo json_encode($data);
+    }
+
+    function get_info_from_po(){
+        $no_po = $this->input->post('no_po',TRUE);
+        $data = $this->db->query("
+            SELECT currency, kurs, tempo FROM TRANS_PO_HEADER
+            WHERE no_po  = '$no_po'
+        ")->row();
+
+        $data2 = $this->db->query("
+            SELECT nama_barang, kode_barang, qty, satuan, harga, qty*harga total
+            FROM trans_po_header h, trans_po_detail d
+            WHERE h.id = d.id_header
+            and h.no_po = '$no_po'
+            ")->result();
+        echo json_encode(array('header'=>$data, 'detail'=>$data2));
     }
 }

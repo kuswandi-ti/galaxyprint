@@ -70,11 +70,13 @@ class Po extends MX_Controller {
                 'supplier' => $this->input->post('supplier'),
                 'supplier' => $this->input->post('supplier'),
                 'currency' => $this->input->post('currency'),
+                'kurs' => $this->input->post('kurs'),
                 'tempo' => $this->input->post('tempo'),
                 'total' => $this->input->post('total'),
                 'potongan' => $this->input->post('potongan'),
                 'ppn' => $this->input->post('ppn'),
-                'grand_total' => $this->input->post('grand_total')
+                'grand_total' => $this->input->post('grand_total'),
+                'created_at' => dateNow(),
             );
 
         $this->db->insert('trans_po_header', $data);
@@ -172,14 +174,21 @@ class Po extends MX_Controller {
 
     function get_info_supplier() {
         $supplier_id = $this->input->post('supplier');
-        $res = $this->db->where('supplier_id', $supplier_id)->get('master_supplier');
+        $res = $this->db->query("
+            select s.currency, nilai_kurs_idr kurs, tempo
+            from master_supplier s, master_currency c
+            where s.currency = c.nama_currency
+            and supplier_id = '$supplier_id'
+        ");
         if ($res->num_rows() > 0) {
             $data['result'] = 'done';
             $data['currency'] = $res->row()->currency;
+            $data['kurs'] = $res->row()->kurs;
             $data['tempo'] = $res->row()->tempo;
         } else {
             $data['result'] = '';
             $data['currency'] = '';
+            $data['kurs'] = '';
             $data['tempo'] = '';
         }
         

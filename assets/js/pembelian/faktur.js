@@ -36,31 +36,61 @@ $(document).ready(function() {
         autoclose: true
     });
 
-    $("body").on("change", "#nama_material", function() {
+    $("#supplier").change(function() {
+        var id=$(this).val();
         $.ajax({
-            url: base_url + "Pembelian/Po/get_info_material",
-            data: {
-                'kode_barang': $('#nama_material').val()
-            },
-            dataType: 'json',
-            type: 'post',
-            success: function(data) {
-                if (data.result == 'done') {
-                    $('[name="kode_material"]').val(data.res_kode_material);
-                    $('[name="qty_material"]').val('0');
-                    $('[name="unit_material"]').val(data.res_unit_material);
-                    $('[name="hargapersat_material"]').val(data.res_hargapersat_material);
-                } else {
-                    $('[name="kode_material"]').val('');
-                    $('[name="qty_material"]').val('0');
-                    $('[name="unit_material"]').val('');
-                    $('[name="hargapersat_material"]').val('');
+            url : base_url + "Pembelian/Faktur/get_info_po",
+            method : "POST",
+            data : {supplier_id: id},
+            async : true,
+            dataType : 'json',
+            success: function(data){
+                if(data.length > 0){
+                    var html = '';
+                    var i;
+                    html += '<option value="">-- Pilih No Po --</option>';
+                    for(i=0; i<data.length; i++){
+                        html += '<option value='+data[i].no_po+'>'+data[i].no_po+'</option>';
+                    }
+                    $('#no_po').html(html);
+                }else{
+                    alert("Tidak ada Po Open Untuk Supplier Ini");
                 }
-            },
-            error: function() {
-                alert('failure');
+
             }
         });
+        return false;
+    });
+
+    $("#no_po").change(function() {
+        var id=$(this).val();
+        $.ajax({
+            url : base_url + "Pembelian/Faktur/get_info_from_po",
+            method : "POST",
+            data : {no_po: id},
+            async : true,
+            dataType : 'json',
+            success: function(data){
+                $("#tr-null").remove();
+                $("#currency").val(data.header.currency);
+                $("#kurs").val(data.header.kurs);
+                $("#tempo").val(data.header.tempo);
+                var i;
+                for(i=0; i<data.detail.length; i++){
+                    var $row = $("<tr>");
+                    $row.append($("<td>"));
+                    $row.append($("<td>").html('<input type="text" name="nama_barang_detail[]" style="width:100%" class="" readonly value="'+data.detail[i].nama_barang+'">'));
+                    $row.append($("<td>").html('<input type="text" name="kode_barang_detail[]" class="" readonly value="'+data.detail[i].kode_barang+'">'));
+                    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class="" readonly value="'+data.detail[i].qty+'">'));
+                    $row.append($("<td>").html('<input type="text" name="satuan_detail[]" class="" readonly value="'+data.detail[i].satuan+'">'));
+                    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class="" readonly value="'+data.detail[i].harga+'">'));
+                    $row.append($("<td>").html('<input type="text" name="total[]" class="" readonly value="'+data.detail[i].total+'">'));
+                    $row.appendTo($("#tbl_detail tbody"));
+                    numberRows($("#tbl_detail"));
+                }
+            }
+        });
+        return false;
     });
     //datatables
     table = $('#table').DataTable({ 

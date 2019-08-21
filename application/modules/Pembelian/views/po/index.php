@@ -100,8 +100,14 @@
                                 <div class="col-md-5">
                                     <div class="row">
                                         <label class="control-label col-md-3">Currency</label>
-                                        <div class="col-md-9">
+                                        <div class="col-md-3">
                                             <input name="currency" placeholder="Currency" class="form-control" type="text" readonly="">
+                                            <span class="help-block"></span>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                        <label class="control-label col-md-2">Kurs</label>
+                                        <div class="col-md-3">
+                                            <input name="kurs" placeholder="Kurs" class="form-control" type="text">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>

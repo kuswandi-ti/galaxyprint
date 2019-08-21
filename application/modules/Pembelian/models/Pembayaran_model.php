@@ -101,6 +101,38 @@ class Pembayaran_model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete($this->table);
     }
- 
+    
+     /* Combo (select2) */
+    function get_supplier()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_supplier');
+        return $query->result();
+    }
+
+    function get_kode_akun()
+    {
+        $this->db->select('*');
+        $query = $this->db->where('level_3', '1.1.1')->get('acc_master_akun');
+        return $query->result();
+    }
+
+    function get_kode_akun_terbayar()
+    {
+       $this->db->select('*');
+        $query = $this->db
+        ->where('level_3', '2.1.1')
+        ->or_where('level_3', '2.1.2')
+        ->or_where('level_3', '2.1.3')
+        ->get('acc_master_akun');
+        return $query->result();
+    }
+    
+    function get_currency()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_currency');
+        return $query->result();
+    }
  
 }

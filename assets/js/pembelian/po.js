@@ -74,10 +74,12 @@ $(document).ready(function() {
             success: function(data) {
                 if (data.result == 'done') {
                     $('[name="currency"]').val(data.currency);
+                    $('[name="kurs"]').val(data.kurs);
                     $('[name="tempo"]').val(data.tempo);
                 } else {
                     $('[name="currency"]').val('');
-                    $('[name="tempo"]').val('');
+                    $('[name="kurs"]').val('0');
+                    $('[name="tempo"]').val('0');
                 }
             },
             error: function() {
