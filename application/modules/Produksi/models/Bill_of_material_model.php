@@ -1,16 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Bill_of_material_model extends CI_Model {
+class Bill_Of_Material_model extends CI_Model {
  
-    var $table = 'master_bom';
-    var $column_order = array('id','kode_barang','kode_bom','hs_bom','nama_bom','spek_bom',
-                              'jumlah_bom','satuan_bom','harga_bom','currency',
-                              'created_at',null);
-    var $column_search = array('id','kode_barang','kode_bom','hs_bom','nama_bom','spek_bom',
-                               'jumlah_bom','satuan_bom','harga_bom','currency',
-                               'created_at');
-    var $order = array('kode_barang' => 'asc'); // default order 
+    var $table = 'master_bom_header';
+    var $column_order = array('kode_barang','nama_barang','unit','currency',null);
+    var $column_search = array('kode_barang','nama_barang','spesifikasi','unit','currency');
+    var $order = array('id' => 'desc'); // default order 
  
     public function __construct()
     {
@@ -18,7 +14,7 @@ class Bill_of_material_model extends CI_Model {
         $this->load->database();
     }
  
-    /*private function _get_datatables_query()
+    private function _get_datatables_query()
     {
          
         $this->db->from($this->table);
@@ -102,18 +98,16 @@ class Bill_of_material_model extends CI_Model {
  
     public function delete_by_id($id)
     {
+        // Header
         $this->db->where('id', $id);
         $this->db->delete($this->table);
-    }*/
- 
-    /* Combo (select2) */
-    function get_barang_jadi()
-    {
-        $this->db->select('*');
-        $query = $this->db->get('master_barang');
-        return $query->result();
+
+        // Detail
+        $this->db->where('id_header', $id);
+        $this->db->delete('master_bom_detail');
     }
 
+    /* Combo (select2) */
     function get_material()
     {
         $this->db->select('*');
@@ -121,28 +115,17 @@ class Bill_of_material_model extends CI_Model {
         return $query->result();
     }
 
+    function get_barang_jadi()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_barang');
+        return $query->result();
+    } 
+
     function get_currency()
     {
         $this->db->select('*');
         $query = $this->db->get('master_currency');
         return $query->result();
     }
-
-    function get_info_barang_jadi($kode_barang) {
-		return $this->db->query("SELECT
-									*
-								 FROM
-                                    master_barang								 
-								 WHERE
-									kode_barang = '".$kode_barang."'");
-    }
-    
-    function get_info_material($kode_barang) {
-		return $this->db->query("SELECT
-									*
-								 FROM
-                                    master_material								 
-								 WHERE
-									kode_barang = '".$kode_barang."'");
-	}
 }
