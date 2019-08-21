@@ -1,6 +1,7 @@
 var save_method; //for save method string
 var table;
- 
+
+
 function numberRows($t) {
     var c = 0;
     $t.find("tbody tr").each(function(ind, el) {
@@ -16,18 +17,48 @@ function numberRows($t) {
     $row.append($("<td>"));
     $row.append($("<td>").html('<input type="text" name="nama_barang_detail[]" class="" readonly value="'+nama_material[0].text+'">'));
     $row.append($("<td>").html('<input type="text" name="kode_barang_detail[]" class="" readonly value="'+$('#kode_material').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class="" readonly value="'+$('#qty_material').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class=" text-right" readonly value="'+$('#qty_material').val()+'">'));
     $row.append($("<td>").html('<input type="text" name="satuan_detail[]" class="" readonly value="'+$('#unit_material').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class="" readonly value="'+$('#hargapersat_material').val()+'">'));
-    $row.append($("<td>").html($('#total').val()));
+    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class=" text-right" readonly value="'+$('#hargapersat_material').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="total_detail[]" class="total_detail text-right" readonly value="'+$('#total_field').val()+'">'));
+    $row.append($("<td>").html('<button class="btn btn-danger btn-xs text-right"> <i class="fa fa-remove"></i> </button>'));
     $row.appendTo($("#tbl_detail tbody"));
     numberRows($("#tbl_detail"));
+    calcTot();
 }
 
 function getTotal(){
     total = parseFloat($('[name="qty_material"]').val()) * parseFloat($('[name="hargapersat_material"]').val());
-    $('[name="total"]').val(total);
+    $('[name="total_field"]').val(total);
 }
+
+function hitungPpn(){
+    sub_total = parseFloat($("#sub_total").val());
+    ppn_percen = parseFloat($("#ppn_percen").val());
+    ppn =  (sub_total * ppn_percen) / 100;
+    $("#ppn").val(ppn);
+    calcTot();
+}
+
+function hitungPotongan(){
+    sub_total = parseFloat($("#sub_total").val());
+    potongan_percen = parseFloat($("#potongan_percen").val());
+    potongan =  (sub_total * potongan_percen) / 100;
+    $("#potongan").val(potongan);
+    calcTot();
+}
+
+function calcTot(){
+    ppn = parseFloat($("#ppn").val());
+    potongan = parseFloat($("#potongan").val());
+    var sub_total = 0;
+    $(".total_detail").each(function(){
+        sub_total += +$(this).val();
+    });
+    $("#sub_total").val(sub_total);
+    grand_total = sub_total+ppn-potongan;
+    $("#grand_total").val(grand_total);
+};
 
 
 $(document).ready(function() {
@@ -158,6 +189,13 @@ function edit(id)
 
 function save()
 {
+    tgl_po = $("#date").val();
+    no_po  = $("#no_po").val();
+    supplier  = $("#supplier").val();
+    if(!tgl_po || !no_po || !supplier){
+        alert("Semua kolom harus diisi..!!!");
+        return false;
+    }
     $('#btnSave').text('saving...'); //change button text
     $('#btnSave').attr('disabled',true); //set button disable 
     var url;
@@ -181,6 +219,7 @@ function save()
             {
                 $('#modal_form').modal('hide');
                 reload_table();
+                $("#tbl_detail tbody").empty();
             }
  
             $('#btnSave').text('save'); //change button text

@@ -38,10 +38,11 @@ class Po extends MX_Controller {
             $row[] = $r->currency;
             $row[] = $r->grand_total;
             $row[] = $r->status_po;
+            $disabled = ($r->status_po == 'CLOSE') ? 'disabled' : '';
  
             //add html for action
-            $row[] = '<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>
-                  <a class="btn btn-sm btn-danger btn-xs" href="javascript:void(0)" title="Hapus" onclick="hapus('."'".$r->id."'".')"><i class="fa fa-trash"></i> Delete</a>';
+            $row[] = '<!--<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>-->
+                  <button type="button" class="btn btn-sm btn-danger btn-xs" '.$disabled.' href="javascript:void(0)" title="Hapus" onclick="hapus('."'".$r->id."'".')"><i class="fa fa-trash"></i> Delete</button>';
  
             $data[] = $row;
         }
@@ -72,7 +73,7 @@ class Po extends MX_Controller {
                 'currency' => $this->input->post('currency'),
                 'kurs' => $this->input->post('kurs'),
                 'tempo' => $this->input->post('tempo'),
-                'total' => $this->input->post('total'),
+                'total' => $this->input->post('sub_total'),
                 'potongan' => $this->input->post('potongan'),
                 'ppn' => $this->input->post('ppn'),
                 'grand_total' => $this->input->post('grand_total'),

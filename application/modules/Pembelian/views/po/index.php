@@ -77,7 +77,7 @@
                                     <div class="row">
                                         <label class="control-label col-md-3">No PO</label>
                                         <div class="col-md-9">
-                                            <input name="no_po" placeholder="No PO" class="form-control" type="text">
+                                            <input id="no_po" name="no_po" placeholder="No PO" class="form-control" type="text">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
@@ -85,7 +85,7 @@
                                         <label class="control-label col-md-3">Supplier</label>
                                         <div class="col-md-9">
                                             <select class="full-width select2" required data-init-plugin="select2" id='supplier' name="supplier">
-                                                <option value="0" selected>-- Pilih Supplier --</option>
+                                                <option value="" selected>-- Pilih Supplier --</option>
                                                 <?php                                
                                                     foreach ($get_supplier as $row) {  
                                                         echo "<option value='".$row->supplier_id."'>".$row->supplier_name."</option>";
@@ -165,7 +165,7 @@
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
-                                    <input name="total" id="total" placeholder="Total" class="form-control" type="text">
+                                    <input name="total_field" id="total_field" placeholder="Total" class="form-control" type="text" readonly="">
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
@@ -194,23 +194,23 @@
                                     <td colspan="5" align="right">Sub Total</td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
-                                        <input name="total" id="total" placeholder="Total" class="form-control text-right" type="text" value="0.00">
+                                        <input name="sub_total" id="sub_total" placeholder="Total" class="form-control text-right" type="text" value="0.00">
                                         <span class="help-block"></span>
                                     </td>
                                 </tr>
                                  <tr>
-                                    <td colspan="5" align="right">Potongan (%)</td>
+                                    <td colspan="5" align="right">Potongan (%)&nbsp;&nbsp;&nbsp;<input type="text" maxlength="5" size="2" id="potongan_percen" class="text-right" value="0.00" onkeyup="hitungPotongan()"></td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
-                                        <input name="potongan" id="potongan" placeholder="0" class="form-control text-right" type="text" value="0.00">
+                                        <input name="potongan" id="potongan" placeholder="0" class="form-control text-right" type="text" value="0.00" readonly="readonly">
                                         <span class="help-block"></span>
                                     </td>
                                 </tr>
                                  <tr>
-                                    <td colspan="5" align="right">PPN(%)</td>
+                                    <td colspan="5" align="right">PPN(%)&nbsp;&nbsp;&nbsp;<input type="text" maxlength="5" size="2" class="text-right" value="0.00" id="ppn_percen" onkeyup="hitungPpn()"></td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
-                                        <input name="ppn" id="ppn" placeholder="0" class="form-control text-right" type="text" value="0.00">
+                                        <input name="ppn" id="ppn" placeholder="0" class="form-control text-right" type="text" value="0.00" readonly="readonly">
                                         <span class="help-block"></span>
                                     </td>
                                 </tr>
