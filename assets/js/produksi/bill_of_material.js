@@ -70,15 +70,14 @@ $(document).ready(function() {
             "url": base_url+'produksi/bill_of_material/ajax_list',
             "type": "POST"
         },
- 
         //Set column definition initialisation properties.
         "columnDefs": [
         { 
             "targets": [ -1 ], //last column
             "orderable": false, //set not orderable
+            'targets': [0], 'visible': false,
         },
         ],
- 
     });
 });
 
@@ -95,14 +94,14 @@ function add_detail() {
     var $row = $("<tr>");
     $row.append($("<td>"));
 
-    $row.append($("<td>").html('<input type="text" name="nama_material_detail[]" class="" readonly value="'+nama_material[0].text+'">'));
-    $row.append($("<td>").html('<input type="text" name="kode_material_detail[]" class="" readonly value="'+$('#kode_material').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="hs_material_detail[]" class="" readonly value="'+$('#hs_material').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="satuan_material_detail[]" class="" readonly value="'+$('#satuan_material').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="spesifikasi_bom_detail[]" class="" readonly value="'+$('#spesifikasi_bom').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="jumlah_bom_detail[]" class="" readonly value="'+$('#jumlah_bom').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="harga_bom_detail[]" class="" readonly value="'+$('#harga_bom').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="currency_bom_detail[]" class="" readonly value="'+$('#currency_bom').val()+'">'));
+    $row.append($("<td>").html('<label>'+nama_material[0].text+'</label><input type="hidden" name="nama_material_detail[]" class="" readonly value="'+nama_material[0].text+'">'));
+    $row.append($("<td class='text-center'>").html('<label>'+$('#kode_material').val()+'</label><input type="hidden" name="kode_material_detail[]" class="" readonly value="'+$('#kode_material').val()+'">'));
+    $row.append($("<td class='text-center'>").html('<label>'+$('#hs_material').val()+'</label><input type="hidden" name="hs_material_detail[]" class="" readonly value="'+$('#hs_material').val()+'">'));
+    $row.append($("<td class='text-center'>").html('<label>'+$('#satuan_material').val()+'</label><input type="hidden" name="satuan_material_detail[]" class="" readonly value="'+$('#satuan_material').val()+'">'));
+    $row.append($("<td>").html('<label>'+$('#spesifikasi_bom').val()+'</label><input type="hidden" name="spesifikasi_bom_detail[]" class="" readonly value="'+$('#spesifikasi_bom').val()+'">'));
+    $row.append($("<td class='text-right'>").html('<label>'+$('#jumlah_bom').val()+'</label><input type="hidden" name="jumlah_bom_detail[]" class="" readonly value="'+$('#jumlah_bom').val()+'">'));
+    $row.append($("<td class='text-right'>").html('<label>'+$('#harga_bom').val()+'</label><input type="hidden" name="harga_bom_detail[]" class="" readonly value="'+$('#harga_bom').val()+'">'));
+    $row.append($("<td class='text-center'>").html('<label>'+$('#currency_bom').val()+'</label><input type="hidden" name="currency_bom_detail[]" class="" readonly value="'+$('#currency_bom').val()+'">'));
     $row.append($("<td>").html('<button class="btn btn-danger btn-xs text-right remove-row"> <i class="fa fa-trash"></i> </button>'));
     $row.appendTo($("#tbl_detail tbody"));
     numberRows($("#tbl_detail"));
@@ -121,33 +120,44 @@ function add() {
     $('.modal-title').text('Tambah Bill Of Material'); // Set Title to Bootstrap modal title
 }
 
-// function edit(id) {
-//     save_method = 'update';
-//     $('#form')[0].reset(); // reset form on modals
-//     $('.form-group').removeClass('has-error'); // clear error class
-//     $('.help-block').empty(); // clear error string
+function show_detail() {
+    var id_header = $("#id_hidden").val();
+    $.ajax({
+        url : base_url+'produksi/bill_of_material/show_detail/?id_header='+id_header,
+        async : false,
+        success : function(data) {
+            $('#show_detail').html(data);
+        }
+    });
+}
+
+function edit(id) {
+    save_method = 'update';
+    $('#form')[0].reset(); // reset form on modals
+    $('.form-group').removeClass('has-error'); // clear error class
+    $('.help-block').empty(); // clear error string
  
-//     //Ajax Load data from ajax
-//     $.ajax({
-//         url : base_url+"pembelian/po/ajax_edit/" + id,
-//         type: "GET",
-//         dataType: "JSON",
-//         success: function(data)
-//         {
- 
-//             $('[name="id"]').val(data.id);
-//             $('[name="kode_satuan"]').val(data.kode_satuan);
-//             $('[name="nama_satuan"]').val(data.nama_satuan);
-//             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-//             $('.modal-title').text('Edit Satuan'); // Set title to Bootstrap modal title
- 
-//         },
-//         error: function (jqXHR, textStatus, errorThrown)
-//         {
-//             alert('Error get data from ajax');
-//         }
-//     });
-// }
+    //Ajax Load data from ajax
+    $.ajax({
+        url : base_url+"produksi/bill_of_material/ajax_edit/" + id,
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        { 
+            $('[name="id_hidden"]').val(data.id);
+            $("#kode_barang").data('select2').trigger('select', {
+                data: {"id": data.kode_barang, "text": data.nama_barang }
+            });
+            show_detail();
+            $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
+            $('.modal-title').text('Edit Bill Of Material'); // Set title to Bootstrap modal title 
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
 
 function save() {
     kode_barang = $("#kode_barang").val();
@@ -216,11 +226,7 @@ function hapus(id) {
 
 $(document).on('click', '.remove-row', function () {
     if(confirm('Are you sure delete this data?')) {
-        if(save_method == 'add') {
-            $(this).closest('tr').remove();
-            return false;
-        } else {
-            // delete table
-        }
+        $(this).closest('tr').remove();
+        return false;
     }    
 });

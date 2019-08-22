@@ -31,6 +31,7 @@ class Bill_Of_Material extends MX_Controller {
         $no = $_POST['start'];
         foreach ($list as $r) {
             $row = array();
+            $row[] = $r->id;
             $row[] = $r->kode_barang;
             $row[] = $r->nama_barang;
             $row[] = $r->spesifikasi;
@@ -38,7 +39,7 @@ class Bill_Of_Material extends MX_Controller {
             $row[] = $r->currency;
  
             //add html for action
-            $row[] = '<!--<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>-->
+            $row[] = '<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>
                       <button type="button" class="btn btn-sm btn-danger btn-xs" href="javascript:void(0)" title="Hapus" onclick="hapus('."'".$r->id."'".')"><i class="fa fa-trash"></i> Delete</button>';
  
             $data[] = $row;
@@ -94,17 +95,38 @@ class Bill_Of_Material extends MX_Controller {
 
     public function ajax_update()
     {
+        $id_header = $this->input->post('id_hidden');
         $data = array(
-            'kode_material' => $_POST['kode_material'][$i], 
-            'nama_material' => $_POST['nama_material'][$i], 
-            'hs_material' => $_POST['hs_material'][$i], 
-            'satuan_material' => $_POST['satuan_material'][$i], 
-            'spesifikasi_bom' => $_POST['spesifikasi_bom'][$i], 
-            'jumlah_bom' => $_POST['jumlah_bom'][$i], 
-            'harga_bom' => $_POST['harga_bom'],
-            'currency_bom' => $_POST['currency_bom'],
+            'kode_barang' => $_POST['kode_barang'], 
+            'nama_barang' => $_POST['nama_barang'], 
+            'spesifikasi' => $_POST['spesifikasi_barang'], 
+            'unit' => $_POST['unit_barang'], 
+            'currency' => $_POST['currency_barang'], 
         );
-        $this->main->update(array('id' => $this->input->post('id')), $data);
+        $this->main->update(array('id' => $id_header), $data);
+
+        // Untuk edit, memakai metode Delete Insert detail
+        $this->main->delete_detail($id_header); // Delete all detail
+        // Insert all detail
+        if (isset($_POST['kode_material_detail'])) {
+            $kode_material_detail = $_POST['kode_material_detail'];
+            for ($i=0; $i < sizeof($kode_material_detail); $i++) { 
+                $data2 = array(
+                    'id_header' => $id_header, 
+                    'kode_material' => $_POST['kode_material_detail'][$i], 
+                    'nama_material' => $_POST['nama_material_detail'][$i], 
+                    'hs_material' => $_POST['hs_material_detail'][$i], 
+                    'satuan_material' => $_POST['satuan_material_detail'][$i], 
+                    'spesifikasi_bom' => $_POST['spesifikasi_bom_detail'][$i], 
+                    'jumlah_bom' => $_POST['jumlah_bom_detail'][$i], 
+                    'harga_bom' => $_POST['harga_bom_detail'][$i],
+                    'currency_bom' => $_POST['currency_bom_detail'][$i],  
+                    'created_at' => dateNow(),
+                );
+                $this->db->insert('master_bom_detail', $data2);
+            }
+        }
+
         echo json_encode(array("status" => TRUE));
     }
  
@@ -189,5 +211,29 @@ class Bill_Of_Material extends MX_Controller {
         }
         
         echo json_encode($data);
+    }
+
+    function show_detail() {
+		$id_header = $this->input->get('id_header');
+        $data = $this->main->show_detail($id_header);
+        if ($data->num_rows() > 0) {
+            $i = 1;
+            foreach ($data->result() as $row) {
+				echo '<tr>';
+                echo    '<td><label>'.$i.'</label><input type="hidden" name="no[]" class="" readonly value="'.$i.'"></td>';
+                echo    '<td><label>'.$row->nama_material.'</label><input type="hidden" name="nama_material_detail[]" class="" readonly value="'.$row->nama_material.'"></td>';
+                echo    '<td class="text-center"><label>'.$row->kode_material.'</label><input type="hidden" name="kode_material_detail[]" class="" readonly value="'.$row->kode_material.'"></td>';
+                echo    '<td class="text-center"><label>'.$row->hs_material.'</label><input type="hidden" name="hs_material_detail[]" class="" readonly value="'.$row->hs_material.'"></td>';
+                echo    '<td class="text-center"><label>'.$row->satuan_material.'</label><input type="hidden" name="satuan_material_detail[]" class="" readonly value="'.$row->satuan_material.'"></td>';
+                echo    '<td><label>'.$row->spesifikasi_bom.'</label><input type="hidden" name="spesifikasi_bom_detail[]" class="" readonly value="'.$row->spesifikasi_bom.'"></td>';
+                echo    '<td class="text-right"><label>'.$row->jumlah_bom.'</label><input type="hidden" name="jumlah_bom_detail[]" class="" readonly value="'.$row->jumlah_bom.'"></td>';
+                echo    '<td class="text-right"><label>'.$row->harga_bom.'</label><input type="hidden" name="harga_bom_detail[]" class="" readonly value="'.$row->harga_bom.'"></td>';
+                echo    '<td class="text-center"><label>'.$row->currency_bom.'</label><input type="hidden" name="currency_bom_detail[]" class="" readonly value="'.$row->currency_bom.'"></td>';
+                echo    '<td><button class="btn btn-danger btn-xs text-right remove-row"> <i class="fa fa-trash"></i> </button>';
+				echo '</tr>';
+				
+				$i++;
+            }
+        }		
     }
 }

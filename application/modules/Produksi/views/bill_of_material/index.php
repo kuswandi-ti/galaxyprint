@@ -13,6 +13,7 @@
                             <table id="table" class="table table-condensed" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
+                                        <th style="visibility:hidden;">ID</th>
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
                                         <th>Spesifikasi</th>
@@ -26,6 +27,7 @@
                      
                                 <tfoot>
                                     <tr>
+                                        <th style="visibility:hidden;">ID</th>
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
                                         <th>Spesifikasi</th>
@@ -54,7 +56,7 @@
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="kode_material_hidden"/>
+                    <input type="hidden" value="" name="id_hidden" id="id_hidden" />
                     <div class="form-body">
                         <div class="container-fluid">
                             <div class="row">
@@ -192,7 +194,7 @@
                                     <th style="width:5%;; text-align:center">Actions</th>
                                 </tr>
                             <thead>
-                            <tbody>
+                            <tbody id="show_detail">
                             </tbody>
                         </table>
                     </div>                        

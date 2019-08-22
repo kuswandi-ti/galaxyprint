@@ -107,6 +107,17 @@ class Bill_Of_Material_model extends CI_Model {
         $this->db->delete('master_bom_detail');
     }
 
+    public function delete_detail($id)
+    {
+        // Detail
+        $this->db->where('id_header', $id);
+        $this->db->delete('master_bom_detail');
+    }
+
+    function show_detail($id_header) {
+		return $this->db->query("SELECT * FROM master_bom_detail WHERE id_header = '".$id_header."' ORDER BY id");
+    }
+
     /* Combo (select2) */
     function get_material()
     {
