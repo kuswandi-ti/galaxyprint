@@ -70,7 +70,7 @@
                                         <label class="control-label col-md-3">Tanggal</label>
                                         <div class="col-md-9">
                                             <div class="input-group date col-md-8 p-l-0">
-                                                <input type="text" class="form-control" id="date" name="tgl_transaksi" autocomplete="off" value="<?=date('Y-m-d')?>">
+                                                <input type="text" class="form-control" id="date" name="tgl_hutang" autocomplete="off" value="<?=date('Y-m-d')?>">
                                                 <div class="input-group-append ">
                                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                 </div>
@@ -192,7 +192,7 @@
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:8%">
-                                    <input name="tgl_invoice" id="tgl_invoice" placeholder="Tgl Inv" class="form-control" type="text" readonly="readonly">
+                                    <input name="tgl_hutang" id="tgl_hutang" placeholder="Tgl Inv" class="form-control" type="text" readonly="readonly">
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
@@ -204,7 +204,7 @@
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
-                                    <input name="currency" id="currency" placeholder="Curr" class="form-control text-right" type="text" readonly="readonly">
+                                    <input name="currency_det" id="currency_det" placeholder="Curr" class="form-control text-right" type="text" readonly="readonly">
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
@@ -238,23 +238,23 @@
                                     <td colspan="5" align="right">Sub Total</td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
-                                        <input name="total" id="total" placeholder="Total" class="form-control text-right" type="text" value="0.00">
+                                        <input name="sub_total" id="sub_total" placeholder="Total" class="form-control text-right" type="text" value="0.00">
+                                        <span class="help-block"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" align="right">Potongan (%)&nbsp;&nbsp;&nbsp;<input type="text" maxlength="5" size="2" id="potongan_percen" class="text-right" value="0.00" onkeyup="hitungPotongan()"></td>
+                                    <td colspan="" align="center">:</td>
+                                    <td colspan="">
+                                        <input name="potongan" id="potongan" placeholder="0" class="form-control text-right" type="text" value="0.00" readonly="readonly">
                                         <span class="help-block"></span>
                                     </td>
                                 </tr>
                                  <tr>
-                                    <td colspan="5" align="right">Potongan (%)</td>
+                                    <td colspan="5" align="right">PPN(%)&nbsp;&nbsp;&nbsp;<input type="text" maxlength="5" size="2" class="text-right" value="0.00" id="ppn_percen" onkeyup="hitungPpn()"></td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
-                                        <input name="potongan" id="potongan" placeholder="0" class="form-control text-right" type="text" value="0.00">
-                                        <span class="help-block"></span>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td colspan="5" align="right">PPN(%)</td>
-                                    <td colspan="" align="center">:</td>
-                                    <td colspan="">
-                                        <input name="ppn" id="ppn" placeholder="0" class="form-control text-right" type="text" value="0.00">
+                                        <input name="ppn" id="ppn" placeholder="0" class="form-control text-right" type="text" value="0.00" readonly="readonly">
                                         <span class="help-block"></span>
                                     </td>
                                 </tr>

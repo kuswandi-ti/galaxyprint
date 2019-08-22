@@ -15,14 +15,44 @@ function add_detail()
     var $row = $("<tr>");
     $row.append($("<td>"));
     $row.append($("<td>").html('<input type="text" name="no_invoice_detail[]" class="" style="width:100%" readonly value="'+no_invoice[0].text+'">'));
-    $row.append($("<td>").html('<input type="text" name="tgl_invoice_detail[]" class="" readonly value="'+$('#tgl_invoice').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="tgl_invoice_detail[]" class="" readonly value="'+$('#tgl_hutang').val()+'">'));
     $row.append($("<td>").html('<input type="text" name="jatuh_tempo_detail[]" class="" readonly value="'+$('#jatuh_tempo').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="total_detail[]" class="" readonly value="'+$('#total').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="currency_detail[]" class="" readonly value="'+$('#currency').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="total_detail[]" class="total_detail" readonly value="'+$('#total').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="currency_detail[]" class="" readonly value="'+$('#currency_det').val()+'">'));
     $row.append($("<td>").html('<input type="text" name="keterangan_detail[]" class="" readonly value="'+$('#keterangan').val()+'">'));
     $row.appendTo($("#tbl_detail tbody"));
     numberRows($("#tbl_detail"));
+    calcTot();
 }
+
+function hitungPpn(){
+    sub_total = parseFloat($("#sub_total").val());
+    ppn_percen = parseFloat($("#ppn_percen").val());
+    ppn =  (sub_total * ppn_percen) / 100;
+    $("#ppn").val(ppn);
+    calcTot();
+}
+
+function hitungPotongan(){
+    sub_total = parseFloat($("#sub_total").val());
+    potongan_percen = parseFloat($("#potongan_percen").val());
+    potongan =  (sub_total * potongan_percen) / 100;
+    $("#potongan").val(potongan);
+    calcTot();
+}
+
+function calcTot(){
+    ppn = parseFloat($("#ppn").val());
+    potongan = parseFloat($("#potongan").val());
+    var sub_total = 0;
+    $(".total_detail").each(function(){
+        sub_total += +$(this).val();
+    });
+    $("#sub_total").val(sub_total);
+    grand_total = sub_total+ppn-potongan;
+    $("#grand_total").val(grand_total);
+};
+
 $(document).ready(function() {
     $("#date, #tgl_cek").datepicker({
         format: 'yyyy-mm-dd',
@@ -66,8 +96,8 @@ $(document).ready(function() {
             success: function(data){
                 $('[name="tgl_hutang"]').val(data.tgl_hutang);
                 $('[name="jatuh_tempo"]').val(data.jatuh_tempo);
-                $('[name="total"]').val(data.total_hutang);
-                $('[name="currency"]').val(data.currency);
+                $('[name="total"]').val(data.grand_total);
+                $('[name="currency_det"]').val(data.currency);
             }
         });
         return false;

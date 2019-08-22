@@ -69,7 +69,7 @@ class Pembayaran extends MX_Controller {
     public function ajax_add()
     {
         $data = array(
-                'tgl_transaksi' => $this->input->post('tgl_po'),
+                'tgl_transaksi' => $this->input->post('tgl_transaksi'),
                 'kode_penerima' => $this->input->post('supplier'),
                 'kode_akun' => $this->input->post('kode_akun'),
                 'kode_akun_terbayar' => $this->input->post('kode_akun_terbayar'),
@@ -77,7 +77,7 @@ class Pembayaran extends MX_Controller {
                 'no_cek' => $this->input->post('no_cek'),
                 'tgl_cek' => $this->input->post('tgl_cek'),
                 'keterangan' => $this->input->post('keterangan'),
-                'total_pembayaran' => $this->input->post('total_pembayaran'),
+                'total_pembayaran' => $this->input->post('grand_total'),
                 'created_at' => dateNow(),
             );
 
@@ -155,14 +155,14 @@ class Pembayaran extends MX_Controller {
             WHERE STATUS_HUTANG <> 'PAID'
             and supplier = '$supplier_id'
         ")->result();
-        echo $this->db->last_query();
+        // echo $this->db->last_query();
         echo json_encode($data);
     }
 
     function get_info_from_inv(){
         $no_invoice = $this->input->post('no_invoice',TRUE);
         $data = $this->db->query("
-            SELECT tgl_hutang, jatuh_tempo, total_hutang, kurs FROM ACC_HUTANG
+            SELECT tgl_hutang, jatuh_tempo, total_hutang,grand_total, currency FROM ACC_HUTANG
             WHERE no_invoice  = '$no_invoice'
         ")->row();
         echo json_encode($data);
