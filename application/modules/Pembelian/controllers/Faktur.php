@@ -17,7 +17,9 @@ class Faktur extends MX_Controller {
     {
         // permission();
         $data = array(
-            'get_supplier' => $this->main->get_supplier()
+            'get_supplier' => $this->main->get_supplier(),
+            'get_akun_persediaan' => $this->main->get_akun_persediaan(),
+            'get_akun_hutang' => $this->main->get_akun_hutang(),
         );
         $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
@@ -39,11 +41,11 @@ class Faktur extends MX_Controller {
             $row[] = $r->keterangan;
             $row[] = $r->jatuh_tempo;
             $row[] = $r->status_hutang;
+            $disabled = ($r->status_hutang == 'PAID') ? 'disabled' : '';
  
             //add html for action
-            $row[] = '<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>
-                  <a class="btn btn-sm btn-danger btn-xs" href="javascript:void(0)" title="Hapus" onclick="hapus('."'".$r->id."'".')"><i class="fa fa-trash"></i> Delete</a>';
- 
+            $row[] = '<!--<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>-->
+                  <button type="button" class="btn btn-sm btn-danger btn-xs" '.$disabled.' href="javascript:void(0)" title="Hapus" onclick="hapus('."'".$r->id."'".')"><i class="fa fa-trash"></i> Delete</button>';
             $data[] = $row;
         }
  
@@ -78,6 +80,8 @@ class Faktur extends MX_Controller {
                 'potongan' => $this->input->post('potongan'),
                 'ppn' => $this->input->post('ppn'),
                 'grand_total' => $this->input->post('grand_total'),
+                'kode_akun_1' => $this->input->post('kode_akun_1'),
+                'kode_akun_2' => $this->input->post('kode_akun_2'),
                 'created_at' => dateNow(),
             );
 
@@ -163,7 +167,7 @@ class Faktur extends MX_Controller {
     function get_info_from_po(){
         $no_po = $this->input->post('no_po',TRUE);
         $data = $this->db->query("
-            SELECT currency, kurs, tempo FROM TRANS_PO_HEADER
+            SELECT currency, kurs, tempo, total, potongan, ppn, grand_total FROM TRANS_PO_HEADER
             WHERE no_po  = '$no_po'
         ")->row();
 

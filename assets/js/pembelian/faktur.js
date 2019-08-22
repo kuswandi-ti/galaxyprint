@@ -16,9 +16,9 @@ function numberRows($t) {
     $row.append($("<td>"));
     $row.append($("<td>").html('<input type="text" name="nama_barang_detail[]" class="" readonly value="'+nama_material[0].text+'">'));
     $row.append($("<td>").html('<input type="text" name="kode_barang_detail[]" class="" readonly value="'+$('#kode_material').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class="" readonly value="'+$('#qty_material').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class="text-right" readonly value="'+$('#qty_material').val()+'">'));
     $row.append($("<td>").html('<input type="text" name="satuan_detail[]" class="" readonly value="'+$('#unit_material').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class="" readonly value="'+$('#hargapersat_material').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class="text-right" readonly value="'+$('#hargapersat_material').val()+'">'));
     $row.append($("<td>").html($('#total').val()));
     $row.appendTo($("#tbl_detail tbody"));
     numberRows($("#tbl_detail"));
@@ -75,16 +75,20 @@ $(document).ready(function() {
                 $("#currency").val(data.header.currency);
                 $("#kurs").val(data.header.kurs);
                 $("#tempo").val(data.header.tempo);
+                $("#total").val(data.header.total);
+                $("#potongan").val(data.header.potongan);
+                $("#ppn").val(data.header.ppn);
+                $("#grand_total").val(data.header.grand_total);
                 var i;
                 for(i=0; i<data.detail.length; i++){
                     var $row = $("<tr>");
                     $row.append($("<td>"));
                     $row.append($("<td>").html('<input type="text" name="nama_barang_detail[]" style="width:100%" class="" readonly value="'+data.detail[i].nama_barang+'">'));
                     $row.append($("<td>").html('<input type="text" name="kode_barang_detail[]" class="" readonly value="'+data.detail[i].kode_barang+'">'));
-                    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class="" readonly value="'+data.detail[i].qty+'">'));
+                    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class="text-right" readonly value="'+data.detail[i].qty+'">'));
                     $row.append($("<td>").html('<input type="text" name="satuan_detail[]" class="" readonly value="'+data.detail[i].satuan+'">'));
-                    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class="" readonly value="'+data.detail[i].harga+'">'));
-                    $row.append($("<td>").html('<input type="text" name="total[]" class="" readonly value="'+data.detail[i].total+'">'));
+                    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class="text-right" readonly value="'+data.detail[i].harga+'">'));
+                    $row.append($("<td>").html('<input type="text" name="total[]" class="text-right" readonly value="'+data.detail[i].total+'">'));
                     $row.appendTo($("#tbl_detail tbody"));
                     numberRows($("#tbl_detail"));
                 }

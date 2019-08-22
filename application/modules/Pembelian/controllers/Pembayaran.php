@@ -155,6 +155,7 @@ class Pembayaran extends MX_Controller {
             WHERE STATUS_HUTANG <> 'PAID'
             and supplier = '$supplier_id'
         ")->result();
+        echo $this->db->last_query();
         echo json_encode($data);
     }
 

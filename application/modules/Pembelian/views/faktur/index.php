@@ -168,9 +168,15 @@
                                     <td colspan="" ></td>
                                     <td colspan="" >Akun Persediaan</td>
                                     <td colspan="2" >
-                                        <select style="width: 100%" class="select2">
-                                            <option>-- Pilih Akun --</option>
+                                         <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun_1">
+                                            <option value="0" selected>-- Pilih Akun --</option>
+                                            <?php                                
+                                                foreach ($get_akun_persediaan as $row) {  
+                                                    echo "<option value='".$row->kode_akun."'>".$row->kode_akun.' | '.$row->nama_akun."</option>";
+                                                }
+                                            ?>
                                         </select>
+                                        <span class="help-block"></span>
                                     </td>
                                     <td colspan="" align="right">Sub Total</td>
                                     <td colspan="" align="center">:</td>
@@ -183,9 +189,15 @@
                                     <td colspan="" ></td>
                                     <td colspan="" >Akun Hutang</td>
                                     <td colspan="2" >
-                                        <select style="width: 100%" class="select2">
-                                            <option>-- Pilih Akun --</option>
+                                         <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun_2">
+                                            <option value="0" selected>-- Pilih Akun --</option>
+                                            <?php                                
+                                                foreach ($get_akun_hutang as $row) {  
+                                                    echo "<option value='".$row->kode_akun."'>".$row->kode_akun.' | '.$row->nama_akun."</option>";
+                                                }
+                                            ?>
                                         </select>
+                                        <span class="help-block"></span>
                                     </td>
                                     <td colspan="" align="right">Potongan (%)</td>
                                     <td colspan="" align="center">:</td>

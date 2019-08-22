@@ -109,4 +109,18 @@ class Faktur_model extends CI_Model {
         $query = $this->db->get('master_supplier');
         return $query->result();
     }
+
+    function get_akun_persediaan()
+    {
+        $this->db->select('*');
+        $query = $this->db->where('level_3', '1.1.3')->get('acc_master_akun');
+        return $query->result();
+    }
+
+    function get_akun_hutang()
+    {
+        $this->db->select('*');
+        $query = $this->db->where('level_3', '2.1.1')->get('acc_master_akun');
+        return $query->result();
+    }
 }

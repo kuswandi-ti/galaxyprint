@@ -3,7 +3,7 @@
         <div class=" container-fluid   container-fixed-lg bg-white">
             <div class="card card-transparent">
                 <div class="card-header ">
-                    <div class="card-title">Po</div>
+                    <div class="card-title">Purchase Order</div>
                     <div class="clearfix"></div>
                     </div>
                     <div class="card-body">
