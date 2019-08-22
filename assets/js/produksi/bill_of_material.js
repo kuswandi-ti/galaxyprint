@@ -13,7 +13,7 @@ $(document).ready(function() {
             success: function(data) {
                 if (data.result == 'done') {
                     $('[name="kode_material"]').val(data.res_kode_material);
-                    $('[name="hs_material"]').val('0');
+                    $('[name="hs_material"]').val(data.res_hs_material);
                     $('[name="satuan_material"]').val(data.res_unit_material);
                     $('[name="spesifikasi_bom"]').val(data.res_spesifikasi_bom);                    
                 } else {
