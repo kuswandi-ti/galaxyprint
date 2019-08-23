@@ -101,6 +101,41 @@ class Pengiriman_model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete($this->table);
     }
- 
+
+    /* Combo (select2) */
+    function get_customer()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_customer');
+        return $query->result();
+    }
+
+    function get_gudang()
+    {
+        $this->db->select('*');
+        $query = $this->db->where('aktif', 'Y')->where('jenis', 'FG')->get('master_gudang');
+        return $query->result();
+    }
+    
+    function get_dokumen()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_dokumen');
+        return $query->result();
+    }
+
+    function get_barang()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_barang');
+        return $query->result();
+    }
+
+    function get_currency()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_currency');
+        return $query->result();
+    }
  
 }

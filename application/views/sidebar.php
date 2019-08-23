@@ -135,11 +135,11 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url('produksi/work_order')?>">Work Order</a>
+                        <a href="<?=base_url('Produksi/Work_Order')?>">Work Order</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('Produksi/Bill_of_material')?>">Bill of Material Master</a>
+                        <a href="<?=base_url('Produksi/Bill_Of_Material')?>">Bill of Material Master</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">

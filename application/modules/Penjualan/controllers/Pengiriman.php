@@ -16,6 +16,13 @@ class Pengiriman extends MX_Controller {
     public function index()
     {
         // permission();
+        $data = array(
+            'get_customer' => $this->main->get_customer(),
+            'get_gudang' => $this->main->get_gudang(),
+            'get_dokumen' => $this->main->get_dokumen(),
+            'get_barang' => $this->main->get_barang(),
+            'get_currency' => $this->main->get_currency(),
+        );
         $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
     }
