@@ -120,7 +120,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Pemakaian Bahan Baku</a>
+                        <a href="<?=base_url('warehouse/keluar_material')?>">Pemakaian Bahan Baku</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
