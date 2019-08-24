@@ -74,21 +74,23 @@ class Bill_Of_Material extends MX_Controller {
 
         $this->db->insert('master_bom_header', $data);
         $bom_hdr_id = $this->db->insert_id();
-        $kode_material_detail = $_POST['kode_material_detail'];
-        for ($i=0; $i < sizeof($kode_material_detail); $i++) { 
-            $data2 = array(
-                'id_header' => $bom_hdr_id, 
-                'kode_material' => $_POST['kode_material_detail'][$i], 
-                'nama_material' => $_POST['nama_material_detail'][$i], 
-                'hs_material' => $_POST['hs_material_detail'][$i], 
-                'satuan_material' => $_POST['satuan_material_detail'][$i], 
-                'spesifikasi_bom' => $_POST['spesifikasi_bom_detail'][$i], 
-                'jumlah_bom' => $_POST['jumlah_bom_detail'][$i], 
-                'harga_bom' => $_POST['harga_bom_detail'][$i],
-                'currency_bom' => $_POST['currency_bom_detail'][$i],  
-                'created_at' => dateNow(),
-            );
-            $this->db->insert('master_bom_detail', $data2);
+        if (isset($_POST['kode_material_detail'])) {
+            $kode_material_detail = $_POST['kode_material_detail'];
+            for ($i=0; $i < sizeof($kode_material_detail); $i++) { 
+                $data2 = array(
+                    'id_header' => $bom_hdr_id, 
+                    'kode_material' => $_POST['kode_material_detail'][$i], 
+                    'nama_material' => $_POST['nama_material_detail'][$i], 
+                    'hs_material' => $_POST['hs_material_detail'][$i], 
+                    'satuan_material' => $_POST['satuan_material_detail'][$i], 
+                    'spesifikasi_bom' => $_POST['spesifikasi_bom_detail'][$i], 
+                    'jumlah_bom' => $_POST['jumlah_bom_detail'][$i], 
+                    'harga_bom' => $_POST['harga_bom_detail'][$i],
+                    'currency_bom' => $_POST['currency_bom_detail'][$i],  
+                    'created_at' => dateNow(),
+                );
+                $this->db->insert('master_bom_detail', $data2);
+            }
         }
         echo json_encode(array("status" => TRUE));
     }

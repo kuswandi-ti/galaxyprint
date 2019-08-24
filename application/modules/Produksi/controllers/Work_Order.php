@@ -72,25 +72,27 @@ class Work_Order extends MX_Controller {
 
         $this->db->insert('trans_wo_header', $data);
         $hdr_id = $this->db->insert_id();
-        $kode_barang_detail = $_POST['kode_barang_detail'];
-        for ($i=0; $i < sizeof($kode_barang_detail); $i++) { 
-            $data2 = array(
-                'id_header' => $hdr_id, 
-                'no_wo' => $this->input->post('no_wo'), 
-                'kode_barang' => $_POST['kode_barang_detail'][$i], 
-                'nama_barang' => $_POST['nama_barang_detail'][$i], 
-                'spesifikasi_barang' => $_POST['spesifikasi_barang_detail'][$i], 
-                'hs_barang' => $_POST['hs_barang_detail'][$i], 
-                'qty' => $_POST['qty_detail'][$i], 
-                'satuan' => $_POST['satuan_detail'][$i],                 
-                'harga_barang' => $_POST['harga_barang_detail'][$i], 
-                'currency' => $_POST['currency_detail'][$i],
-                'material' => $_POST['material_detail'][$i],
-                'tkl' => $_POST['tkl_detail'][$i],
-                'bop' => $_POST['bop_detail'][$i],
-                'hpp' => $_POST['hpp_detail'][$i], 
-            );
-            $this->db->insert('trans_wo_detail', $data2);
+        if (isset($_POST['kode_barang_detail'])) {
+            $kode_barang_detail = $_POST['kode_barang_detail'];
+            for ($i=0; $i < sizeof($kode_barang_detail); $i++) { 
+                $data2 = array(
+                    'id_header' => $hdr_id, 
+                    'no_wo' => $this->input->post('no_wo'), 
+                    'kode_barang' => $_POST['kode_barang_detail'][$i], 
+                    'nama_barang' => $_POST['nama_barang_detail'][$i], 
+                    'spesifikasi_barang' => $_POST['spesifikasi_barang_detail'][$i], 
+                    'hs_barang' => $_POST['hs_barang_detail'][$i], 
+                    'qty' => $_POST['qty_detail'][$i], 
+                    'satuan' => $_POST['satuan_detail'][$i],                 
+                    'harga_barang' => $_POST['harga_barang_detail'][$i], 
+                    'currency' => $_POST['currency_detail'][$i],
+                    'material' => $_POST['material_detail'][$i],
+                    'tkl' => $_POST['tkl_detail'][$i],
+                    'bop' => $_POST['bop_detail'][$i],
+                    'hpp' => $_POST['hpp_detail'][$i], 
+                );
+                $this->db->insert('trans_wo_detail', $data2);
+            }
         }
         echo json_encode(array("status" => TRUE));
     }
