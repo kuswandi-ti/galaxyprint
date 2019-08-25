@@ -128,7 +128,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": base_url+'pembelian/po/ajax_list',
+            "url": base_url+'Pembelian/Po/ajax_list',
             "type": "POST"
         },
  
@@ -201,9 +201,9 @@ function save()
     var url;
  
     if(save_method == 'add') {
-        url = base_url+"pembelian/po/ajax_add";
+        url = base_url+"Pembelian/Po/ajax_add";
     } else {
-        url = base_url+"pembelian/po/ajax_update";
+        url = base_url+"Pembelian/Po/ajax_update";
     }
  
     // ajax adding data to database
@@ -243,7 +243,7 @@ function hapus(id)
     {
         // ajax delete data to database
         $.ajax({
-            url : base_url+"pembelian/po/ajax_delete/"+id,
+            url : base_url+"Pembelian/Po/ajax_delete/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)

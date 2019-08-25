@@ -27,30 +27,56 @@ function numberRows($t) {
 }
 
 $("body").on("change", "#nama_barang", function() {
+    $.ajax({
+        url: base_url + "Penjualan/Pengiriman/get_info_barang",
+        data: {
+            'kode_barang': $('#nama_barang').val()
+        },
+        dataType: 'json',
+        type: 'post',
+        success: function(data) {
+            if (data.result == 'done') {
+                $('[name="kode_barang"]').val(data.res_kode_material);
+                $('[name="qty_material"]').val('0');
+                $('[name="unit_material"]').val(data.res_unit_material);
+                $('[name="hargapersat_material"]').val(data.res_hargapersat_material);
+            } else {
+                $('[name="kode_material"]').val('');
+                $('[name="qty_material"]').val('0');
+                $('[name="unit_material"]').val('');
+                $('[name="hargapersat_material"]').val('');
+            }
+        },
+        error: function() {
+            alert('failure');
+        }
+    });
+});
+
+$("#customer").change(function() {
+        var id=$(this).val();
         $.ajax({
-            url: base_url + "Penjualan/Pengiriman/get_info_barang",
-            data: {
-                'kode_barang': $('#nama_barang').val()
-            },
-            dataType: 'json',
-            type: 'post',
-            success: function(data) {
-                if (data.result == 'done') {
-                    $('[name="kode_barang"]').val(data.res_kode_material);
-                    $('[name="qty_material"]').val('0');
-                    $('[name="unit_material"]').val(data.res_unit_material);
-                    $('[name="hargapersat_material"]').val(data.res_hargapersat_material);
-                } else {
-                    $('[name="kode_material"]').val('');
-                    $('[name="qty_material"]').val('0');
-                    $('[name="unit_material"]').val('');
-                    $('[name="hargapersat_material"]').val('');
+            url : base_url + "Pembelian/Pembayaran/get_info_inv",
+            method : "POST",
+            data : {supplier_id: id},
+            async : true,
+            dataType : 'json',
+            success: function(data){
+                if(data.length > 0){
+                    var html = '';
+                    var i;
+                    html += '<option value="">-- Pilih No Inv --</option>';
+                    for(i=0; i<data.length; i++){
+                        html += '<option value='+data[i].no_invoice+'>'+data[i].no_invoice+'</option>';
+                    }
+                    $('#no_invoice').html(html);
+                }else{
+                    alert("Tidak ada Invoice Open Untuk Supplier Ini");
                 }
-            },
-            error: function() {
-                alert('failure');
+
             }
         });
+        return false;
     });
 
 $(document).ready(function() {

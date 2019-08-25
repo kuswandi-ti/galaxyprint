@@ -4,7 +4,7 @@ class Masuk_Material extends MX_Controller {
 
     public $data;
 
-    var $module                 = 'Warehouse';
+    var $module                 = 'warehouse';
     var $title                  = 'Barang Masuk (Material)';
     var $file_name              = 'masuk_material';
     var $table_header           = 'trans_masuk_material_header';

@@ -2,7 +2,7 @@
 
 class Barang_sisa extends MX_Controller {
     public $data;
-    var $module = 'Master';
+    var $module = 'master';
     var $title = 'Barang Sisa / Scrap';
     var $file_name = 'barang_sisa';
     var $table_name = '';

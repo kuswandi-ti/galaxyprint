@@ -1,10 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Keluar_Material extends MX_Controller {
+class Keluar_material extends MX_Controller {
 
     public $data;
 
-    var $module = 'Warehouse';
+    var $module = 'warehouse';
     var $title = 'Barang Keluar (Material)';
     var $file_name = 'keluar_material';
     var $table_name_header = 'trans_keluar_material_header';

@@ -97,15 +97,15 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url('pembelian/po')?>">Pesanan Pembelian/PO</a>
+                        <a href="<?=base_url('Pembelian/Po')?>">Pesanan Pembelian/PO</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('pembelian/faktur')?>">Faktur Pembelian</a>
+                        <a href="<?=base_url('Pembelian/Faktur')?>">Faktur Pembelian</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('pembelian/pembayaran')?>">Pembayaran Pembelian</a>
+                        <a href="<?=base_url('Pembelian/Pembayaran')?>">Pembayaran Pembelian</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
@@ -116,11 +116,11 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url('warehouse/masuk_material')?>">Penerimaan Barang</a>
+                        <a href="<?=base_url('Warehouse/Masuk_material')?>">Penerimaan Barang</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('warehouse/keluar_material')?>">Pemakaian Bahan Baku</a>
+                        <a href="<?=base_url('Warehouse/Keluar_material')?>">Pemakaian Bahan Baku</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -170,16 +170,15 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url('penjualan/Pengiriman')?>">Pengiriman Barang</a>
+                        <a href="<?=base_url('Penjualan/Pengiriman')?>">Pengiriman Barang</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('penjualan/faktur')?>">Faktur Penjualan</a>
+                        <a href="<?=base_url('Penjualan/Faktur')?>">Faktur Penjualan</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('penjualan/penerimaan')?>">Penerimaan Penjualan</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
+                        <a href="<?=base_url('Penjualan/Penerimaan')?>">Penerimaan Penjualan</a>
                     </li>
                     <li class="">
                         <a href="<?=base_url()?>">Stock Opname</a>
