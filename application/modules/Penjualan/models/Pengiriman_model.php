@@ -105,9 +105,12 @@ class Pengiriman_model extends CI_Model {
     /* Combo (select2) */
     function get_customer()
     {
-        $this->db->select('*');
-        $query = $this->db->get('master_customer');
-        return $query->result();
+        return $this->db->query("
+            Select w.customer, c.customer_name
+            from trans_wo_header w, master_customer c
+            where w.customer = c.customer_id
+            and wo_status <> 'CLOSE'
+            ");
     }
 
     function get_gudang()

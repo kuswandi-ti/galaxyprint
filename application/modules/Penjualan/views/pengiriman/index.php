@@ -105,10 +105,13 @@
                                         <label class="control-label col-md-3">Customer</label>
                                         <div class="col-md-9">
                                             <select class="full-width select2" required data-init-plugin="select2" id='customer' name="customer">
-                                                <option value="" selected>-- Pilih Supplier --</option>
-                                                <?php                                
-                                                    foreach ($get_customer as $row) {  
+                                                <option value="" selected>-- Pilih Customer --</option>
+                                                <?php
+                                                    if($get_customer->num_row() > 0){                                
+                                                    foreach ($get_customer->result() as $row) {  
                                                         echo "<option value='".$row->customer_id."'>".$row->customer_name."</option>";
+                                                    }else{
+                                                        echo "<option value=''>Belum Ada WO Open</option>";
                                                     }
                                                 ?>
                                             </select>
@@ -191,11 +194,11 @@
                             <tr>
                                 <td style="width:25%">
                                     <select class="full-width select2" required data-init-plugin="select2" id='nama_material' name="nama_material">
-                                        <option value="0" selected>-- Pilih Barang --</option>
+                                        <option value="" selected>-- Pilih Customer Untuk Menampilkan Barang --</option>
                                         <?php                                
-                                            foreach ($get_barang as $row) {  
-                                                echo "<option value='".$row->kode_barang."'>".$row->nama_barang."</option>";
-                                            }
+                                            // foreach ($get_barang as $row) {  
+                                            //     echo "<option value='".$row->kode_barang."'>".$row->nama_barang."</option>";
+                                            // }
                                         ?>
                                     </select>
                                     <span class="help-block"></span>

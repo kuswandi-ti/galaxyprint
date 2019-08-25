@@ -2,9 +2,9 @@
 
 class Pembayaran extends MX_Controller {
     public $data;
-    var $module = 'Pembelian';
+    var $module = 'pembelian';
     var $title = 'Pembayaran';
-    var $file_name = 'Pembayaran';
+    var $file_name = 'pembayaran';
     var $table_name = '';
     function __construct()
     {
@@ -151,8 +151,8 @@ class Pembayaran extends MX_Controller {
     function get_info_inv(){
         $supplier_id = $this->input->post('supplier_id',TRUE);
         $data = $this->db->query("
-            SELECT * FROM ACC_HUTANG
-            WHERE STATUS_HUTANG <> 'PAID'
+            SELECT * FROM acc_hutang
+            WHERE status_hutang <> 'PAID'
             and supplier = '$supplier_id'
         ")->result();
         // echo $this->db->last_query();
@@ -162,7 +162,7 @@ class Pembayaran extends MX_Controller {
     function get_info_from_inv(){
         $no_invoice = $this->input->post('no_invoice',TRUE);
         $data = $this->db->query("
-            SELECT tgl_hutang, jatuh_tempo, total_hutang,grand_total, currency FROM ACC_HUTANG
+            SELECT tgl_hutang, jatuh_tempo, total_hutang,grand_total, currency FROM acc_hutang
             WHERE no_invoice  = '$no_invoice'
         ")->row();
         echo json_encode($data);

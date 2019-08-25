@@ -2,7 +2,7 @@
 
 class Bahan_baku extends MX_Controller {
     public $data;
-    var $module = 'Master';
+    var $module = 'master';
     var $title = 'Bahan_baku';
     var $file_name = 'bahan_baku';
     var $table_name = '';

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Keluar_Material_Model extends CI_Model {
+class Keluar_material_Model extends CI_Model {
  
     var $table_header = 'trans_keluar_material_header';
     var $table_detail = 'trans_keluar_material_detail';

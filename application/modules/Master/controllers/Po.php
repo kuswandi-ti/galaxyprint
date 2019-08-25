@@ -1,10 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Faktur extends MX_Controller {
+class Po extends MX_Controller {
     public $data;
     var $module = 'pembelian';
-    var $title = 'Faktur';
-    var $file_name = 'faktur';
+    var $title = 'Po';
+    var $file_name = 'po';
     var $table_name = '';
     function __construct()
     {
@@ -18,10 +18,9 @@ class Faktur extends MX_Controller {
         // permission();
         $data = array(
             'get_supplier' => $this->main->get_supplier(),
-            'get_akun_persediaan' => $this->main->get_akun_persediaan(),
-            'get_akun_hutang' => $this->main->get_akun_hutang(),
+            'get_material' => $this->main->get_material(),
+            'get_currency' => $this->main->get_currency(),
         );
-        $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
     }
 
@@ -32,20 +31,19 @@ class Faktur extends MX_Controller {
         $no = $_POST['start'];
         foreach ($list as $r) {
             $row = array();
-            $row[] = $r->tgl_hutang;
-            $row[] = $r->no_referensi;
-            $row[] = $r->no_invoice;
+            $row[] = $r->no_po;
+            $row[] = $r->tgl_po;
             $row[] = $r->supplier;
-            $row[] = $r->total_hutang;
+            $row[] = $r->total;
             $row[] = $r->currency;
-            $row[] = $r->keterangan;
-            $row[] = $r->jatuh_tempo;
-            $row[] = $r->status_hutang;
-            $disabled = ($r->status_hutang == 'PAID') ? 'disabled' : '';
+            $row[] = $r->grand_total;
+            $row[] = $r->status_po;
+            $disabled = ($r->status_po == 'CLOSE') ? 'disabled' : '';
  
             //add html for action
             $row[] = '<!--<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>-->
                   <button type="button" class="btn btn-sm btn-danger btn-xs" '.$disabled.' href="javascript:void(0)" title="Hapus" onclick="hapus('."'".$r->id."'".')"><i class="fa fa-trash"></i> Delete</button>';
+ 
             $data[] = $row;
         }
  
@@ -68,38 +66,35 @@ class Faktur extends MX_Controller {
     public function ajax_add()
     {
         $data = array(
-                'tgl_hutang' => $this->input->post('tgl_hutang'),
+                'tgl_po' => $this->input->post('tgl_po'),
+                'no_po' => $this->input->post('no_po'),
                 'supplier' => $this->input->post('supplier'),
-                'no_referensi' => $this->input->post('no_po'),
-                'no_invoice' => $this->input->post('no_invoice'),
-                'keterangan' => $this->input->post('keterangan'),
-                'kurs' => $this->input->post('kurs'),
+                'supplier' => $this->input->post('supplier'),
                 'currency' => $this->input->post('currency'),
-                // 'jatuh_tempo' => $this->input->post('tempo'),
-                'total_hutang' => $this->input->post('total'),
+                'kurs' => $this->input->post('kurs'),
+                'tempo' => $this->input->post('tempo'),
+                'total' => $this->input->post('sub_total'),
                 'potongan' => $this->input->post('potongan'),
                 'ppn' => $this->input->post('ppn'),
                 'grand_total' => $this->input->post('grand_total'),
-                'kode_akun_1' => $this->input->post('kode_akun_1'),
-                'kode_akun_2' => $this->input->post('kode_akun_2'),
                 'created_at' => dateNow(),
             );
 
-        $this->db->insert('acc_hutang', $data);
-        $id_header = $this->db->insert_id();
+        $this->db->insert('trans_po_header', $data);
+        $po_id = $this->db->insert_id();
         $kode_barang_detail = $_POST['kode_barang_detail'];
         for ($i=0; $i < sizeof($kode_barang_detail); $i++) { 
             $data2 = array(
-                        'id_header' => $id_header, 
+                        'id_header' => $po_id, 
+                        'kode_barang' => $_POST['kode_barang_detail'][$i], 
                         'kode_barang' => $_POST['kode_barang_detail'][$i], 
                         'nama_barang' => $_POST['nama_barang_detail'][$i], 
                         'satuan' => $_POST['satuan_detail'][$i], 
                         'qty' => $_POST['qty_detail'][$i], 
                         'harga' => $_POST['harga_detail'][$i], 
                         'currency' => $_POST['currency'], 
-                        'kurs' => $_POST['kurs'], 
                     );
-            $this->db->insert('acc_hutang_detail', $data2);
+            $this->db->insert('trans_po_detail', $data2);
         }
         echo json_encode(array("status" => TRUE));
     }
@@ -107,11 +102,11 @@ class Faktur extends MX_Controller {
     public function ajax_update()
     {
          $data = array(
-                'nama_Faktur' => $this->input->POST('nama_Faktur'),
-                'nilai_kurs_idr' => $this->input->POST('nilai_kurs_idr'),
+                'nama_Po' => $this->input->post('nama_Po'),
+                'nilai_kurs_idr' => $this->input->post('nilai_kurs_idr'),
                 'update_terakhir' => dateNow()
             );
-        $this->main->update(array('id' => $this->input->POST('id')), $data);
+        $this->main->update(array('id' => $this->input->post('id')), $data);
         echo json_encode(array("status" => TRUE));
     }
  
@@ -131,7 +126,7 @@ class Faktur extends MX_Controller {
                 if(in_array($view, array($this->file_name.'/index')))
                 {
                     $this->template->set_layout('default'); 
-                    
+                    // $this->template->add_css($this->module.'/User.css?v4.0.1');
                     $this->template->add_plugin_css('jquery-datatable\media\css\dataTables.bootstrap.min.css');
                     $this->template->add_plugin_css('bootstrap-datepicker/css/datepicker3.css');
                     $this->template->add_plugin_js('jquery-datatable\media\js\jquery.dataTables.min.js'); 
@@ -154,29 +149,50 @@ class Faktur extends MX_Controller {
         }
     }
 
-    function get_info_po(){
-        $supplier_id = $this->input->post('supplier_id',TRUE);
-        $data = $this->db->query("
-            SELECT * FROM TRANS_PO_HEADER
-            WHERE STATUS_PO <> 'Close'
-            and supplier = '$supplier_id'
-        ")->result();
+    function get_info_material() {
+        $kode_barang = $this->input->post('kode_barang');
+        $res = $this->db->where('kode_barang', $kode_barang)->get('master_material');
+        if ($res->num_rows() > 0) {
+            foreach ($res->result_array() as $row) {
+                $data['result'] = 'done';
+                $data['res_kode_material'] = $row['kode_barang'];
+                $data['res_spesifikasi_material'] = $row['spesifikasi_barang'];
+                $data['res_hs_material'] = $row['hs_barang'];                
+                $data['res_unit_material'] = $row['satuan_besar'];
+                $data['res_hargapersat_material'] = $row['harga_satuan_besar'];
+            }
+        } else {
+            $data['result'] = '';
+            $data['res_kode_material'] = '';
+            $data['res_spesifikasi_material'] = '';
+            $data['res_hs_material'] = '';                
+            $data['res_unit_material'] = '';
+            $data['res_hargapersat_material'] = '0';
+        }
+        
         echo json_encode($data);
     }
 
-    function get_info_from_po(){
-        $no_po = $this->input->post('no_po',TRUE);
-        $data = $this->db->query("
-            SELECT currency, kurs, tempo, total, potongan, ppn, grand_total FROM TRANS_PO_HEADER
-            WHERE no_po  = '$no_po'
-        ")->row();
-
-        $data2 = $this->db->query("
-            SELECT nama_barang, kode_barang, qty, satuan, harga, qty*harga total
-            FROM trans_po_header h, trans_po_detail d
-            WHERE h.id = d.id_header
-            and h.no_po = '$no_po'
-            ")->result();
-        echo json_encode(array('header'=>$data, 'detail'=>$data2));
+    function get_info_supplier() {
+        $supplier_id = $this->input->post('supplier');
+        $res = $this->db->query("
+            select s.currency, nilai_kurs_idr kurs, tempo
+            from master_supplier s, master_currency c
+            where s.currency = c.nama_currency
+            and supplier_id = '$supplier_id'
+        ");
+        if ($res->num_rows() > 0) {
+            $data['result'] = 'done';
+            $data['currency'] = $res->row()->currency;
+            $data['kurs'] = $res->row()->kurs;
+            $data['tempo'] = $res->row()->tempo;
+        } else {
+            $data['result'] = '';
+            $data['currency'] = '';
+            $data['kurs'] = '';
+            $data['tempo'] = '';
+        }
+        
+        echo json_encode($data);
     }
 }

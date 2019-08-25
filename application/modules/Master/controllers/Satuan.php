@@ -2,7 +2,7 @@
 
 class Satuan extends MX_Controller {
     public $data;
-    var $module = 'Master';
+    var $module = 'master';
     var $title = 'Satuan';
     var $file_name = 'satuan';
     var $table_name = '';
