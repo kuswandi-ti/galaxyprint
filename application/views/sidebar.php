@@ -116,7 +116,7 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url()?>">Penerimaan Barang</a>
+                        <a href="<?=base_url('warehouse/masuk_material')?>">Penerimaan Barang</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
