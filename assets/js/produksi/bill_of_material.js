@@ -4,7 +4,7 @@ var table;
 $(document).ready(function() {
     $("body").on("change", "#nama_material", function() {
         $.ajax({
-            url: base_url + "Produksi/Bill_Of_Material/get_info_material",
+            url: base_url + "Produksi/Bill_of_material/get_info_material",
             data: {
                 'kode_material': $('#nama_material').val()
             },
@@ -33,7 +33,7 @@ $(document).ready(function() {
 
     $("body").on("change", "#kode_barang", function() {
         $.ajax({
-            url: base_url + "Produksi/Bill_Of_Material/get_info_barang_jadi",
+            url: base_url + "Produksi/Bill_of_material/get_info_barang_jadi",
             data: {
                 'kode_barang': $('#kode_barang').val()
             },
@@ -67,7 +67,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": base_url+'produksi/bill_of_material/ajax_list',
+            "url": base_url+'Produksi/Bill_of_material/ajax_list',
             "type": "POST"
         },
         //Set column definition initialisation properties.
@@ -123,7 +123,7 @@ function add() {
 function show_detail() {
     var id_header = $("#id_hidden").val();
     $.ajax({
-        url : base_url+'produksi/bill_of_material/show_detail/?id_header='+id_header,
+        url : base_url+'Produksi/Bill_of_material/show_detail/?id_header='+id_header,
         async : false,
         success : function(data) {
             $('#show_detail').html(data);
@@ -139,7 +139,7 @@ function edit(id) {
  
     //Ajax Load data from ajax
     $.ajax({
-        url : base_url+"produksi/bill_of_material/ajax_edit/" + id,
+        url : base_url+"Produksi/Bill_of_material/ajax_edit/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
@@ -172,9 +172,9 @@ function save() {
     var url;
  
     if(save_method == 'add') {
-        url = base_url+"Produksi/Bill_Of_Material/ajax_add";
+        url = base_url+"Produksi/Bill_of_material/ajax_add";
     } else {
-        url = base_url+"Produksi/Bill_Of_Material/ajax_update";
+        url = base_url+"Produksi/Bill_of_material/ajax_update";
     }
  
     // ajax adding data to database
@@ -206,7 +206,7 @@ function hapus(id) {
     {
         // ajax delete data to database
         $.ajax({
-            url : base_url+"produksi/bill_of_material/ajax_delete/"+id,
+            url : base_url+"Produksi/Bill_of_material/ajax_delete/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)

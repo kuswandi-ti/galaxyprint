@@ -107,9 +107,10 @@
                                             <select class="full-width select2" required data-init-plugin="select2" id='customer' name="customer">
                                                 <option value="" selected>-- Pilih Customer --</option>
                                                 <?php
-                                                    if($get_customer->num_row() > 0){                                
+                                                    if($get_customer->num_rows() > 0){                                
                                                     foreach ($get_customer->result() as $row) {  
                                                         echo "<option value='".$row->customer_id."'>".$row->customer_name."</option>";
+                                                    }
                                                     }else{
                                                         echo "<option value=''>Belum Ada WO Open</option>";
                                                     }
@@ -182,8 +183,10 @@
                     <div class="table-responsive">
                         <table style="width: 100%">
                             <tr class="bg-success-darker text-white">
-                                <th style="width:25%">Keterangan Barang</th>
+                                <th style="width:20%">Keterangan Barang</th>
                                 <th style="width:8%">Kode</th>
+                                <th style="width:8%">PO Cust</th>
+                                <th style="width:8%">Wo No.</th>
                                 <th style="width:10%">Qty</th>
                                 <th style="width:10%">Satuan</th>
                                 <th style="width:10%">Harga/Sat</th>
@@ -193,8 +196,8 @@
                             </tr>
                             <tr>
                                 <td style="width:25%">
-                                    <select class="full-width select2" required data-init-plugin="select2" id='nama_material' name="nama_material">
-                                        <option value="" selected>-- Pilih Customer Untuk Menampilkan Barang --</option>
+                                    <select class="full-width select2" required data-init-plugin="select2" id='id_wo_detail' name="id_wo_detail">
+                                        <option value="" selected>-- Pilih Barang --</option>
                                         <?php                                
                                             // foreach ($get_barang as $row) {  
                                             //     echo "<option value='".$row->kode_barang."'>".$row->nama_barang."</option>";
@@ -204,19 +207,28 @@
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:8%">
-                                    <input name="kode_material" id="kode_material" placeholder="Kode Material" class="form-control" type="text" disabled>
+                                    <input name="kode_barang" id="kode_barang" placeholder="Kode Barang" class="form-control" type="text" disabled>
+                                    <span class="help-block"></span>
+                                </td>
+                                <input name="nama_barang" id="nama_barang" placeholder="No WO" class="form-control" type="hidden" readonly="readonly">
+                                <td style="width:8%">
+                                    <input name="no_wo" id="no_wo" placeholder="No WO" class="form-control" type="text" readonly="readonly">
+                                    <span class="help-block"></span>
+                                </td>
+                                <td style="width:8%">
+                                    <input name="customer_po" id="customer_po" placeholder="Cust. PO" class="form-control" type="text" readonly="readonly">
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
-                                    <input name="qty_material" id="qty_material" placeholder="Qty" class="form-control text-right" type="text" onkeyup ="getTotal()">
+                                    <input name="qty" id="qty" placeholder="Qty" class="form-control text-right" type="text" onkeyup ="getTotal()">
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
-                                    <input name="unit_material" id="unit_material" placeholder="Satuan" class="form-control" type="text" disabled>
+                                    <input name="satuan" id="satuan" placeholder="Satuan" class="form-control" type="text" disabled>
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
-                                    <input name="hargapersat_material" id="hargapersat_material" placeholder="Harga/Sat" class="form-control text-right" type="text" onkeyup ="getTotal()">
+                                    <input name="harga_barang" id="harga_barang" placeholder="Harga/Sat" class="form-control text-right" type="text" onkeyup ="getTotal()">
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
@@ -224,14 +236,7 @@
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:25%">
-                                    <select class="full-width select2" required data-init-plugin="select2" id='nama_material' name="nama_material">
-                                        <option value="0" selected>-- Pilih Valas --</option>
-                                        <?php                                
-                                            foreach ($get_currency as $row) {  
-                                                echo "<option value='".$row->nama_currency."'>".$row->nama_currency."</option>";
-                                            }
-                                        ?>
-                                    </select>
+                                    <input name="currency" id="currency" placeholder="currency" class="form-control" type="text" readonly="readonly">
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
@@ -244,14 +249,16 @@
                             <thead>
                                 <tr class="bg-success-darker text-white">
                                     <th style="width:5%">No</th>
-                                    <th style="width:25%">Keterangan Barang</th>
+                                    <th style="width:20%">Keterangan Barang</th>
                                     <th style="width:8%">Kode</th>
+                                    <th style="width:8%">PO Cust</th>
+                                    <th style="width:8%">Wo No.</th>
                                     <th style="width:10%">Qty</th>
                                     <th style="width:10%">Satuan</th>
                                     <th style="width:10%">Harga/Sat</th>
                                     <th style="width:10%">Total</th>
                                     <th style="width:10%">Valas</th>
-                                    <th style="width:10%">Actions</th>
+                                    <th style="width:10%">Action</th>
                                 </tr>
                             <thead>
                             <tbody>

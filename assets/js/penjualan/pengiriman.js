@@ -11,73 +11,75 @@ function numberRows($t) {
  function add_detail()
 {
     /* https://stackoverflow.com/questions/50262073/dynamically-add-table-row-number-using-jquery */
-    var nama_material = $('#nama_material').select2('data');
     var $row = $("<tr>");
     $row.append($("<td>"));
-    $row.append($("<td>").html('<input type="text" name="nama_barang_detail[]" class="" readonly value="'+nama_material[0].text+'">'));
-    $row.append($("<td>").html('<input type="text" name="kode_barang_detail[]" class="" readonly value="'+$('#kode_material').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class=" text-right" readonly value="'+$('#qty_material').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="satuan_detail[]" class="" readonly value="'+$('#unit_material').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class=" text-right" readonly value="'+$('#hargapersat_material').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="nama_barang_detail[]" class="" readonly value="'+$('#nama_barang').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="kode_barang_detail[]" class="" readonly value="'+$('#kode_barang').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="no_wo_detail[]" class="" readonly value="'+$('#no_wo').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="customer_po_detail[]" class="" readonly value="'+$('#customer_po').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class=" text-right" readonly value="'+$('#qty').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="satuan_detail[]" class="" readonly value="'+$('#satuan').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class=" text-right" readonly value="'+$('#harga_barang').val()+'">'));
     $row.append($("<td>").html('<input type="text" name="total_detail[]" class="total_detail text-right" readonly value="'+$('#total_field').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="currency_detail[]" class="total_detail text-right" readonly value="'+$('#total_field').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="currency_detail[]" class="total_detail text-right" value="'+$('#currency').val()+'">'));
     $row.append($("<td>").html('<button class="btn btn-danger btn-xs text-right"> <i class="fa fa-remove"></i> </button>'));
     $row.appendTo($("#tbl_detail tbody"));
     numberRows($("#tbl_detail"));
 }
 
-$("body").on("change", "#nama_barang", function() {
-    $.ajax({
-        url: base_url + "Penjualan/Pengiriman/get_info_barang",
-        data: {
-            'kode_barang': $('#nama_barang').val()
-        },
-        dataType: 'json',
-        type: 'post',
-        success: function(data) {
-            if (data.result == 'done') {
-                $('[name="kode_barang"]').val(data.res_kode_material);
-                $('[name="qty_material"]').val('0');
-                $('[name="unit_material"]').val(data.res_unit_material);
-                $('[name="hargapersat_material"]').val(data.res_hargapersat_material);
-            } else {
-                $('[name="kode_material"]').val('');
-                $('[name="qty_material"]').val('0');
-                $('[name="unit_material"]').val('');
-                $('[name="hargapersat_material"]').val('');
-            }
-        },
-        error: function() {
-            alert('failure');
-        }
-    });
-});
+function getTotal(){
+    total = parseFloat($('[name="qty"]').val()) * parseFloat($('[name="harga_barang"]').val());
+    $('[name="total_field"]').val(total);
+}
 
 $("#customer").change(function() {
-        var id=$(this).val();
-        $.ajax({
-            url : base_url + "Pembelian/Pembayaran/get_info_inv",
-            method : "POST",
-            data : {supplier_id: id},
-            async : true,
-            dataType : 'json',
-            success: function(data){
-                if(data.length > 0){
-                    var html = '';
-                    var i;
-                    html += '<option value="">-- Pilih No Inv --</option>';
-                    for(i=0; i<data.length; i++){
-                        html += '<option value='+data[i].no_invoice+'>'+data[i].no_invoice+'</option>';
-                    }
-                    $('#no_invoice').html(html);
-                }else{
-                    alert("Tidak ada Invoice Open Untuk Supplier Ini");
+    var id=$(this).val();
+    $.ajax({
+        url : base_url + "Penjualan/Pengiriman/get_info_barang",
+        method : "POST",
+        data : {customer_id: id},
+        async : true,
+        dataType : 'json',
+        success: function(data){
+            if(data.length > 0){
+                var html = '';
+                var i;
+                html += '<option value="">-- Pilih Barang Jadi --</option>';
+                for(i=0; i<data.length; i++){
+                    html += '<option value='+data[i].id+'>'+data[i].nama_barang+'-Wo : '+data[i].no_wo+'-Po : '+data[i].customer_po+'</option>';
                 }
-
+                $('#id_wo_detail').html(html);
+            }else{
+                alert("Tidak ada Invoice Open Untuk Supplier Ini");
             }
-        });
-        return false;
+
+        }
     });
+    return false;
+});
+
+$("#id_wo_detail").change(function() {
+    var id=$(this).val();
+    $.ajax({
+        url : base_url + "Penjualan/Pengiriman/get_info_wo_detail",
+        method : "POST",
+        data : {id: id},
+        async : true,
+        dataType : 'json',
+        success: function(data){
+            $("#nama_barang").val(data.nama_barang);
+            $("#kode_barang").val(data.kode_barang);
+            $("#no_wo").val(data.no_wo);
+            $("#customer_po").val(data.customer_po);
+            $("#qty").val(data.qty);
+            $("#satuan").val(data.satuan);
+            $("#harga_barang").val(data.harga_barang);
+            $("#total_field").val(data.harga_barang * data.qty);
+            $("#currency").val(data.currency);
+        }
+    });
+    return false;
+});
 
 $(document).ready(function() {
  

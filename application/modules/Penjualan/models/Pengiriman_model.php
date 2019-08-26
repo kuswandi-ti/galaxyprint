@@ -106,7 +106,7 @@ class Pengiriman_model extends CI_Model {
     function get_customer()
     {
         return $this->db->query("
-            Select w.customer, c.customer_name
+            Select c.customer_id, w.customer, c.customer_name
             from trans_wo_header w, master_customer c
             where w.customer = c.customer_id
             and wo_status <> 'CLOSE'
