@@ -192,15 +192,15 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url('assets/aktiva')?>">Aktiva Tetap</a>
+                        <a href="<?=base_url('Assets/Aktiva')?>">Aktiva Tetap</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Penerimaan</a>
+                        <a href="<?=base_url('Assets/Penerimaan')?>">Penerimaan</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Pengeluaran</a>
+                        <a href="<?=base_url('Assets/Pengeluaran')?>">Pengeluaran</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
