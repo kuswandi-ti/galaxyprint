@@ -103,10 +103,10 @@ class Aktiva_model extends CI_Model {
     }
 
     /* Combo (select2) */
-    function get_kategori_barang()
+    function get_kode_akun()
     {
         $this->db->select('*');
-        $query = $this->db->get('master_kategori');
+        $query = $this->db->get('acc_master_akun');
         return $query->result();
     }
 
@@ -117,12 +117,17 @@ class Aktiva_model extends CI_Model {
         return $query->result();
     }
 
+    function get_kategori()
+    {
+        $this->db->select('*');
+        $query = $this->db->where('keterangan', 'Mesin')->or_where('keterangan', 'Aktiva')->get('master_kategori');
+        return $query->result();
+    }
+
     function get_satuan()
     {
         $this->db->select('*');
         $query = $this->db->get('master_satuan');
         return $query->result();
     }
- 
- 
 }

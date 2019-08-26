@@ -16,6 +16,11 @@ class Pengeluaran extends MX_Controller {
     public function index()
     {
         // permission();
+        $data = array(
+            'get_aktiva' => $this->main->get_aktiva(),
+            'get_dokumen' => $this->main->get_dokumen(),
+            'get_currency' => $this->main->get_currency(),
+        );
         $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
     }
@@ -36,7 +41,7 @@ class Pengeluaran extends MX_Controller {
             $row[] = $r->tgl_dokumen;
  
             //add html for action
-            $row[] = '<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>
+            $row[] = '<!--<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>-->
                   <a class="btn btn-sm btn-danger btn-xs" href="javascript:void(0)" title="Hapus" onclick="hapus('."'".$r->id."'".')"><i class="fa fa-trash"></i> Delete</a>';
  
             $data[] = $row;
@@ -60,20 +65,35 @@ class Pengeluaran extends MX_Controller {
 
     public function ajax_add()
     {
-        $data = array(
-                'kode_barang' => $this->input->post('kode_barang'),
-                'nama_barang' => $this->input->post('nama_barang'),
-                'kode_kategori' => $this->input->post('kode_kategori'),
-                'hs_barang' => $this->input->post('hs_barang'),
-                'spesifikasi_barang' => $this->input->post('spesifikasi_barang'),
-                'satuan' => $this->input->post('satuan'),
-                'harga_barang' => $this->input->post('harga_barang'),
-                'currency' => $this->input->post('currency'),
+       $data = array(
+                'tgl_keluar' => $this->input->post('tgl_keluar'),
+                'no_do' => $this->input->post('no_do'),
+                'no_invoice' => $this->input->post('no_invoice'),
+                'penerima' => $this->input->post('penerima'),
+                'no_aju' => $this->input->post('no_aju'),
+                'jenis_dokumen' => $this->input->post('jenis_dokumen'),
+                'no_dokumen' => $this->input->post('no_dokumen'),
+                'tgl_dokumen' => $this->input->post('tgl_dokumen'),
+                'created_at' => dateNow(),
             );
-        $insert = $this->main->save($data);
+
+        $this->db->insert('trans_keluar_mesin_header', $data);
+        $id_header = $this->db->insert_id();
+        $kode_barang_detail = $_POST['kode_barang_detail'];
+        for ($i=0; $i < sizeof($kode_barang_detail); $i++) { 
+            $data2 = array(
+                        'id_header' => $id_header, 
+                        'kode_barang' => $_POST['kode_barang_detail'][$i], 
+                        'nama_barang' => $_POST['nama_barang_detail'][$i], 
+                        'satuan_barang' => $_POST['satuan_detail'][$i], 
+                        'qty' => $_POST['qty_detail'][$i], 
+                        'harga_barang' => $_POST['harga_detail'][$i], 
+                        'currency' => $_POST['currency_detail'][$i], 
+                    );
+            $this->db->insert('trans_keluar_mesin_detail', $data2);
+        }
         echo json_encode(array("status" => TRUE));
     }
-
     public function ajax_update()
     {
          $data = array(
@@ -107,8 +127,11 @@ class Pengeluaran extends MX_Controller {
                 {
                     $this->template->set_layout('default'); 
                     $this->template->add_plugin_css('jquery-datatable\media\css\dataTables.bootstrap.min.css');
+                    $this->template->add_plugin_css('bootstrap-datepicker/css/datepicker3.css');
                     $this->template->add_plugin_js('jquery-datatable\media\js\jquery.dataTables.min.js'); 
                     $this->template->add_plugin_js('jquery-datatable\media\js\dataTables.bootstrap.js'); 
+                    $this->template->add_plugin_js('bootstrap-datepicker/js/bootstrap-datepicker.js'); 
+                    $this->template->add_plugin_js('moment/moment.min.js'); 
                     $this->template->add_js($this->module.'/'.$this->file_name.'.js'); 
                 }
 

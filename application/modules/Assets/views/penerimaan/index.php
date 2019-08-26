@@ -140,7 +140,6 @@
                         </div>
                     </div>
                     <hr/>
-                    <!-- Keterangan Barang   Kode    Qty     Sat     Harga   Total   Valas   Action -->
                     <div class="table-responsive">
                         <table style="width: 100%">
                             <tr class="bg-success-darker text-white">

@@ -1,8 +1,82 @@
 var save_method; //for save method string
 var table;
- 
+
+function numberRows($t) {
+    var c = 0;
+    $t.find("tbody tr").each(function(ind, el) {
+        $(el).find("td:eq(0)").html(++c + ".");
+    });
+}
+
+ function add_detail()
+{
+    /* https://stackoverflow.com/questions/50262073/dynamically-add-table-row-number-using-jquery */
+    var nama_barang = $('#nama_barang').select2('data');
+    var currency = $('#currency').select2('data');
+    var $row = $("<tr>");
+    $row.append($("<td>"));
+    $row.append($("<td>").html('<input type="text" name="nama_barang_detail[]" class="" readonly value="'+nama_barang[0].text+'">'));
+    $row.append($("<td>").html('<input type="text" name="kode_barang_detail[]" class="" readonly value="'+$('#kode_barang').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class=" text-right" readonly value="'+$('#qty').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="satuan_detail[]" class="" readonly value="'+$('#satuan').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class=" text-right" readonly value="'+$('#harga_barang').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="total_detail[]" class="total_detail text-right" readonly value="'+$('#total_field').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="currency_detail[]" class="text-right" readonly value="'+currency[0].text+'">'));
+    $row.append($("<td>").html('<button class="btn btn-danger btn-xs text-right"> <i class="fa fa-remove"></i> </button>'));
+    $row.appendTo($("#tbl_detail tbody"));
+    numberRows($("#tbl_detail"));
+    calcTot();
+}
+
+function getTotal(){
+    total = parseFloat($('[name="qty"]').val()) * parseFloat($('[name="harga_barang"]').val());
+    $('[name="total_field"]').val(total);
+}
+
+function calcTot(){
+    var sub_total = 0;
+    $(".total_detail").each(function(){
+        sub_total += +$(this).val();
+    });
+    $("#sub_total").val(sub_total);
+};
+
 $(document).ready(function() {
- 
+    $('#tgl_keluar').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true
+    });
+    $('#tgl_dokumen').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true
+    });
+
+    $("body").on("change", "#nama_barang", function() {
+        $.ajax({
+            url: base_url + "Assets/Penerimaan/get_info_aktiva",
+            data: {
+                'kode_barang': $('#nama_barang').val()
+            },
+            dataType: 'json',
+            type: 'post',
+            success: function(data) {
+                if (data.result == 'done') {
+                    $('[name="kode_barang"]').val(data.kode_barang);
+                    $('[name="qty"]').val('0');
+                    $('[name="satuan"]').val(data.satuan);
+                    $('[name="harga_barang"]').val(data.harga_barang);
+                } else {
+                    $('[name="kode_barang"]').val('');
+                    $('[name="qty"]').val('0');
+                    $('[name="satuan"]').val('');
+                    $('[name="harga_barang"]').val('');
+                }
+            },
+            error: function() {
+                alert('failure');
+            }
+        });
+    });
     //datatables
     table = $('#table').DataTable({ 
         "dom": '<"row view-pager"<"col-sm-12"<"pull-left"f><"pull-right"i><"clearfix">>>t<"row view-pager"<"col-sm-12"<"pull-left"l><"pull-right"p><"clearfix">>>',

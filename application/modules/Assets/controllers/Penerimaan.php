@@ -24,7 +24,7 @@ class Penerimaan extends MX_Controller {
         $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
     }
-    //No    Tgl. Masuk  No. PO  Pengirim    Nomor Aju   Dokumen Nomor   Tgl Dokumen Jml Detail  
+    
     public function ajax_list()
     {
         $list = $this->main->get_datatables();
