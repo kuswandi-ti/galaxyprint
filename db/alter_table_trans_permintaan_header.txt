@@ -1,0 +1,2 @@
+1. Perubahan field `id` pada tabel `trans_permintaan_header` menjadi AUTO_INCREMENT
+2. Perubahan datatype pada field `tgl_permintaan` di tabel `trans_permintaan_header` dari DATETIME menjadi DATE

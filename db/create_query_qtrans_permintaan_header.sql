@@ -11,27 +11,31 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping structure for view rma.qmaster_bom_header
+-- Dumping structure for view rma.qtrans_permintaan_header
 -- Removing temporary table and create final VIEW structure
-DROP TABLE IF EXISTS `qmaster_bom_header`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qmaster_bom_header` AS SELECT
+DROP TABLE IF EXISTS `qtrans_permintaan_header`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qtrans_permintaan_header` AS SELECT
 	a.id,
-	a.kode_barang,
-	a.nama_barang,
-	a.spesifikasi,
-	a.unit,
-	a.currency,
-	COUNT(b.id) AS jml_bahan_baku
+	a.tgl_permintaan,
+	a.no_wo,
+	a.bagian,
+	a.pic,
+	a.keterangan,
+	a.status_permintaan,
+	a.status_input,
+	COUNT(b.id) AS jml_item
 FROM
-	master_bom_header a
-	LEFT OUTER JOIN master_bom_detail b ON a.id = b.id_header
+	trans_permintaan_header a
+	LEFT OUTER JOIN trans_permintaan_detail b ON a.id = b.id_header
 GROUP BY
 	a.id,
-	a.kode_barang,
-	a.nama_barang,
-	a.spesifikasi,
-	a.unit,
-	a.currency;
+	a.tgl_permintaan,
+	a.no_wo,
+	a.bagian,
+	a.pic,
+	a.keterangan,
+	a.status_permintaan,
+	a.status_input;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
