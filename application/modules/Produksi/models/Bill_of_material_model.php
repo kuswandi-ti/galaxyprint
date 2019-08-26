@@ -4,8 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Bill_Of_Material_model extends CI_Model {
  
     var $table = 'master_bom_header';
-    var $column_order = array('kode_barang','nama_barang','unit','currency',null);
-    var $column_search = array('kode_barang','nama_barang','spesifikasi','unit','currency');
+    var $query = 'qmaster_bom_header';
+    var $column_order = array('kode_barang','nama_barang','unit','currency','jml_bahan_baku',null);
+    var $column_search = array('kode_barang','nama_barang','spesifikasi','unit','currency','jml_bahan_baku');
     var $order = array('id' => 'desc'); // default order 
  
     public function __construct()
@@ -17,7 +18,7 @@ class Bill_Of_Material_model extends CI_Model {
     private function _get_datatables_query()
     {
          
-        $this->db->from($this->table);
+        $this->db->from($this->query);
  
         $i = 0;
      

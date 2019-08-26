@@ -18,7 +18,7 @@
                                         <th>Nama Barang</th>
                                         <th>Spesifikasi</th>
                                         <th>Satuan</th>
-                                        <th>Currency</th>
+                                        <th>Jumlah Bahan Baku</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -32,7 +32,7 @@
                                         <th>Nama Barang</th>
                                         <th>Spesifikasi</th>
                                         <th>Satuan</th>
-                                        <th>Currency</th>
+                                        <th>Jumlah Bahan Baku</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
