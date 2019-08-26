@@ -8,7 +8,7 @@ function numberRows($t) {
     });
 }
 
- function add_detail()
+function add_detail()
 {
     /* https://stackoverflow.com/questions/50262073/dynamically-add-table-row-number-using-jquery */
     var nama_material = $('#nama_material').select2('data');

@@ -126,7 +126,6 @@ class Po extends MX_Controller {
                 if(in_array($view, array($this->file_name.'/index')))
                 {
                     $this->template->set_layout('default'); 
-                    // $this->template->add_css($this->module.'/User.css?v4.0.1');
                     $this->template->add_plugin_css('jquery-datatable\media\css\dataTables.bootstrap.min.css');
                     $this->template->add_plugin_css('bootstrap-datepicker/css/datepicker3.css');
                     $this->template->add_plugin_js('jquery-datatable\media\js\jquery.dataTables.min.js'); 

@@ -103,10 +103,10 @@ class Penerimaan_model extends CI_Model {
     }
 
     /* Combo (select2) */
-    function get_kategori_barang()
+    function get_dokumen()
     {
         $this->db->select('*');
-        $query = $this->db->get('master_kategori');
+        $query = $this->db->get('master_dokumen');
         return $query->result();
     }
 
@@ -116,13 +116,12 @@ class Penerimaan_model extends CI_Model {
         $query = $this->db->get('master_currency');
         return $query->result();
     }
-
-    function get_satuan()
+    
+    function get_aktiva()
     {
         $this->db->select('*');
-        $query = $this->db->get('master_satuan');
+        $query = $this->db->get('acc_aktiva_header');
         return $query->result();
     }
- 
  
 }

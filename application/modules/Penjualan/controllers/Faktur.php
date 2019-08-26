@@ -161,7 +161,7 @@ class Faktur extends MX_Controller {
         echo json_encode($data);
     }
 
-     function get_info_do_detail(){
+    function get_info_do_detail(){
         $id = $this->input->post('id');
         $res = $this->db->query("
             select d.id id_delivery_detail, h.id id_delivery_header, d.nama_barang,d.kode_barang, no_do, qty, satuan_barang satuan, harga_barang, currency
