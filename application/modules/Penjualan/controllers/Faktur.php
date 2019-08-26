@@ -16,6 +16,11 @@ class Faktur extends MX_Controller {
     public function index()
     {
         // permission();
+        $data = array(
+            'get_customer' => $this->main->get_customer(),
+            'get_kode_akun' => $this->main->get_kode_akun(),
+            'get_currency' => $this->main->get_currency(),
+        );
         $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
     }
@@ -60,12 +65,41 @@ class Faktur extends MX_Controller {
 
     public function ajax_add()
     {
-        $data = array(
-                'nama_Faktur' => $this->input->POST('nama_Faktur'),
-                'nilai_kurs_idr' => $this->input->POST('nilai_kurs_idr'),
-                'update_terakhir' => dateNow()
+       $data = array(
+                'tgl_invoice' => $this->input->post('tgl_invoice'),
+                'no_invoice' => $this->input->post('no_invoice'),
+                'kode_customer' => $this->input->post('customer'),
+                'no_po' => $this->input->post('no_po'),
+                'jatuh_tempo' => $this->input->post('jatuh_tempo'),
+                'total_invoice' => $this->input->post('sub_total'),
+                'pajak' => $this->input->post('ppn'),
+                'grand_total' => $this->input->post('grand_total'),
+                'currency' => $this->input->post('currency'),
+                'kurs' => $this->input->post('kurs'),
+                'keterangan' => $this->input->post('keterangan'),
+                'kode_akun' => $this->input->post('kode_akun'),
+                'created_at' => dateNow(),
             );
-        $insert = $this->main->save($data);
+
+        $this->db->insert('acc_piutang_header', $data);
+        $id_header = $this->db->insert_id();
+        $kode_barang_detail = $_POST['kode_barang_detail'];
+        for ($i=0; $i < sizeof($kode_barang_detail); $i++) { 
+            $data2 = array(
+                        'id_header' => $id_header, 
+                        'id_delivery_header' => $_POST['id_delivery_header_detail'][$i],
+                        'id_delivery_detail' => $_POST['id_delivery_detail_detail'][$i],
+                        'no_delivery' => $_POST['no_do_detail'][$i], 
+                        'kode_barang' => $_POST['kode_barang_detail'][$i], 
+                        'nama_barang' => $_POST['nama_barang_detail'][$i], 
+                        'satuan_barang' => $_POST['satuan_detail'][$i], 
+                        'qty' => $_POST['qty_detail'][$i], 
+                        'harga_barang' => $_POST['harga_detail'][$i], 
+                        'currency' => $_POST['currency'], 
+                        'kurs' => $_POST['kurs']
+                    );
+            $this->db->insert('acc_piutang_detail', $data2);
+        }
         echo json_encode(array("status" => TRUE));
     }
 
@@ -114,5 +148,49 @@ class Faktur extends MX_Controller {
         {
             return $this->load->view($view, $data, TRUE);
         }
+    }
+
+    function get_info_barang(){
+        $customer_id = $this->input->post('customer_id');
+        $data = $this->db->query("
+            select d.id, d.nama_barang, no_do
+            from trans_keluar_barang_detail d, trans_keluar_barang_header h
+            where d.id_header = h.id
+            and customer = '$customer_id'
+        ")->result();
+        echo json_encode($data);
+    }
+
+     function get_info_do_detail(){
+        $id = $this->input->post('id');
+        $res = $this->db->query("
+            select d.id id_delivery_detail, h.id id_delivery_header, d.nama_barang,d.kode_barang, no_do, qty, satuan_barang satuan, harga_barang, currency
+            from trans_keluar_barang_detail d, trans_keluar_barang_header h
+            where d.id_header = h.id
+            and d.id = '$id'
+        ");
+        if ($res->num_rows() > 0) {
+            $data['result'] = 'done';
+            $data['id_delivery_detail'] = $res->row()->id_delivery_detail;;
+            $data['id_delivery_header'] = $res->row()->id_delivery_header;;
+            $data['nama_barang'] = $res->row()->nama_barang;;
+            $data['kode_barang'] = $res->row()->kode_barang;
+            $data['no_do'] = $res->row()->no_do;
+            $data['qty'] = $res->row()->qty;
+            $data['satuan'] = $res->row()->satuan;
+            $data['harga_barang'] = $res->row()->harga_barang;
+            $data['currency'] = $res->row()->currency;
+        } else {
+            $data['result'] = '';
+            $data['id'] = '';
+            $data['nama_barang'] = '';
+            $data['kode_barang'] = '';
+            $data['no_do'] = '';
+            $data['qty'] = '';
+            $data['satuan'] = '';
+            $data['harga_barang'] = '';
+            $data['currency'] ='';
+        }
+        echo json_encode($data);
     }
 }

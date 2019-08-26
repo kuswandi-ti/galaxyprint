@@ -101,6 +101,27 @@ class Faktur_model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete($this->table);
     }
- 
- 
+
+    function get_kode_akun()
+    {
+        $this->db->select('*');
+        $query = $this->db->where('level_3', '1.1.2')->get('acc_master_akun');
+        return $query->result();
+    }
+
+    function get_customer()
+    {
+        return $this->db->query("
+            Select c.customer_id, w.customer, c.customer_name
+            from trans_keluar_barang_header w, master_customer c
+            where w.customer = c.customer_id
+            ");
+    }
+
+    function get_currency()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('master_currency');
+        return $query->result();
+    }
 }

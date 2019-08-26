@@ -1,7 +1,6 @@
 var save_method; //for save method string
 var table;
 
-
 function numberRows($t) {
     var c = 0;
     $t.find("tbody tr").each(function(ind, el) {

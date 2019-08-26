@@ -1,6 +1,100 @@
 var save_method; //for save method string
 var table;
- 
+
+function numberRows($t) {
+    var c = 0;
+    $t.find("tbody tr").each(function(ind, el) {
+        $(el).find("td:eq(0)").html(++c + ".");
+    });
+}
+
+ function add_detail()
+{
+    /* https://stackoverflow.com/questions/50262073/dynamically-add-table-row-number-using-jquery */
+    var $row = $("<tr>");
+    $row.append($("<td>"));
+    $row.append($("<td>").html('<input type="text" name="nama_barang_detail[]" class="" readonly value="'+$('#nama_barang').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="id_delivery_header_detail[]" class="" readonly value="'+$('#id_delivery_header').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="id_delivery_detail_detail[]" class="" readonly value="'+$('#id_delivery_detail').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="kode_barang_detail[]" class="" readonly value="'+$('#kode_barang').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class=" text-right" readonly value="'+$('#qty').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="satuan_detail[]" class="" readonly value="'+$('#satuan').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class=" text-right" readonly value="'+$('#harga_barang').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="total_detail[]" class="total_detail text-right" readonly value="'+$('#total_field').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="currency_detail[]" class="text-right" value="'+$('#currency').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="no_do_detail[]" class="" readonly value="'+$('#no_do').val()+'">'));
+    $row.append($("<td>").html('<button class="btn btn-danger btn-xs text-right"> <i class="fa fa-remove"></i> </button>'));
+    $row.appendTo($("#tbl_detail tbody"));
+    numberRows($("#tbl_detail"));
+    calcTot();
+}
+
+function getTotal(){
+    total = parseFloat($('[name="qty"]').val()) * parseFloat($('[name="harga_barang"]').val());
+    $('[name="total_field"]').val(total);
+}
+
+function calcTot(){
+    ppn = parseFloat($("#ppn").val());
+    var sub_total = 0;
+    $(".total_detail").each(function(){
+        sub_total += +$(this).val();
+    });
+    $("#sub_total").val(sub_total);
+    grand_total = sub_total+ppn;
+    $("#grand_total").val(grand_total);
+};
+
+$("#customer").change(function() {
+    var id=$(this).val();
+    $.ajax({
+        url : base_url + "Penjualan/Faktur/get_info_barang",
+        method : "POST",
+        data : {customer_id: id},
+        async : true,
+        dataType : 'json',
+        success: function(data){
+            if(data.length > 0){
+                var html = '';
+                var i;
+                html += '<option value="">-- Pilih Barang Jadi --</option>';
+                for(i=0; i<data.length; i++){
+                    html += '<option value='+data[i].id+'>'+data[i].nama_barang+'-Wo : '+data[i].no_do+'</option>';
+                }
+                $('#id_do_detail').html(html);
+            }else{
+                alert("Tidak ada Invoice Open Untuk Supplier Ini");
+            }
+
+        }
+    });
+    return false;
+});
+
+$("#id_do_detail").change(function() {
+    var id=$(this).val();
+    $.ajax({
+        url : base_url + "Penjualan/Faktur/get_info_do_detail",
+        method : "POST",
+        data : {id: id},
+        async : true,
+        dataType : 'json',
+        success: function(data){
+            $("#nama_barang").val(data.nama_barang);
+            $("#id_delivery_header").val(data.id_delivery_header);
+            $("#id_delivery_detail").val(data.id_delivery_detail);
+            $("#kode_barang").val(data.kode_barang);
+            $("#no_do").val(data.no_do);
+            $("#qty").val(data.qty);
+            $("#satuan").val(data.satuan);
+            $("#harga_barang").val(data.harga_barang);
+            $("#total_field").val(data.harga_barang * data.qty);
+            $("#currency").val(data.currency);
+        }
+    });
+    return false;
+});
+
 $(document).ready(function() {
  
     //datatables

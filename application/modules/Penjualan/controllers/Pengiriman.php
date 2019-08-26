@@ -150,7 +150,7 @@ class Pengiriman extends MX_Controller {
     function get_info_barang(){
         $customer_id = $this->input->post('customer_id');
         $data = $this->db->query("
-            select d.id, d.nama_barang, d.no_wo,d.no_wo, h.customer_po 
+            select d.id, d.nama_barang, d.no_wo, h.customer_po 
             from trans_wo_detail d, trans_wo_header h
             where d.id_header = h.id
             and customer = '$customer_id'
@@ -179,10 +179,15 @@ class Pengiriman extends MX_Controller {
             $data['currency'] = $res->row()->currency;
         } else {
             $data['result'] = '';
-            $data['res_kode_material'] = '';
-            $data['res_hs_material'] = '';
-            $data['res_unit_material'] = '';                
-            $data['res_spesifikasi_bom'] = '';
+            $data['id'] = '';
+            $data['nama_barang'] = '';
+            $data['kode_barang'] = '';
+            $data['no_wo'] = '';
+            $data['customer_po'] = '';
+            $data['qty'] = '';
+            $data['satuan'] = '';
+            $data['harga_barang'] = '';
+            $data['currency'] ='';
         }
         echo json_encode($data);
     }
