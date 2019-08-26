@@ -32,11 +32,11 @@ class Bill_Of_Material extends MX_Controller {
         foreach ($list as $r) {
             $row = array();
             $row[] = $r->id;
-            $row[] = $r->kode_barang;
+            $row[] = '<a href="javascript:void(0)" title="Show Detail" onclick="edit('."'".$r->id."'".')"><b>'.$r->kode_barang.'</b></a>';
             $row[] = $r->nama_barang;
             $row[] = $r->spesifikasi;
             $row[] = $r->unit;
-            $row[] = $r->currency;
+            $row[] = $r->jml_bahan_baku . ' Items';
  
             //add html for action
             $row[] = '<a class="btn btn-sm btn-primary btn-xs" href="javascript:void(0)" title="Edit" onclick="edit('."'".$r->id."'".')"><i class="fa fa-pencil"></i> Edit</a>
