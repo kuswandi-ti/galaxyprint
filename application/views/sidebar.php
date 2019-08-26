@@ -192,7 +192,7 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url()?>">Aktiva Tetap</a>
+                        <a href="<?=base_url('assets/aktiva')?>">Aktiva Tetap</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
