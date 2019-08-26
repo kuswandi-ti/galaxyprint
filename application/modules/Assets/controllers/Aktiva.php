@@ -16,6 +16,12 @@ class Aktiva extends MX_Controller {
     public function index()
     {
         // permission();
+        $data = array(
+            'get_kode_akun' => $this->main->get_kode_akun(),
+            'get_currency' => $this->main->get_currency(),
+            'get_kategori' => $this->main->get_kategori(),
+            'get_satuan' => $this->main->get_satuan(),
+        );
         $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
     }

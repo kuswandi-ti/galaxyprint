@@ -74,7 +74,7 @@ $(document).ready(function() {
     });
 });
 
-$("body").on("change", "#nama_barang", function() {
+    $("body").on("change", "#nama_barang", function() {
         $.ajax({
             url: base_url + "Assets/Penerimaan/get_info_aktiva",
             data: {
