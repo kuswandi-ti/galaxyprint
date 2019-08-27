@@ -113,7 +113,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('Produksi/Bill_Of_Material')?>">Bill of Material Master</a>
+                        <a href="<?=base_url('Produksi/Bill_of_material')?>">Bill of Material Master</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -189,7 +189,7 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url()?>">Jurnal Umum</a>
+                        <a href="<?=base_url('Buku_besar/Jurnal')?>">Jurnal Umum</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
@@ -215,7 +215,7 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url()?>">Laporan Keuangan</a>
+                         <a href="<?=base_url('Laporan/Keuangan')?>">Laporan Keuangan</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
