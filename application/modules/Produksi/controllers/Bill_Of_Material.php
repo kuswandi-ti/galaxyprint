@@ -1,8 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Bill_Of_Material extends MX_Controller {
+class Bill_of_material extends MX_Controller {
     public $data;
-    var $module = 'Produksi';
+    var $module = 'produksi';
     var $title = 'Bill Of Material';
     var $file_name = 'bill_of_material';
     var $table_name = '';
