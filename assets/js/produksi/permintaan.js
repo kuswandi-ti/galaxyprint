@@ -2,14 +2,14 @@ var save_method; //for save method string
 var table;
 
 $(document).ready(function() {
-    $('#tgl_permintaan').datepicker({
+    $('#tgl_Permintaan').datepicker({
         format: 'yyyy-mm-dd',
         autoclose: true
     });
 
     $("body").on("change", "#nama_barang", function() {
         $.ajax({
-            url: base_url + "produksi/permintaan/get_info_material",
+            url: base_url + "Produksi/Permintaan/get_info_material",
             data: {
                 'kode_barang': $('#nama_barang').val()
             },
@@ -47,7 +47,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": base_url+'produksi/permintaan/ajax_list',
+            "url": base_url+'Produksi/Permintaan/ajax_list',
             "type": "POST"
         },
         //Set column definition initialisation properties.
@@ -82,7 +82,7 @@ function load_bom() {
         // Selanjutnya isi tabel dengan data yang baru
         var no_wo = $ ('#no_wo').val();
         $.ajax({
-            url : base_url + "produksi/permintaan/get_info_from_wo",
+            url : base_url + "Produksi/Permintaan/get_info_from_wo",
             method : "POST",
             data : { no_wo: no_wo },
             async : true,
@@ -145,7 +145,7 @@ function add() {
 function show_detail() {
     var id_header = $("#id_hidden").val();
     $.ajax({
-        url : base_url+'produksi/permintaan/show_detail/?id_header='+id_header,
+        url : base_url+'Produksi/Permintaan/show_detail/?id_header='+id_header,
         async : false,
         success : function(data) {
             $('#show_detail').html(data);
@@ -161,19 +161,19 @@ function edit(id) {
  
     //Ajax Load data from ajax
     $.ajax({
-        url : base_url+"produksi/permintaan/ajax_edit/" + id,
+        url : base_url+"Produksi/Permintaan/ajax_edit/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data) { 
             $('[name="id_hidden"]').val(data.id);     
-            $('[name="tgl_permintaan"]').val(data.tgl_permintaan);    
+            $('[name="tgl_Permintaan"]').val(data.tgl_Permintaan);    
             $("#no_wo").data('select2').trigger('select', {
                 data: {"id": data.no_wo, "text": data.no_wo }
             });
             $('[name="bagian"]').val(data.bagian);
             $('[name="pic"]').val(data.pic);
             $('[name="keterangan"]').val(data.keterangan);
-            $('[name="status_permintaan"]').val(data.status_permintaan);
+            $('[name="status_Permintaan"]').val(data.status_Permintaan);
             show_detail();
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Permintaan Bahan Baku'); // Set title to Bootstrap modal title 
@@ -198,9 +198,9 @@ function save() {
     var url;
  
     if(save_method == 'add') {
-        url = base_url+"produksi/permintaan/ajax_add";
+        url = base_url+"Produksi/Permintaan/ajax_add";
     } else {
-        url = base_url+"produksi/permintaan/ajax_update";
+        url = base_url+"Produksi/Permintaan/ajax_update";
     }
  
     // ajax adding data to database
@@ -233,7 +233,7 @@ function hapus(id) {
     if (confirm('Are you sure delete this data?')) {
         // ajax delete data to database
         $.ajax({
-            url : base_url+"produksi/permintaan/ajax_delete/"+id,
+            url : base_url+"Produksi/Permintaan/ajax_delete/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data) {
