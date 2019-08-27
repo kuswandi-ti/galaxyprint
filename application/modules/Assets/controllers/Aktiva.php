@@ -68,14 +68,24 @@ class Aktiva extends MX_Controller {
     public function ajax_add()
     {
         $data = array(
+                'kode_kategori' => $this->input->post('kode_kategori'),
                 'kode_barang' => $this->input->post('kode_barang'),
                 'nama_barang' => $this->input->post('nama_barang'),
-                'kode_kategori' => $this->input->post('kode_kategori'),
-                'hs_barang' => $this->input->post('hs_barang'),
                 'spesifikasi_barang' => $this->input->post('spesifikasi_barang'),
                 'satuan' => $this->input->post('satuan'),
                 'harga_barang' => $this->input->post('harga_barang'),
                 'currency' => $this->input->post('currency'),
+                'qty' => $this->input->post('qty'),
+                'usia_pakai' => $this->input->post('usia_pakai'),
+                'tgl_perolehan' => $this->input->post('tgl_perolehan'),
+                'kode_akun_1' => $this->input->post('kode_akun_1'),
+                'kode_akun_2' => $this->input->post('kode_akun_2'),
+                'kode_akun_3' => $this->input->post('kode_akun_3'),
+                'kode_akun_4' => $this->input->post('kode_akun_4'),
+                'kode_akun_5' => $this->input->post('kode_akun_5'),
+                'keluar_1' => $this->input->post('keluar_1'),
+                'keluar_2' => $this->input->post('keluar_2'),
+                'created_at' => dateNow(),
             );
         $insert = $this->main->save($data);
         echo json_encode(array("status" => TRUE));
