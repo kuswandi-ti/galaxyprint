@@ -61,31 +61,24 @@ class Jurnal extends MX_Controller {
     public function ajax_add()
     {
        $data = array(
-                'tgl_masuk' => $this->input->post('tgl_masuk'),
-                'no_po' => $this->input->post('no_po'),
-                'no_invoice' => $this->input->post('no_invoice'),
-                'pengirim' => $this->input->post('pengirim'),
-                'no_aju' => $this->input->post('no_aju'),
-                'jenis_dokumen' => $this->input->post('jenis_dokumen'),
-                'no_dokumen' => $this->input->post('no_dokumen'),
-                'tgl_dokumen' => $this->input->post('tgl_dokumen'),
+                'tgl_transaksi' => $this->input->post('tgl_transaksi'),
+                'keterangan' => $this->input->post('keterangan'),
                 'created_at' => dateNow(),
             );
 
-        $this->db->insert('trans_masuk_mesin_header', $data);
+        $this->db->insert('acc_bukti_transaksi', $data);
         $id_header = $this->db->insert_id();
-        $kode_barang_detail = $_POST['kode_barang_detail'];
-        for ($i=0; $i < sizeof($kode_barang_detail); $i++) { 
+        $kode_akun_detail = $_POST['kode_akun_detail'];
+        for ($i=0; $i < sizeof($kode_akun_detail); $i++) { 
             $data2 = array(
                         'id_header' => $id_header, 
-                        'kode_barang' => $_POST['kode_barang_detail'][$i], 
-                        'nama_barang' => $_POST['nama_barang_detail'][$i], 
-                        'satuan_barang' => $_POST['satuan_detail'][$i], 
-                        'qty' => $_POST['qty_detail'][$i], 
-                        'harga_barang' => $_POST['harga_detail'][$i], 
-                        'currency' => $_POST['currency_detail'][$i], 
+                        'kode_akun' => $_POST['kode_akun_detail'][$i], 
+                        'nama_akun' => $_POST['nama_akun_detail'][$i], 
+                        'debet' => $_POST['debet_detail'][$i], 
+                        'kredit' => $_POST['kredit_detail'][$i], 
+                        'catatan' => $_POST['catatan_detail'][$i]
                     );
-            $this->db->insert('trans_masuk_mesin_detail', $data2);
+            $this->db->insert('acc_jurnal_umum', $data2);
         }
         echo json_encode(array("status" => TRUE));
     }
@@ -145,24 +138,18 @@ class Jurnal extends MX_Controller {
         }
     }
 
-    function get_info_aktiva(){
-        $kode_barang = $this->input->post('kode_barang');
+    function get_info_akun(){
+        $kode_akun = $this->input->post('kode_akun');
         $res = $this->db->query("
-            select * from acc_aktiva_header
-            where kode_barang = '$kode_barang'
+            select * from acc_master_akun
+            where kode_akun = '$kode_akun'
         ");
         if ($res->num_rows() > 0) {
             $data['result'] = 'done';
-            $data['kode_barang'] = $res->row()->kode_barang;
-            $data['satuan'] = $res->row()->satuan;
-            $data['harga_barang'] = $res->row()->harga_barang;
-            $data['currency'] = $res->row()->currency;
+            $data['kode_akun'] = $res->row()->kode_akun;
         } else {
             $data['result'] = '';
-            $data['kode_barang'] = '';
-            $data['satuan'] = '';
-            $data['harga_barang'] = '';
-            $data['currency'] = '';
+            $data['kode_akun'] = '';
         }
         echo json_encode($data);
     }

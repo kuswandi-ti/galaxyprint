@@ -99,7 +99,9 @@ class Jurnal_model extends CI_Model {
     public function delete_by_id($id)
     {
         $this->db->where('id', $id);
-        $this->db->delete($this->table);
+        $this->db->delete('acc_bukti_transaksi');
+        $this->db->where('id_header', $id);
+        $this->db->delete('acc_jurnal_umum');
     }
 
     /* Combo (select2) */

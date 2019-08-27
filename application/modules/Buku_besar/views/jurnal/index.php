@@ -3,7 +3,7 @@
         <div class=" container-fluid   container-fixed-lg bg-white">
             <div class="card card-transparent">
                 <div class="card-header ">
-                    <div class="card-title"><?=$title?> Assets</div>
+                    <div class="card-title"><?=$title?></div>
                     <div class="clearfix"></div>
                     </div>
                     <div class="card-body">
@@ -141,10 +141,18 @@
                             </tbody>
                             <tfoot style="font-weight: 800">
                                 <tr>
-                                    <td colspan="6" align="right">Sub Total</td>
+                                    <td colspan="4" align="right">Total Debet</td>
                                     <td colspan="" align="center">:</td>
                                     <td colspan="">
-                                        <input name="sub_total" id="sub_total" placeholder="Total" class="form-control text-right" type="text" value="0.00">
+                                        <input name="total_debet" id="total_debet" class="form-control text-right" type="text" value="0.00">
+                                        <span class="help-block"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" align="right">Total Kredit</td>
+                                    <td colspan="" align="center">:</td>
+                                    <td colspan="">
+                                        <input name="total_kredit" id="total_kredit" class="form-control text-right" type="text" value="0.00">
                                         <span class="help-block"></span>
                                     </td>
                                 </tr>

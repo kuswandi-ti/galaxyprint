@@ -10,34 +10,32 @@ function numberRows($t) {
  function add_detail()
 {
     /* https://stackoverflow.com/questions/50262073/dynamically-add-table-row-number-using-jquery */
-    var nama_barang = $('#nama_barang').select2('data');
+    var nama_akun = $('#nama_akun').select2('data');
     var currency = $('#currency').select2('data');
     var $row = $("<tr>");
     $row.append($("<td>"));
-    $row.append($("<td>").html('<input type="text" name="nama_barang_detail[]" class="" readonly value="'+nama_barang[0].text+'">'));
-    $row.append($("<td>").html('<input type="text" name="kode_barang_detail[]" class="" readonly value="'+$('#kode_barang').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="qty_detail[]" class=" text-right" readonly value="'+$('#qty').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="satuan_detail[]" class="" readonly value="'+$('#satuan').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="harga_detail[]" class=" text-right" readonly value="'+$('#harga_barang').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="total_detail[]" class="total_detail text-right" readonly value="'+$('#total_field').val()+'">'));
-    $row.append($("<td>").html('<input type="text" name="currency_detail[]" class="text-right" readonly value="'+currency[0].text+'">'));
-    $row.append($("<td>").html('<button class="btn btn-danger btn-xs text-right"> <i class="fa fa-remove"></i> </button>'));
+    $row.append($("<td>").html('<input type="text" name="nama_akun_detail[]" class="" readonly value="'+nama_akun[0].text+'">'));
+    $row.append($("<td>").html('<input type="text" name="kode_akun_detail[]" class="" readonly value="'+$('#kode_akun').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="debet_detail[]" class="debet text-right" readonly value="'+$('#debet').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="kredit_detail[]" class="kredit" readonly value="'+$('#kredit').val()+'">'));
+    $row.append($("<td>").html('<input type="text" name="catatan_detail[]" class=" text-right" readonly value="'+$('#catatan').val()+'">'));
     $row.appendTo($("#tbl_detail tbody"));
     numberRows($("#tbl_detail"));
     calcTot();
 }
 
-function getTotal(){
-    total = parseFloat($('[name="qty"]').val()) * parseFloat($('[name="harga_barang"]').val());
-    $('[name="total_field"]').val(total);
-}
-
 function calcTot(){
-    var sub_total = 0;
-    $(".total_detail").each(function(){
-        sub_total += +$(this).val();
+    var total_debet = 0;
+    var total_kredit = 0;
+    $(".debet").each(function(){
+        total_debet += +$(this).val();
     });
-    $("#sub_total").val(sub_total);
+    $("#total_debet").val(total_debet);
+
+    $(".kredit").each(function(){
+        total_kredit += +$(this).val();
+    });
+    $("#total_kredit").val(total_kredit);
 };
 
 $(document).ready(function() {
@@ -74,25 +72,19 @@ $(document).ready(function() {
     });
 });
 
-    $("body").on("change", "#nama_barang", function() {
+    $("body").on("change", "#nama_akun", function() {
         $.ajax({
-            url: base_url + "Buku_besar/Jurnal/get_info_aktiva",
+            url: base_url + "Buku_besar/Jurnal/get_info_akun",
             data: {
-                'kode_barang': $('#nama_barang').val()
+                'kode_akun': $('#nama_akun').val()
             },
             dataType: 'json',
             type: 'post',
             success: function(data) {
                 if (data.result == 'done') {
-                    $('[name="kode_barang"]').val(data.kode_barang);
-                    $('[name="qty"]').val('0');
-                    $('[name="satuan"]').val(data.satuan);
-                    $('[name="harga_barang"]').val(data.harga_barang);
+                    $('[name="kode_akun"]').val(data.kode_akun);
                 } else {
-                    $('[name="kode_barang"]').val('');
-                    $('[name="qty"]').val('0');
-                    $('[name="satuan"]').val('');
-                    $('[name="harga_barang"]').val('');
+                    $('[name="kode_akun"]').val('');
                 }
             },
             error: function() {
@@ -159,6 +151,12 @@ function edit(id)
 
 function save()
 {
+    total_kredit = $("#total_kredit").val();
+    total_debet = $("#total_debet").val();
+    if(total_kredit != total_debet){
+        alert("Total Debit & Kredit Tidak Sama...!!!");
+        return false;
+    }
     $('#btnSave').text('saving...'); //change button text
     $('#btnSave').attr('disabled',true); //set button disable 
     var url;
