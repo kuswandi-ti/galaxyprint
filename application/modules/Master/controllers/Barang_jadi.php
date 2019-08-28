@@ -74,6 +74,17 @@ class Barang_Jadi extends MX_Controller {
                 'created_at' => dateNow()
             );
         $insert = $this->main->save($data);
+
+        $data = array(
+            'kode_barang' => $this->input->post('kode_barang'),
+            'nama_barang' => $this->input->post('nama_barang'),
+            'spesifikasi' => $this->input->post('spesifikasi_barang'),
+            'unit' => $this->input->post('satuan'),
+            'currency' => $this->input->post('currency'),
+            'created_at' => dateNow(),
+        );
+
+        $this->db->insert('master_bom_header', $data);
         echo json_encode(array("status" => TRUE));
     }
 

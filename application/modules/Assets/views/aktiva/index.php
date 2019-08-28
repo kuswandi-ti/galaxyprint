@@ -78,7 +78,7 @@
                                         <div class="row">
                                             <label class="control-label col-md-3">Kategori</label>
                                             <div class="col-md-5">
-                                                <select class="full-width select2" required data-init-plugin="select2" id='jenis_dokumen' name="jenis_dokumen">
+                                                <select class="full-width select2" required data-init-plugin="select2" id='kode_kategori' name="kode_kategori">
                                                     <option value="" selected>-- Pilih Kategori --</option>
                                                     <?php                                
                                                         foreach ($get_kategori as $row) {  
@@ -92,21 +92,21 @@
                                         <div class="row">
                                             <label class="control-label col-md-3">Kode Aktiva</label>
                                             <div class="col-md-5">
-                                                <input name="kode_aktiva" placeholder="Kode Aktiva" class="form-control" type="text">
+                                                <input name="kode_barang" placeholder="Kode Aktiva" class="form-control" type="text">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label class="control-label col-md-3">Keterangan</label>
                                             <div class="col-md-5">
-                                                <textarea class="form-control" name="keterangan"></textarea>
+                                                <textarea class="form-control" name="nama_barang"></textarea>
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label class="control-label col-md-3">Spesifikasi</label>
                                             <div class="col-md-5">
-                                                <textarea class="form-control" name="spesifikasi"></textarea>
+                                                <textarea class="form-control" name="spesifikasi_barang"></textarea>
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
@@ -148,7 +148,7 @@
                                         <div class="row">
                                             <label class="control-label col-md-3"> Biaya Aktiva Satuan</label>
                                             <div class="col-md-5">
-                                                <input name="biaya_aktiva" class="form-control text-right" type="text" value="0">
+                                                <input name="harga_barang" class="form-control text-right" type="text" value="0">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
@@ -176,7 +176,7 @@
                                         <div class="row">
                                             <label class="control-label col-md-3">Akun Aktiva</label>
                                             <div class="col-md-5">
-                                                <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun">
+                                                <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun_1">
                                                     <option value="0" selected>-- Pilih Akun --</option>
                                                     <?php                                
                                                         foreach ($get_kode_akun as $row) {  
@@ -190,7 +190,7 @@
                                         <div class="row">
                                             <label class="control-label col-md-3">Akun Penyusutan</label>
                                             <div class="col-md-5">
-                                                <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun">
+                                                <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun_2">
                                                     <option value="0" selected>-- Pilih Akun --</option>
                                                     <?php                                
                                                         foreach ($get_kode_akun as $row) {  
@@ -204,7 +204,7 @@
                                         <div class="row">
                                             <label class="control-label col-md-3">Biaya Penyusutan</label>
                                             <div class="col-md-5">
-                                                <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun">
+                                                <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun_3">
                                                     <option value="0" selected>-- Pilih Akun --</option>
                                                     <?php                                
                                                         foreach ($get_kode_akun as $row) {  
@@ -218,7 +218,7 @@
                                         <div class="row">
                                             <label class="control-label col-md-3">Akun Pengeluaran 1</label>
                                             <div class="col-md-5">
-                                                <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun">
+                                                <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun_4">
                                                     <option value="0" selected>-- Pilih Akun --</option>
                                                     <?php                                
                                                         foreach ($get_kode_akun as $row) {  
@@ -230,14 +230,14 @@
                                             </div>
                                             <div class="col-md-1"></div>
                                             <div class="col-md-3">
-                                                <input name="qty" class="form-control text-right" type="text" value="0">
+                                                <input name="keluar_1" class="form-control text-right" type="text" value="0">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label class="control-label col-md-3">Akun Pengeluaran 2</label>
                                             <div class="col-md-5">
-                                                <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun">
+                                                <select class="full-width select2" required data-init-plugin="select2" id='kode_akun' name="kode_akun_5">
                                                     <option value="0" selected>-- Pilih Akun --</option>
                                                     <?php                                
                                                         foreach ($get_kode_akun as $row) {  
@@ -249,7 +249,7 @@
                                             </div>
                                             <div class="col-md-1"></div>
                                             <div class="col-md-3">
-                                                <input name="qty" class="form-control text-right" type="text" value="0">
+                                                <input name="keluar_2" class="form-control text-right" type="text" value="0">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>

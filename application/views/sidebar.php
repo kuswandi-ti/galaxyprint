@@ -66,32 +66,6 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;"><span class="title">Buku Besar</span>
-                <span class=" arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="<?=base_url()?>">Jurnal Umum</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;"><span class="title">Kas & Bank</span>
-                <span class=" arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="<?=base_url()?>">Pembayaran</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
-                    </li>
-                    <li class="">
-                        <a href="<?=base_url()?>">Penerimaan</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
-                    </li>
-                </ul>
-            </li>
-            <li>
                 <a href="javascript:;"><span class="title">Pembelian</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
@@ -139,12 +113,11 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('Produksi/Bill_Of_Material')?>">Bill of Material Master</a>
+                        <a href="<?=base_url('Produksi/Bill_of_material')?>">Bill of Material Master</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                    <a href="<?=base_url('produksi/permintaan')?>">Permintaan Bahan Baku</a>
-                        <a href="<?=base_url()?>">Permintaan Bahan Baku</a>
+                    <a href="<?=base_url('Produksi/Permintaan')?>">Permintaan Bahan Baku</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -211,12 +184,38 @@
                 </ul>
             </li>
             <li>
+                <a href="javascript:;"><span class="title">Buku Besar</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url('Buku_besar/Jurnal')?>">Jurnal Umum</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Kas & Bank</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="<?=base_url()?>">Pembayaran</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                    <li class="">
+                        <a href="<?=base_url()?>">Penerimaan</a>
+                        <!-- <span class="icon-thumbnail">c</span> -->
+                    </li>
+                </ul>
+            </li>
+            <li>
                 <a href="javascript:;"><span class="title">Laporan</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url()?>">Laporan Keuangan</a>
+                         <a href="<?=base_url('Laporan/Keuangan')?>">Laporan Keuangan</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
