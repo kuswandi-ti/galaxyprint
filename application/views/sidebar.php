@@ -121,7 +121,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Pencatatan Scrap</a>
+                        <a href="<?=base_url('produksi/masuk_scrap')?>">Pencatatan Scrap</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
