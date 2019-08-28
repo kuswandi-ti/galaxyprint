@@ -125,7 +125,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Penyelesaian Scrap</a>
+                        <a href="<?=base_url('produksi/keluar_scrap')?>">Penyelesaian Scrap</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
