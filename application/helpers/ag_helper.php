@@ -6,3 +6,32 @@
 			return date('Y-m-d H:i:s');
 		}
 	}
+
+	if (!function_exists('getValue')){
+		function getValue($field,$table,$filter=array(),$order=NULL)
+		{
+			$CI =& get_instance();
+			$CI->db->select($field);
+			foreach($filter as $key=> $value)
+			{
+				$exp = explode("/",$value);
+				if(isset($exp[1]))
+				{
+					if($exp[0] == "where") $CI->db->where($key, $exp[1]);
+					else if($exp[0] == "like") $CI->db->like($key, $exp[1]);
+					else if($exp[0] == "order") $CI->db->order_by($key, $exp[1]);
+					else if($key == "limit") $CI->db->limit($exp[1], $exp[0]);
+				}
+				
+				if($exp[0] == "group") $CI->db->group_by($key);
+			}
+			
+			if($order) $CI->db->order_by($order);
+			$q = $CI->db->get($table);
+			foreach($q->result_array() as $r)
+			{
+				return $r[$field];
+			}
+			return 0;
+		}
+	}
