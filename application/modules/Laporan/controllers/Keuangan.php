@@ -26,7 +26,7 @@ class Keuangan extends MX_Controller {
             $data['kode_akun'] = $this->db->get('acc_master_akun')->result();
             $data['ci'] = $this;
 
-            $this->load->view('laporan/keuangan/buku_besar', $data);
+            $this->load->view('keuangan/buku_besar', $data);
         }
     }
     function _render_page($view, $data=null, $render=false)
