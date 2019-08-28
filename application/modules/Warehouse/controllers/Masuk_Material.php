@@ -82,22 +82,24 @@ class Masuk_Material extends MX_Controller {
         $this->db->insert($this->table_header, $data);
 
         $hdr_id = $this->db->insert_id();
-        $kode_barang_detail = $_POST['kode_barang_detail'];
-        for ($i=0; $i < sizeof($kode_barang_detail); $i++) { 
-            $data2 = array(
-                'id_header'             => $hdr_id,
-                'kode_barang'           => $_POST['kode_barang_detail'][$i], 
-                'nama_barang'           => $_POST['nama_barang_detail'][$i], 
-                'spesifikasi_barang'    => $_POST['spesifikasi_barang_detail'][$i], 
-                'hs_barang'             => $_POST['hs_barang_detail'][$i], 
-                'satuan_besar'          => $_POST['satuan_besar_detail'][$i],
-                'harga_besar'           => $_POST['harga_besar_detail'][$i],
-                'qty_besar'             => $_POST['qty_besar_detail'][$i],
-                'currency'              => $_POST['currency_detail'][$i],
-                'gudang'                => $_POST['id_gudang'],
-                'id_po_detail'          => $_POST['id_po_detail_detail'][$i],
-            );
-            $this->db->insert($this->table_detail, $data2);
+        if (isset($_POST['kode_barang_detail'])) {
+            $kode_barang_detail = $_POST['kode_barang_detail'];
+            for ($i=0; $i < sizeof($kode_barang_detail); $i++) { 
+                $data2 = array(
+                    'id_header'             => $hdr_id,
+                    'kode_barang'           => $_POST['kode_barang_detail'][$i], 
+                    'nama_barang'           => $_POST['nama_barang_detail'][$i], 
+                    'spesifikasi_barang'    => $_POST['spesifikasi_barang_detail'][$i], 
+                    'hs_barang'             => $_POST['hs_barang_detail'][$i], 
+                    'satuan_besar'          => $_POST['satuan_besar_detail'][$i],
+                    'harga_besar'           => $_POST['harga_besar_detail'][$i],
+                    'qty_besar'             => $_POST['qty_besar_detail'][$i],
+                    'currency'              => $_POST['currency_detail'][$i],
+                    'gudang'                => $_POST['id_gudang'],
+                    'id_po_detail'          => $_POST['id_po_detail_detail'][$i],
+                );
+                $this->db->insert($this->table_detail, $data2);
+            }
         }
         echo json_encode(array("status" => TRUE));
     }

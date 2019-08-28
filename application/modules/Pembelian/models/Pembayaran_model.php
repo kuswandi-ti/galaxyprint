@@ -1,38 +1,42 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Pembayaran_model extends CI_Model {
+class Pembayaran_Model extends CI_Model {
  
-    var $table = 'acc_pembayaran_header';
-    var $column_order = array('tgl_transaksi', null);
-    var $column_search = array('tgl_transaksi');
+    var $table_header           = 'acc_pembayaran_header';
+    var $table_detail           = 'acc_pembayaran_detail';
+
+    var $query_header           = 'qacc_pembayaran_header';
+
+    var $table_hutang           = 'acc_hutang';
+    var $table_supplier         = 'master_supplier';
+    var $table_akun             = 'acc_master_akun';    
+    var $table_currency         = 'master_currency';
+
+    var $column_order = array('tgl_transaksi','supplier_id','supplier_name','kode_akun','nama_akun',
+                              'kode_akun_terbayar','nama_akun_terbayar','total_pembayaran',
+                              'currency','no_cek','tgl_cek','keterangan',null);
+    var $column_search = array('tgl_transaksi','supplier_id','supplier_name','kode_akun','nama_akun',
+                               'kode_akun_terbayar','nama_akun_terbayar','total_pembayaran',
+                               'currency','no_cek','tgl_cek','keterangan');
     var $order = array('id' => 'desc'); // default order 
  
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->load->database();
     }
  
-    private function _get_datatables_query()
-    {
-         
-        $this->db->from($this->table);
+    private function _get_datatables_query() {         
+        $this->db->from($this->query_header);
  
         $i = 0;
      
-        foreach ($this->column_search as $item) // loop column 
-        {
-            if($_POST['search']['value']) // if datatable send POST for search
-            {
-                 
-                if($i===0) // first loop
-                {
+        foreach ($this->column_search as $item) { // loop column 
+            if ($_POST['search']['value']) { // if datatable send POST for search
+                if ($i===0) { // first loop
                     $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
                     $this->db->like($item, $_POST['search']['value']);
-                }
-                else
-                {
+                } else {
                     $this->db->or_like($item, $_POST['search']['value']);
                 }
  
@@ -42,19 +46,15 @@ class Pembayaran_model extends CI_Model {
             $i++;
         }
          
-        if(isset($_POST['order'])) // here order processing
-        {
+        if (isset($_POST['order'])) { // here order processing
             $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
-        } 
-        else if(isset($this->order))
-        {
+        } else if(isset($this->order)) {
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
         }
     }
  
-    function get_datatables()
-    {
+    function get_datatables() {
         $this->_get_datatables_query();
         if($_POST['length'] != -1)
         $this->db->limit($_POST['length'], $_POST['start']);
@@ -62,77 +62,77 @@ class Pembayaran_model extends CI_Model {
         return $query->result();
     }
  
-    function count_filtered()
-    {
+    function count_filtered() {
         $this->_get_datatables_query();
         $query = $this->db->get();
         return $query->num_rows();
     }
  
-    public function count_all()
-    {
-        $this->db->from($this->table);
+    public function count_all() {
+        $this->db->from($this->table_header);
         return $this->db->count_all_results();
     }
  
-    public function get_by_id($id)
-    {
-        $this->db->from($this->table);
+    public function get_by_id($id) {
+        $this->db->from($this->query_header);
         $this->db->where('id',$id);
         $query = $this->db->get();
  
         return $query->row();
     }
  
-    public function save($data)
-    {
-        $this->db->insert($this->table, $data);
+    public function save($data) {
+        $this->db->insert($this->table_header, $data);
         return $this->db->insert_id();
     }
  
-    public function update($where, $data)
-    {
-        $this->db->update($this->table, $data, $where);
+    public function update($where, $data) {
+        $this->db->update($this->table_header, $data, $where);
         return $this->db->affected_rows();
     }
  
-    public function delete_by_id($id)
-    {
+    public function delete_by_id($id) {
+        // Header
         $this->db->where('id', $id);
-        $this->db->delete($this->table);
+        $this->db->delete($this->table_header);
+
+        // Detail
+        $this->db->where('id_header', $id);
+        $this->db->delete($this->table_detail);
     }
-    
-     /* Combo (select2) */
-    function get_supplier()
-    {
+
+    public function delete_detail($id) {
+        // Detail
+        $this->db->where('id_header', $id);
+        $this->db->delete($this->table_detail);
+    }
+
+    function show_detail($id_header) {
+		return $this->db->query("SELECT * FROM ".$this->table_detail." WHERE id_header = '".$id_header."' ORDER BY id");
+    }
+
+    /* Combo (select2) */
+    function get_inv() {
         $this->db->select('*');
-        $query = $this->db->get('master_supplier');
+        $query = $this->db->get($this->table_hutang);
         return $query->result();
     }
 
-    function get_kode_akun()
-    {
+    function get_supplier() {
         $this->db->select('*');
-        $query = $this->db->where('level_3', '1.1.1')->get('acc_master_akun');
+        $query = $this->db->get($this->table_supplier);
         return $query->result();
     }
 
-    function get_kode_akun_terbayar()
-    {
-       $this->db->select('*');
-        $query = $this->db
-        ->where('level_3', '2.1.1')
-        ->or_where('level_3', '2.1.2')
-        ->or_where('level_3', '2.1.3')
-        ->get('acc_master_akun');
-        return $query->result();
-    }
-    
-    function get_currency()
-    {
+    function get_akun() {
         $this->db->select('*');
-        $query = $this->db->get('master_currency');
+        $query = $this->db->get($this->table_akun);
         return $query->result();
     }
- 
+
+    function get_currency() {
+        $this->db->select('*');
+        $query = $this->db->get($this->table_currency);
+        return $query->result();
+    }
 }
