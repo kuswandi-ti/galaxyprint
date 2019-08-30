@@ -27,6 +27,14 @@ class Keuangan extends MX_Controller {
             $data['ci'] = $this;
 
             $this->load->view('keuangan/buku_besar', $data);
+        }elseif($id == 'n'){
+            $data['ci'] = $this;
+
+            $this->load->view('keuangan/neraca', $data);
+        }elseif($id == 'l'){
+            $data['ci'] = $this;
+
+            $this->load->view('keuangan/laba', $data);
         }
     }
     function _render_page($view, $data=null, $render=false)
