@@ -1,16 +1,16 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Acc_Bank_Pembayaran extends MX_Controller {
+class Acc_Bank_Penerimaan extends MX_Controller {
 
     public $data;
 
     var $module                 = 'kas_bank';
-    var $title                  = 'Daftar Pembayaran (Kas & Bank)';
-    var $file_name              = 'acc_bank_pembayaran';
-    var $table_header           = 'acc_bank_pembayaran_header';
-    var $table_detail           = 'acc_bank_pembayaran_detail';
+    var $title                  = 'Daftar Penerimaan (Kas & Bank)';
+    var $file_name              = 'acc_bank_penerimaan';
+    var $table_header           = 'acc_bank_penerimaan_header';
+    var $table_detail           = 'acc_bank_penerimaan_detail';
     var $table_akun             = 'acc_master_akun';
-    var $query_detail           = "qacc_bank_pembayaran_detail";
+    var $query_detail           = "qacc_bank_penerimaan_detail";
 
     function __construct() {
         parent::__construct();
@@ -33,9 +33,9 @@ class Acc_Bank_Pembayaran extends MX_Controller {
         foreach ($list as $r) {
             $row = array();
             $row[] = $r->id;
-            $row[] = $r->tgl_pembayaran;
-            $row[] = $r->total_pembayaran;
-            $row[] = $r->penerima;
+            $row[] = $r->tgl_penerimaan;
+            $row[] = $r->total_penerimaan;
+            $row[] = $r->pengirim;
             $row[] = $r->keterangan;
  
             //add html for action
@@ -61,12 +61,10 @@ class Acc_Bank_Pembayaran extends MX_Controller {
 
     public function ajax_add() {
         $data = array(
-            'tgl_pembayaran'        => $this->input->post('tgl_pembayaran'),
+            'tgl_penerimaan'        => $this->input->post('tgl_penerimaan'),
             'kode_akun'             => $this->input->post('kode_akun_header'),
-            'penerima'              => $this->input->post('penerima'),
-            'no_cek'                => $this->input->post('no_cek'),
-            'tgl_cek'               => $this->input->post('tgl_cek'),
-            'total_pembayaran'      => $this->input->post('total_pembayaran'),
+            'pengirim'              => $this->input->post('pengirim'),
+            'total_penerimaan'      => $this->input->post('total_penerimaan'),
             'keterangan'            => $this->input->post('keterangan'),
             'created_at'            => dateNow(),
         );
@@ -91,12 +89,10 @@ class Acc_Bank_Pembayaran extends MX_Controller {
     public function ajax_update() {
         $id_header = $this->input->post('id_hidden');
         $data = array(
-            'tgl_pembayaran'        => $this->input->post('tgl_pembayaran'),
+            'tgl_penerimaan'        => $this->input->post('tgl_penerimaan'),
             'kode_akun'             => $this->input->post('kode_akun_header'),
-            'penerima'              => $this->input->post('penerima'),
-            'no_cek'                => $this->input->post('no_cek'),
-            'tgl_cek'               => $this->input->post('tgl_cek'),
-            'total_pembayaran'      => $this->input->post('total_pembayaran'),
+            'pengirim'              => $this->input->post('pengirim'),
+            'total_penerimaan'      => $this->input->post('total_penerimaan'),
             'keterangan'            => $this->input->post('keterangan'),
         );
         $this->main->update(array('id' => $id_header), $data);

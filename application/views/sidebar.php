@@ -204,7 +204,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Penerimaan</a>
+                        <a href="<?=base_url('kas_bank/acc_bank_penerimaan')?>">Penerimaan</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
