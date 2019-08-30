@@ -1,7 +1,7 @@
 <div class="col-lg-12 table-responsive"><div class="col-sm-6">
 					<table>
 					  <tbody><tr>
-						<td><b>PT. ELTRON NUSA TEKNOLOGI</b></td>
+						<td><b>PT. RIZKI MAJU ANGKASA</b></td>
 						<td style="text-align:right;">&nbsp;</td>
 					  </tr>
 					  <tr>
