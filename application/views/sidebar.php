@@ -200,7 +200,7 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url()?>">Pembayaran</a>
+                        <a href="<?=base_url('kas_bank/acc_bank_pembayaran')?>">Pembayaran</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
