@@ -133,7 +133,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Hasil Produksi</a>
+                        <a href="<?=base_url('produksi/hasil_produksi')?>">Hasil Produksi</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
