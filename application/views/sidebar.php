@@ -56,7 +56,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Master Akun</a>
+                        <a href="<?=base_url('Master/Akun')?>">Master Akun</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -200,7 +200,7 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url('kas_bank/acc_bank_pembayaran')?>">Pembayaran</a>
+                        <a href="<?=base_url('Kas_bank/Acc_Bank_Pembayaran')?>">Pembayaran</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
