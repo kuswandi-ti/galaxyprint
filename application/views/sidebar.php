@@ -98,7 +98,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Stok Opname</a>
+                        <a href="<?=base_url('Warehouse/sto_bahan_baku')?>">Stok Opname</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
@@ -129,7 +129,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">SO Scrap</a>
+                        <a href="<?=base_url('produksi/sto_scrap')?>">SO Scrap</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -219,7 +219,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url()?>">Laporan IT Inventory</a>
+                        <a href="<?=base_url('laporan/lap_it_inventory')?>">Laporan IT Inventory</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
