@@ -33,11 +33,11 @@
                                         and kode_akun = '$r->kode_akun'
                                         UNION
                                         SELECT tgl_pembayaran tgl_transaksi,  'Pengeluaran Kas & Bank' jenis_trx,  id, penerima keterangan, 0 debet, total_pembayaran kredit, 0-total_pembayaran balance
-                                        FROM  acc_bank_pembayaran
+                                        FROM  acc_bank_pembayaran_header
                                         where kode_akun = '$r->kode_akun'
                                         UNION
                                         SELECT tgl_penerimaan tgl_transaksi,  'Penerimaan Kas & Bank' jenis_trx,  id, pengirim keterangan, total_penerimaan debet, 0 kredit, 0+total_penerimaan balance
-                                        FROM  acc_bank_penerimaan
+                                        FROM  acc_bank_penerimaan_header
                                         where kode_akun = '$r->kode_akun'
                                         UNION
                                         SELECT tgl_transaksi,  'Pembayaran Pembelian' jenis_trx,  id, keterangan, 0 debet, total_pembayaran kredit, 0-total_pembayaran balance
@@ -47,6 +47,20 @@
                                         SELECT tgl_penerimaan tgl_transaksi,  'Penerimaan Penjualan' jenis_trx,  id, keterangan, total_penerimaan debet, 0 kredit, 0+total_penerimaan balance
                                         FROM  acc_penerimaan_header
                                         where kode_akun_debet = '$r->kode_akun'
+                                        UNION
+                                        SELECT tgl_penerimaan tgl_transaksi,  'Penerimaan Penjualan' jenis_trx,  id, keterangan, 0 debet, total_penerimaan kredit, 0-total_penerimaan balance
+                                        FROM  acc_penerimaan_header
+                                        where kode_akun_kredit = '$r->kode_akun'
+                                        UNION
+                                        SELECT tgl_paid tgl_transaksi,  'Faktur Penjualan' jenis_trx,  id, no_invoice, total_invoice*kurs debet, 0 kredit, 0+total_invoice*kurs balance
+                                        FROM  acc_piutang_header
+                                        where kode_akun = '$r->kode_akun'
+                                        UNION
+                                        SELECT tgl_masuk tgl_transaksi,  'Hasil Produksi' jenis_trx,   h.id, h.kode_produksi, sum(qty*(harga_barang*kurs)) debet, 0 kredit, 0+sum(qty*(harga_barang*kurs)) balance
+                                        FROM  trans_masuk_barang_header h, trans_masuk_barang_detail d
+                                        where h.id = d.id_header
+                                        AND '1.1.3.1' = '$r->kode_akun'
+                                        group by tgl_masuk, h.id,h.kode_produksi
                                     ");
                             ?>
                             

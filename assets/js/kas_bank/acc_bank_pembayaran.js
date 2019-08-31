@@ -14,7 +14,7 @@ $(document).ready(function() {
 
     $("body").on("change", "#nama_akun", function() {
         $.ajax({
-            url: base_url + "kas_bank/acc_bank_pembayaran/get_info_akun",
+            url: base_url + "Kas_Bank/Acc_Bank_Pembayaran/get_info_akun",
             data: {
                 'kode_akun': $('#nama_akun').val()
             },
@@ -43,7 +43,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": base_url+'kas_bank/acc_bank_pembayaran/ajax_list',
+            "url": base_url+'Kas_Bank/Acc_Bank_Pembayaran/ajax_list',
             "type": "POST"
         },
         //Set column definition initialisation properties.
@@ -95,7 +95,7 @@ function add() {
 function show_detail() {
     var id_header = $("#id_hidden").val();
     $.ajax({
-        url : base_url+'kas_bank/acc_bank_pembayaran/show_detail/?id_header='+id_header,
+        url : base_url+'Kas_Bank/Acc_Bank_Pembayaran/show_detail/?id_header='+id_header,
         async : false,
         success : function(data) {
             $('#show_detail').html(data);
@@ -119,7 +119,7 @@ function edit(id) {
  
     //Ajax Load data from ajax
     $.ajax({
-        url : base_url+"kas_bank/acc_bank_pembayaran/ajax_edit/" + id,
+        url : base_url+"Kas_Bank/Acc_Bank_Pembayaran/ajax_edit/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data) { 
@@ -157,9 +157,9 @@ function save() {
     var url;
  
     if(save_method == 'add') {
-        url = base_url+"kas_bank/acc_bank_pembayaran/ajax_add";
+        url = base_url+"Kas_Bank/Acc_Bank_Pembayaran/ajax_add";
     } else {
-        url = base_url+"kas_bank/acc_bank_pembayaran/ajax_update";
+        url = base_url+"Kas_Bank/Acc_Bank_Pembayaran/ajax_update";
     }
  
     // ajax adding data to database
@@ -192,7 +192,7 @@ function hapus(id) {
     if (confirm('Are you sure delete this data?')) {
         // ajax delete data to database
         $.ajax({
-            url : base_url+"kas_bank/acc_bank_pembayaran/ajax_delete/"+id,
+            url : base_url+"Kas_Bank/Acc_Bank_Pembayaran/ajax_delete/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data) {

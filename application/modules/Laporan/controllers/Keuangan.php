@@ -23,7 +23,7 @@ class Keuangan extends MX_Controller {
     function get_result(){
         $id = $this->input->post('id');
         if($id == 'b'){
-            $data['kode_akun'] = $this->db->get('acc_master_akun')->result();
+            $data['kode_akun'] = $this->db->order_by('kode_akun')->get('acc_master_akun')->result();
             $data['ci'] = $this;
 
             $this->load->view('keuangan/buku_besar', $data);

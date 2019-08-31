@@ -15,7 +15,7 @@ class Hasil_Produksi extends MX_Controller {
     function __construct() {
         parent::__construct();
         $this->load->library('session');
-        $this->load->model($this->file_name.'_model', 'main');
+        $this->load->model('Hasil_Produksi_model', 'main');
     }
 
     public function index() {
