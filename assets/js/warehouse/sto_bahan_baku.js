@@ -13,7 +13,7 @@ $(document).ready(function() {
 
     // $("body").on("change", "#nama_barang", function() {
     //     $.ajax({
-    //         url: base_url + "warehouse/masuk_material/get_info_material",
+    //         url: base_url + "Warehouse/masuk_material/get_info_material",
     //         data: {
     //             'kode_barang': $('#nama_barang').val()
     //         },
@@ -60,7 +60,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": base_url+'warehouse/sto_bahan_baku/ajax_list',
+            "url": base_url+'Warehouse/Sto_Bahan_Baku/ajax_list',
             "type": "POST"
         },
         //Set column definition initialisation properties.
@@ -88,7 +88,7 @@ $(document).ready(function() {
 //     // Selanjutnya isi tabel dengan data yang baru
 //     var no_po = $ ('#no_po').val();
 //     $.ajax({
-//         url : base_url + "warehouse/masuk_material/get_info_from_po",
+//         url : base_url + "Warehouse/masuk_material/get_info_from_po",
 //         method : "POST",
 //         data : { no_po: no_po },
 //         async : true,
@@ -158,7 +158,7 @@ function add() {
 // function show_detail() {
 //     var id_header = $("#id_hidden").val();
 //     $.ajax({
-//         url : base_url+'warehouse/masuk_material/show_detail/?id_header='+id_header,
+//         url : base_url+'Warehouse/masuk_material/show_detail/?id_header='+id_header,
 //         async : false,
 //         success : function(data) {
 //             $('#show_detail').html(data);
@@ -174,7 +174,7 @@ function add() {
  
 //     //Ajax Load data from ajax
 //     $.ajax({
-//         url : base_url+"warehouse/masuk_material/ajax_edit/" + id,
+//         url : base_url+"Warehouse/masuk_material/ajax_edit/" + id,
 //         type: "GET",
 //         dataType: "JSON",
 //         success: function(data) { 
@@ -220,9 +220,9 @@ function add() {
 //     var url;
  
 //     if(save_method == 'add') {
-//         url = base_url+"warehouse/masuk_material/ajax_add";
+//         url = base_url+"Warehouse/masuk_material/ajax_add";
 //     } else {
-//         url = base_url+"warehouse/masuk_material/ajax_update";
+//         url = base_url+"Warehouse/masuk_material/ajax_update";
 //     }
  
 //     // ajax adding data to database
@@ -255,7 +255,7 @@ function add() {
 //     if (confirm('Are you sure delete this data?')) {
 //         // ajax delete data to database
 //         $.ajax({
-//             url : base_url+"warehouse/masuk_material/ajax_delete/"+id,
+//             url : base_url+"Warehouse/masuk_material/ajax_delete/"+id,
 //             type: "POST",
 //             dataType: "JSON",
 //             success: function(data) {

@@ -98,7 +98,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('Warehouse/sto_bahan_baku')?>">Stok Opname</a>
+                        <a href="<?=base_url('Warehouse/Sto_Bahan_Baku')?>">Stok Opname</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
@@ -129,7 +129,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('produksi/sto_scrap')?>">SO Scrap</a>
+                        <a href="<?=base_url('produksi/Sto_Scrap')?>">SO Scrap</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
@@ -154,10 +154,9 @@
                     <li class="">
                         <a href="<?=base_url('Penjualan/Penerimaan')?>">Penerimaan Penjualan</a>
                     </li>
-                    <li class="">
+                   <!--  <li class="">
                         <a href="<?=base_url()?>">Stock Opname</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
-                    </li>
+                    </li> -->
                 </ul>
             </li>
             <li>
@@ -177,10 +176,9 @@
                         <a href="<?=base_url('Assets/Pengeluaran')?>">Pengeluaran</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
-                    <li class="">
+                    <!-- <li class="">
                         <a href="<?=base_url()?>">Stock Opname</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
-                    </li>
+                    </li> -->
                 </ul>
             </li>
             <li>
@@ -204,7 +202,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('kas_bank/acc_bank_penerimaan')?>">Penerimaan</a>
+                        <a href="<?=base_url('Kas_bank/Acc_Bank_Penerimaan')?>">Penerimaan</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
@@ -219,26 +217,24 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('laporan/lap_it_inventory')?>">Laporan IT Inventory</a>
+                        <a href="<?=base_url('Laporan/Lap_It_Inventory')?>">Laporan IT Inventory</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
             </li>
-            <li>
+            <!-- <li>
                 <a href="javascript:;"><span class="title">Utility</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
                         <a href="<?=base_url()?>">User Groups</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url()?>">Users</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
-            </li>
+            </li> -->
         </ul>
         <div class="clearfix"></div>
     </div>

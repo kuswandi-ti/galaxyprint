@@ -29,7 +29,7 @@ $(document).on('click', '.laporan_1', function (e) {
         $('#periode_akhir').focus();
         return false;
     }
-    var url = base_url+"laporan/lap_it_inventory/laporan_1?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
+    var url = base_url+"Laporan/Lap_IT_Inventory/laporan_1?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
     var height=600;
     var width=1020;
     var leftPosition, topPosition;
@@ -59,7 +59,7 @@ $(document).on('click', '.laporan_2', function (e) {
         $('#periode_akhir').focus();
         return false;
     }
-    var url = base_url+"laporan/lap_it_inventory/laporan_2?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
+    var url = base_url+"Laporan/Lap_IT_Inventory/laporan_2?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
     var height=600;
     var width=1020;
     var leftPosition, topPosition;
@@ -89,7 +89,7 @@ $(document).on('click', '.laporan_3', function (e) {
         $('#periode_akhir').focus();
         return false;
     }
-    var url = base_url+"laporan/lap_it_inventory/laporan_3?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
+    var url = base_url+"Laporan/Lap_IT_Inventory/laporan_3?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
     var height=600;
     var width=1020;
     var leftPosition, topPosition;
@@ -119,7 +119,7 @@ $(document).on('click', '.laporan_4', function (e) {
         $('#periode_akhir').focus();
         return false;
     }
-    var url = base_url+"laporan/lap_it_inventory/laporan_4?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
+    var url = base_url+"Laporan/Lap_IT_Inventory/laporan_4?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
     var height=600;
     var width=1020;
     var leftPosition, topPosition;
@@ -149,7 +149,7 @@ $(document).on('click', '.laporan_5', function (e) {
         $('#periode_akhir').focus();
         return false;
     }
-    var url = base_url+"laporan/lap_it_inventory/laporan_5?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
+    var url = base_url+"Laporan/Lap_IT_Inventory/laporan_5?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
     var height=600;
     var width=1020;
     var leftPosition, topPosition;
@@ -179,7 +179,7 @@ $(document).on('click', '.laporan_6', function (e) {
         $('#periode_akhir').focus();
         return false;
     }
-    var url = base_url+"laporan/lap_it_inventory/laporan_6?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
+    var url = base_url+"Laporan/Lap_IT_Inventory/laporan_6?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
     var height=600;
     var width=1020;
     var leftPosition, topPosition;
@@ -209,7 +209,7 @@ $(document).on('click', '.laporan_7', function (e) {
         $('#periode_akhir').focus();
         return false;
     }
-    var url = base_url+"laporan/lap_it_inventory/laporan_7?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
+    var url = base_url+"Laporan/Lap_IT_Inventory/laporan_7?dokumen="+dokumen+"&periode_awal="+periode_awal+"&periode_akhir="+periode_akhir;
     var height=600;
     var width=1020;
     var leftPosition, topPosition;
