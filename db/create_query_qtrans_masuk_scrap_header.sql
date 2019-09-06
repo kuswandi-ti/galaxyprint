@@ -27,7 +27,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 	SUM(b.total) AS total_scrap
 FROM
 	trans_masuk_scrap_header a
-	INNER JOIN trans_masuk_scrap_detail b ON a.id = b.id_header
+	INNER JOIN qtrans_masuk_scrap_detail b ON a.id = b.id_header
 GROUP BY
 	a.id,
 	a.tgl_masuk,

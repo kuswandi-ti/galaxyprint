@@ -222,19 +222,16 @@
                     </li>
                 </ul>
             </li>
-            <!-- <li>
+            <li>
                 <a href="javascript:;"><span class="title">Utility</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url()?>">User Groups</a>
-                    </li>
-                    <li class="">
-                        <a href="<?=base_url()?>">Users</a>
+                        <a href="<?=base_url('Auth/index')?>">User</a>
                     </li>
                 </ul>
-            </li> -->
+            </li>
         </ul>
         <div class="clearfix"></div>
     </div>

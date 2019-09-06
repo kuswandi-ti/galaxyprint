@@ -7,6 +7,16 @@
 		}
 	}
 
+	function permission(){
+		$CI =& get_instance();
+		if (!$CI->ion_auth->logged_in())
+		{
+			redirect('auth/login', 'refresh');
+		}else{
+			return true;
+		}
+	}
+
 	if (!function_exists('getValue')){
 		function getValue($field,$table,$filter=array(),$order=NULL)
 		{

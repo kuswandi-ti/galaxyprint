@@ -18,7 +18,7 @@
             <div class="d-flex align-items-center">
 
                 <div class="pull-left p-r-10 fs-14 font-heading d-lg-block d-none">
-                    <span class="semi-bold">Administrator</span>
+                    <span class="semi-bold"><?=$this->session->userdata('identity')?></span>
                 </div>
                 <div class="dropdown pull-right d-lg-block d-none">
                     <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,10 +27,10 @@
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
-                        <a href="#" class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>
+                        <!-- <a href="#" class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>
                         <a href="#" class="dropdown-item"><i class="pg-outdent"></i> Feedback</a>
-                        <a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>
-                        <a href="#" class="clearfix bg-master-lighter dropdown-item">
+                        <a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a> -->
+                        <a href="<?=base_url('auth/logout')?>" class="clearfix bg-master-lighter dropdown-item">
                             <span class="pull-left">Logout</span>
                             <span class="pull-right"><i class="pg-power"></i></span>
                         </a>

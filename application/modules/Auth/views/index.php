@@ -1,39 +1,47 @@
-<div class="page" data-animsition-in="fade-in" data-animsition-out="fade-out">
-    <div class="page-content">
-      <div class="page-brand-info">
-        <div class="brand">
-          <img class="brand-img" src="images/header/logo.png" alt="...">
-          <!-- <h2 class="brand-text font-size-40">PT GRAHA UTAMA TIMBER  ADMIN PAGE</h2> -->
+
+<div class="page-content-wrapper ">
+    <div class="content ">
+        <div class=" container-fluid   container-fixed-lg bg-white">
+            <div class="card card-transparent">
+                <div class="card-header ">
+                    <div class="card-title"><h1><?php echo lang('index_heading');?></h1></div>
+                    <div class="clearfix"></div>
+                    <div class="card-body">
+                        <div class="col-xs-12">
+
+							<p><?php echo lang('index_subheading');?></p>
+
+							<div id="infoMessage"><?php echo $message;?></div>
+							<a href="<?=base_url('Auth/Create_user')?>" class="btn btn-primary"><i class="fa fa-plus"></i> Create User</a>
+							<a href="<?=base_url('Auth/Create_group')?>" class="btn btn-success"><i class="fa fa-plus"></i> Create Group</a>
+							<table cellpadding=0 cellspacing=10 class="table table-condensed table-bordered">
+								<tr>
+									<th><?php echo lang('index_fname_th');?></th>
+									<th><?php echo lang('index_lname_th');?></th>
+									<th><?php echo lang('index_email_th');?></th>
+									<th><?php echo lang('index_groups_th');?></th>
+									<th><?php echo lang('index_status_th');?></th>
+									<th><?php echo lang('index_action_th');?></th>
+								</tr>
+								<?php foreach ($users as $user):?>
+									<tr>
+							            <td><?php echo htmlspecialchars($user->first_name,ENT_QUOTES,'UTF-8');?></td>
+							            <td><?php echo htmlspecialchars($user->last_name,ENT_QUOTES,'UTF-8');?></td>
+							            <td><?php echo htmlspecialchars($user->email,ENT_QUOTES,'UTF-8');?></td>
+										<td>
+											<?php foreach ($user->groups as $group):?>
+												<?php echo anchor("auth/edit_group/".$group->id, htmlspecialchars($group->name,ENT_QUOTES,'UTF-8')) ;?><br />
+							                <?php endforeach?>
+										</td>
+										<td><?php echo ($user->active) ? anchor("auth/deactivate/".$user->id, lang('index_active_link')) : anchor("auth/activate/". $user->id, lang('index_inactive_link'));?></td>
+										<td><?php echo anchor("auth/edit_user/".$user->id, 'Edit') ;?></td>
+									</tr>
+								<?php endforeach;?>
+							</table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p class="font-size-20"></p>
-      </div>
-
-      <div class="page-login-main">
-        <div class="brand hidden-md-up">
-          <img class="brand-img" src="../assets/images/logo-colored%402x.png" alt="...">
-          <h3 class="brand-text font-size-40">GUT</h3>
-        </div>
-        <h3 class="font-size-24">Sign In</h3>
-
-        <form method="post" action="<?=base_url('Auth/do_login')?>" autocomplete="off">
-          <div class="form-group form-material floating" data-plugin="formMaterial">
-            <input type="text" class="form-control empty" id="inputUsername" name="username">
-            <label class="floating-label" for="inputUsername">Username</label>
-          </div>
-          <div class="form-group form-material floating" data-plugin="formMaterial">
-            <input type="password" class="form-control empty" id="inputPassword" name="password">
-            <label class="floating-label" for="inputPassword">Password</label>
-          </div>
-          
-          <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-        </form>
-
-        <footer class="page-copyright">
-          <p>© PT. GRAHA UTAMA TIMBER 2018. All RIGHT RESERVED.</p>
-        </footer>
-      </div>
-
     </div>
-  </div>
 </div>
-  <!-- End Page
