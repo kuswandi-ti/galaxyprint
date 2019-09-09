@@ -10,13 +10,13 @@ class Akun_Default extends MX_Controller {
     function __construct()
     {
         parent::__construct();
+        permission();
         $this->load->library('session');
         $this->load->model($this->file_name.'_model', 'main');
     }
 
     public function index()
     {
-        // permission();
         $data = array(
             'get_akun' => $this->main->get_akun(),
             'get_akun_default' => $this->main->get_data()

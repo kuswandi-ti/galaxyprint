@@ -11,12 +11,12 @@ class Sto_Bahan_Baku extends MX_Controller {
 
     function __construct() {
         parent::__construct();
+        permission();
         $this->load->library('session');
         $this->load->model('Sto_Bahan_Baku_model', 'main');
     }
 
     public function index() {
-        // permission();
         $data = array();
         $this->_render_page($this->file_name.'/index', $data);
     }

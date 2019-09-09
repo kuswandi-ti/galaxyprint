@@ -2,9 +2,9 @@
 
 class Po extends MX_Controller {
     public $data;
-    var $module = 'Pembelian';
+    var $module = 'pembelian';
     var $title = 'Po';
-    var $file_name = 'Po';
+    var $file_name = 'po';
     var $table_name = '';
     function __construct()
     {

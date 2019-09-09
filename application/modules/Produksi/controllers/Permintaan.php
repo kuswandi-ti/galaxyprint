@@ -18,12 +18,12 @@ class Permintaan extends MX_Controller {
 
     function __construct() {
         parent::__construct();
+        permission();
         $this->load->library('session');
         $this->load->model($this->file_name.'_model', 'main');
     }
 
     public function index() {
-        // permission();
         $data = array(
             'get_wo'            => $this->main->get_wo(),
             'get_material'      => $this->main->get_material(),

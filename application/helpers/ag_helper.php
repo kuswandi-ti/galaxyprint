@@ -11,7 +11,7 @@
 		$CI =& get_instance();
 		if (!$CI->ion_auth->logged_in())
 		{
-			redirect('auth/login', 'refresh');
+			redirect('Auth/login', 'refresh');
 		}else{
 			return true;
 		}

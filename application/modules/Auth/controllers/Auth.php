@@ -27,7 +27,7 @@ class Auth extends MX_Controller
 		if (!$this->ion_auth->logged_in())
 		{
 			// redirect them to the login page
-			redirect('auth/login', 'refresh');
+			redirect('Auth/login', 'refresh');
 		}elseif ($this->ion_auth->is_admin())
 		{
 			$this->data['title'] = $this->lang->line('index_heading');
@@ -49,7 +49,7 @@ class Auth extends MX_Controller
 		}
 		else
 		{
-			redirect('dashboard', 'refresh');
+			redirect('Dashboard', 'refresh');
 		}
 	}
 
@@ -82,7 +82,7 @@ class Auth extends MX_Controller
 				// if the login was un-successful
 				// redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+				redirect('Auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -104,7 +104,7 @@ class Auth extends MX_Controller
 				'type' => 'password',
 			];
 
-			$this->_render_page('auth/login', $this->data);
+			$this->_render_page('Auth/login', $this->data);
 		}
 	}
 
@@ -119,7 +119,7 @@ class Auth extends MX_Controller
 		$this->ion_auth->logout();
 
 		// redirect them to the login page
-		redirect('auth/login', 'refresh');
+		redirect('Auth/login', 'refresh');
 	}
 
 	/**
@@ -133,7 +133,7 @@ class Auth extends MX_Controller
 
 		if (!$this->ion_auth->logged_in())
 		{
-			redirect('auth/login', 'refresh');
+			redirect('Auth/login', 'refresh');
 		}
 
 		$user = $this->ion_auth->user()->row();
@@ -260,7 +260,7 @@ class Auth extends MX_Controller
 			{
 				// if there were no errors
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
+				redirect("Auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
 			}
 			else
 			{
@@ -348,7 +348,7 @@ class Auth extends MX_Controller
 					{
 						// if the password was successfully changed
 						$this->session->set_flashdata('message', $this->ion_auth->messages());
-						redirect("auth/login", 'refresh');
+						redirect("Auth/login", 'refresh');
 					}
 					else
 					{
@@ -873,7 +873,7 @@ class Auth extends MX_Controller
         {
             $this->load->library('template');
 
-                if(in_array($view, array('auth/login')))
+                if(in_array($view, array('Auth/login')))
                 {
                     $this->template->set_layout('single'); 
                 }elseif(in_array($view, array('forgot_password')))

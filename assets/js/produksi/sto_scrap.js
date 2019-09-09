@@ -60,7 +60,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": base_url+'produksi/sto_scrap/ajax_list',
+            "url": base_url+'Produksi/Sto_scrap/ajax_list',
             "type": "POST"
         },
         //Set column definition initialisation properties.

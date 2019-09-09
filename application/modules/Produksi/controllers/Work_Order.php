@@ -2,20 +2,20 @@
 
 class Work_Order extends MX_Controller {
     public $data;
-    var $module = 'Produksi';
+    var $module = 'produksi';
     var $title = 'Work Order';
     var $file_name = 'work_order';
     var $table_name = '';
     function __construct()
     {
         parent::__construct();
+        permission();
         $this->load->library('session');
         $this->load->model($this->file_name.'_model', 'main');
     }
 
     public function index()
     {
-        // permission();
         $data = array(
             'get_barang_jadi' => $this->main->get_barang_jadi(),
             'get_customer' => $this->main->get_customer(),

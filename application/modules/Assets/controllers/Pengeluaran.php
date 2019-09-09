@@ -9,13 +9,13 @@ class Pengeluaran extends MX_Controller {
     function __construct()
     {
         parent::__construct();
+        permission();
         $this->load->library('session');
         $this->load->model($this->file_name.'_model', 'main');
     }
 
     public function index()
     {
-        // permission();
         $data = array(
             'get_aktiva' => $this->main->get_aktiva(),
             'get_dokumen' => $this->main->get_dokumen(),

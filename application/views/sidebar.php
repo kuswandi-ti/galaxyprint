@@ -13,7 +13,7 @@
 
         <ul class="menu-items">
             <li class="m-t-30 ">
-                <a href="index.html" class="detailed">
+                <a href="<?=base_url()?>" class="detailed">
                     <span class="title">Dashboard</span>
                 </a>
                 <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
@@ -121,19 +121,19 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('produksi/masuk_scrap')?>">Pencatatan Scrap</a>
+                        <a href="<?=base_url('Produksi/Masuk_Scrap')?>">Pencatatan Scrap</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('produksi/keluar_scrap')?>">Penyelesaian Scrap</a>
+                        <a href="<?=base_url('Produksi/Keluar_Scrap')?>">Penyelesaian Scrap</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('produksi/Sto_Scrap')?>">SO Scrap</a>
+                        <a href="<?=base_url('Produksi/Sto_Scrap')?>">SO Scrap</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('produksi/hasil_produksi')?>">Hasil Produksi</a>
+                        <a href="<?=base_url('Produksi/Hasil_Produksi')?>">Hasil Produksi</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
@@ -198,11 +198,11 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url('Kas_bank/Acc_Bank_Pembayaran')?>">Pembayaran</a>
+                        <a href="<?=base_url('Kas_Bank/Acc_Bank_Pembayaran')?>">Pembayaran</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('Kas_bank/Acc_Bank_Penerimaan')?>">Penerimaan</a>
+                        <a href="<?=base_url('Kas_Bank/Acc_Bank_Penerimaan')?>">Penerimaan</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
@@ -217,7 +217,7 @@
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
-                        <a href="<?=base_url('Laporan/Lap_It_Inventory')?>">Laporan IT Inventory</a>
+                        <a href="<?=base_url('Laporan/Lap_IT_Inventory')?>">Laporan IT Inventory</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
@@ -228,7 +228,7 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url('Auth/index')?>">User</a>
+                        <a href="<?=base_url('Auth')?>">User</a>
                     </li>
                 </ul>
             </li>

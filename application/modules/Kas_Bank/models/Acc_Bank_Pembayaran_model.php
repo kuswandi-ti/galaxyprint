@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Acc_Bank_Pembayaran_Model extends CI_Model {
+class Acc_bank_pembayaran_Model extends CI_Model {
  
     var $table_header           = 'acc_bank_pembayaran_header';
     var $table_detail           = 'acc_bank_pembayaran_detail';

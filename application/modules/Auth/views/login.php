@@ -52,7 +52,7 @@
                 <img src="<?=assets_url()?>img/logo.png" alt="logo" data-src="<?=assets_url()?>img/logo.png" data-src-retina="<?=assets_url()?>img/logo_2x.png" width="78" height="22">
                 <p class="p-t-35">Sign into your account</p>
 
-                <form id="form-login" class="p-t-15" role="form" method="POST" action="<?=base_url()?>auth/login">
+                <form id="form-login" class="p-t-15" role="form" method="POST" action="<?=base_url()?>Auth/login">
 
                     <div class="form-group form-group-default">
                         <label>Login</label>

@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Masuk_Material extends MX_Controller {
+class Masuk_material extends MX_Controller {
 
     public $data;
 
@@ -13,12 +13,12 @@ class Masuk_Material extends MX_Controller {
 
     function __construct() {
         parent::__construct();
+        permission();
         $this->load->library('session');
         $this->load->model($this->file_name.'_model', 'main');
     }
 
     public function index() {
-        // permission();
         $data = array(
             'get_po'            => $this->main->get_po(),
             'get_supplier'      => $this->main->get_supplier(),

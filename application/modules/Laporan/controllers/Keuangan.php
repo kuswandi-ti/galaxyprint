@@ -9,13 +9,13 @@ class Keuangan extends MX_Controller {
     function __construct()
     {
         parent::__construct();
+        permission();
         $this->load->library('session');
         $this->load->model($this->file_name.'_model', 'main');
     }
 
     public function index()
     {
-        // permission();
         $data['title'] = $this->title;
         $this->_render_page($this->file_name.'/index', $data);
     }

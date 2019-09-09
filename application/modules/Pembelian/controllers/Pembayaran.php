@@ -14,12 +14,12 @@ class Pembayaran extends MX_Controller {
 
     function __construct() {
         parent::__construct();
+        permission();
         $this->load->library('session');
         $this->load->model($this->file_name.'_model', 'main');
     }
 
     public function index() {
-        // permission();
         $data = array(
             'get_inv'           => $this->main->get_inv(),
             'get_supplier'      => $this->main->get_supplier(),

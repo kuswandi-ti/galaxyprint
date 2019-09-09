@@ -9,13 +9,13 @@ class Barang_sisa extends MX_Controller {
     function __construct()
     {
         parent::__construct();
+        permission();
         $this->load->library('session');
         $this->load->model($this->file_name.'_model', 'main');
     }
 
     public function index()
     {
-        // permission();
         $data = array(
             'get_kategori_barang' => $this->main->get_kategori_barang(),
             'get_currency' => $this->main->get_currency(),
