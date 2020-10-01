@@ -24,7 +24,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].':8080/gut/';
-$config['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].'/ci-erp/';
+//$config['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].'/ci-erp/';
+$http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '') . '://';
+$newurl = str_replace("index.php","", $_SERVER['SCRIPT_NAME']);
+$config['base_url'] = "$http" . $_SERVER['SERVER_NAME'] . "" . $newurl;
 
 /*
 |--------------------------------------------------------------------------
