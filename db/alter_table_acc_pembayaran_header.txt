@@ -1,1 +1,0 @@
-1. Perubahan field `id` pada tabel `acc_pembayaran_header` menjadi AUTO_INCREMENT

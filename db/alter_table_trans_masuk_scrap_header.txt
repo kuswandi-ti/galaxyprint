@@ -1,2 +1,0 @@
-1. Perubahan field `id` pada tabel `trans_masuk_scrap_header` menjadi AUTO_INCREMENT
-2. Perubahan datatype pada field `tgl_masuk` di tabel `trans_masuk_scrap_header` dari DATETIME menjadi DATE
