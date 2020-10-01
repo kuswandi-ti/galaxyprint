@@ -66,99 +66,109 @@
                 </ul>
             </li>
             <li>
+                <a href="javascript:;"><span class="title">Demo Menu</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="">Deskprint Preview</a>
+                    </li>
+                    <li class="">
+                        <a href="">Work Order Preview</a>
+                    </li>
+                    <li class="">
+                        <a href="">Database Work Order</a>
+                    </li>
+                    <li class="">
+                        <a href="">Kasir Admin</a>
+                    </li>
+                    <li class="">
+                        <a href="">Data Pra Produksi</a>
+                    </li>
+                    <li class="">
+                        <a href="">List Produksi</a>
+                    </li>
+                    <li class="">
+                        <a href="">Status Produksi</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li>
                 <a href="javascript:;"><span class="title">Pembelian</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
                         <a href="<?=base_url('Pembelian/Po')?>">Pesanan Pembelian/PO</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Pembelian/Faktur')?>">Faktur Pembelian</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Pembelian/Pembayaran')?>">Pembayaran Pembelian</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <a href="javascript:;"><span class="title">Warehouse</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
                         <a href="<?=base_url('Warehouse/Masuk_material')?>">Penerimaan Barang</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Warehouse/Keluar_material')?>">Pemakaian Bahan Baku</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Warehouse/Sto_Bahan_Baku')?>">Stok Opname</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <a href="javascript:;"><span class="title">Produksi</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
                         <a href="<?=base_url('Produksi/Work_Order')?>">Work Order</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Produksi/Bill_of_material')?>">Bill of Material Master</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                     <a href="<?=base_url('Produksi/Permintaan')?>">Permintaan Bahan Baku</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Produksi/Masuk_Scrap')?>">Pencatatan Scrap</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Produksi/Keluar_Scrap')?>">Penyelesaian Scrap</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Produksi/Sto_Scrap')?>">SO Scrap</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Produksi/Hasil_Produksi')?>">Hasil Produksi</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <a href="javascript:;"><span class="title">Penjualan</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
                         <a href="<?=base_url('Penjualan/Pengiriman')?>">Pengiriman Barang</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Penjualan/Faktur')?>">Faktur Penjualan</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Penjualan/Penerimaan')?>">Penerimaan Penjualan</a>
                     </li>
-                   <!--  <li class="">
-                        <a href="<?=base_url()?>">Stock Opname</a>
-                    </li> -->
                 </ul>
-            </li>
+            </li> -->
             <li>
                 <a href="javascript:;"><span class="title">Assets</span>
                 <span class=" arrow"></span></a>
