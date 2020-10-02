@@ -66,30 +66,112 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;"><span class="title">Demo Menu</span>
+                <a href="javascript:;"><span class="title">Deskprint</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="">Deskprint Preview</a>
+                        <a href="">Data Penjualan Langsung</a>
                     </li>
                     <li class="">
-                        <a href="">Work Order Preview</a>
+                        <a href="">Data Base Customer</a>
                     </li>
                     <li class="">
-                        <a href="">Database Work Order</a>
+                        <a href="">Pembuatan Faktur Penjualan</a>
                     </li>
                     <li class="">
-                        <a href="">Kasir Admin</a>
+                        <a href="">Data Produksi</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Kasir</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="">Validasi Faktur Penjualan</a>
                     </li>
                     <li class="">
-                        <a href="">Data Pra Produksi</a>
+                        <a href="">List Data Penjualan</a>
                     </li>
                     <li class="">
-                        <a href="">List Produksi</a>
+                        <a href="">Aproval Produksi</a>
                     </li>
                     <li class="">
-                        <a href="">Status Produksi</a>
+                        <a href="">Pemasukan Tunai/Debit</a>
+                    </li>
+                    <li class="">
+                        <a href="">Cetak Faktur Penjualan</a>
+                    </li>
+                    <li class="">
+                        <a href="">Data Produksi</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Management</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="">Database Customer</a>
+                    </li>
+                    <li class="">
+                        <a href="">Database Penjualan</a>
+                    </li>
+                    <li class="">
+                        <a href="">Data Hutang - Piutang</a>
+                    </li>
+                    <li class="">
+                        <a href="">Data Akutansi</a>
+                    </li>
+                    <li class="">
+                        <a href="">Database Pricelist Jual</a>
+                    </li>
+                    <li class="">
+                        <a href="">Database Pricelist Modal Pembuatan Product</a>
+                    </li>
+                    <li class="">
+                        <a href="">Account Pembuatan Product</a>
+                    </li>
+                    <li class="">
+                        <a href="">Database Purchasing</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Operasional</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="">Database Bahan Baku</a>
+                    </li>
+                    <li class="">
+                        <a href="">Account Pembuatan Product</a>
+                    </li>
+                    <li class="">
+                        <a href="">Data Stock Bahan Baku</a>
+                    </li>
+                    <li class="">
+                        <a href="">Data Base Operasional Kantor</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;"><span class="title">Produksi</span>
+                <span class=" arrow"></span></a>
+                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="">Data Produksi</a>
+                    </li>
+                    <li class="">
+                        <a href="">Update Status Produksi Selesai</a>
+                    </li>
+                    <li class="">
+                        <a href="">Mencetak SPK Produksi</a>
                     </li>
                 </ul>
             </li>
