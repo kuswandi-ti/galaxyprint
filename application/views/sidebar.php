@@ -25,43 +25,33 @@
                 <ul class="sub-menu">
                     <li class="">
                         <a href="<?=base_url('Master/Currency')?>">Mata Uang</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
-                    <li class="">
+                    <!-- <li class="">
                         <a href="<?=base_url('Master/Supplier')?>">Supplier</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Master/Customer')?>">Customer</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Master/Subcon')?>">Subcon</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
-                    </li>
+                    </li> -->
                     <li class="">
                         <a href="<?=base_url('Master/Satuan')?>">Satuan</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
-                    <li class="">
+                    <!-- <li class="">
                         <a href="<?=base_url('Master/Bahan_baku')?>">Bahan Baku & Penolong</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                     <a href="<?=base_url('Master/Barang_jadi')?>">Barang Jadi</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Master/Barang_sisa')?>">Barang Sisa</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
-                    </li>
+                    </li> -->
                     <li class="">
                         <a href="<?=base_url('Master/Akun')?>">Master Akun</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Master/Akun_default')?>">Akun Default</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
             </li>
@@ -71,16 +61,16 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="">Data Penjualan Langsung</a>
+                        <a href="javascript:;">Data Penjualan Langsung</a>
                     </li>
                     <li class="">
-                        <a href="">Data Base Customer</a>
+                        <a href="javascript:;">Data Base Customer</a>
                     </li>
                     <li class="">
-                        <a href="">Pembuatan Faktur Penjualan</a>
+                        <a href="javascript:;">Pembuatan Faktur Penjualan</a>
                     </li>
                     <li class="">
-                        <a href="">Data Produksi</a>
+                        <a href="javascript:;">Data Produksi</a>
                     </li>
                 </ul>
             </li>
@@ -90,22 +80,22 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="">Validasi Faktur Penjualan</a>
+                        <a href="javascript:;">Validasi Faktur Penjualan</a>
                     </li>
                     <li class="">
-                        <a href="">List Data Penjualan</a>
+                        <a href="javascript:;">List Data Penjualan</a>
                     </li>
                     <li class="">
-                        <a href="">Aproval Produksi</a>
+                        <a href="javascript:;">Aproval Produksi</a>
                     </li>
                     <li class="">
-                        <a href="">Pemasukan Tunai/Debit</a>
+                        <a href="javascript:;">Pemasukan Tunai/Debit</a>
                     </li>
                     <li class="">
-                        <a href="">Cetak Faktur Penjualan</a>
+                        <a href="javascript:;">Cetak Faktur Penjualan</a>
                     </li>
                     <li class="">
-                        <a href="">Data Produksi</a>
+                        <a href="javascript:;">Data Produksi</a>
                     </li>
                 </ul>
             </li>
@@ -115,28 +105,28 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="">Database Customer</a>
+                        <a href="javascript:;">Database Customer</a>
                     </li>
                     <li class="">
-                        <a href="">Database Penjualan</a>
+                        <a href="javascript:;">Database Penjualan</a>
                     </li>
                     <li class="">
-                        <a href="">Data Hutang - Piutang</a>
+                        <a href="javascript:;">Data Hutang - Piutang</a>
                     </li>
                     <li class="">
-                        <a href="">Data Akutansi</a>
+                        <a href="javascript:;">Data Akutansi</a>
                     </li>
                     <li class="">
-                        <a href="">Database Pricelist Jual</a>
+                        <a href="javascript:;">Database Pricelist Jual</a>
                     </li>
                     <li class="">
-                        <a href="">Database Pricelist Modal Pembuatan Product</a>
+                        <a href="javascript:;">Database Pricelist Modal Pembuatan Product</a>
                     </li>
                     <li class="">
-                        <a href="">Account Pembuatan Product</a>
+                        <a href="javascript:;">Account Pembuatan Product</a>
                     </li>
                     <li class="">
-                        <a href="">Database Purchasing</a>
+                        <a href="javascript:;">Database Purchasing</a>
                     </li>
                 </ul>
             </li>
@@ -146,16 +136,16 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="">Database Bahan Baku</a>
+                        <a href="javascript:;">Database Bahan Baku</a>
                     </li>
                     <li class="">
-                        <a href="">Account Pembuatan Product</a>
+                        <a href="javascript:;">Account Pembuatan Product</a>
                     </li>
                     <li class="">
-                        <a href="">Data Stock Bahan Baku</a>
+                        <a href="javascript:;">Data Stock Bahan Baku</a>
                     </li>
                     <li class="">
-                        <a href="">Data Base Operasional Kantor</a>
+                        <a href="javascript:;">Data Base Operasional Kantor</a>
                     </li>
                 </ul>
             </li>
@@ -165,13 +155,13 @@
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="">Data Produksi</a>
+                        <a href="javascript:;">Data Produksi</a>
                     </li>
                     <li class="">
-                        <a href="">Update Status Produksi Selesai</a>
+                        <a href="javascript:;">Update Status Produksi Selesai</a>
                     </li>
                     <li class="">
-                        <a href="">Mencetak SPK Produksi</a>
+                        <a href="javascript:;">Mencetak SPK Produksi</a>
                     </li>
                 </ul>
             </li>
@@ -251,54 +241,48 @@
                     </li>
                 </ul>
             </li> -->
-            <li>
+            <!-- <li>
                 <a href="javascript:;"><span class="title">Assets</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
                         <a href="<?=base_url('Assets/Aktiva')?>">Aktiva Tetap</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Assets/Penerimaan')?>">Penerimaan</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Assets/Pengeluaran')?>">Pengeluaran</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
-                    <!-- <li class="">
+                    <li class="">
                         <a href="<?=base_url()?>">Stock Opname</a>
-                    </li> -->
+                    </li>
                 </ul>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <a href="javascript:;"><span class="title">Buku Besar</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
                         <a href="<?=base_url('Buku_besar/Jurnal')?>">Jurnal Umum</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <a href="javascript:;"><span class="title">Kas & Bank</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
                         <a href="<?=base_url('Kas_Bank/Acc_Bank_Pembayaran')?>">Pembayaran</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                     <li class="">
                         <a href="<?=base_url('Kas_Bank/Acc_Bank_Penerimaan')?>">Penerimaan</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li>
                 <a href="javascript:;"><span class="title">Laporan</span>
                 <span class=" arrow"></span></a>
@@ -308,10 +292,9 @@
                          <a href="<?=base_url('Laporan/Keuangan')?>">Laporan Keuangan</a>
                         <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
-                    <li class="">
+                    <!-- <li class="">
                         <a href="<?=base_url('Laporan/Lap_IT_Inventory')?>">Laporan IT Inventory</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
-                    </li>
+                    </li> -->
                 </ul>
             </li>
             <li>
