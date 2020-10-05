@@ -18,153 +18,191 @@
                 </a>
                 <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
             </li>
-            <li>
-                <a href="javascript:;"><span class="title">Preferensi</span>
-                <span class=" arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="<?=base_url('Master/Currency')?>">Mata Uang</a>
+
+            <?php
+                $group_name = $this->ion_auth->get_users_groups($this->session->userdata('user_id'))->row()->name;
+            ?>
+
+            <?php
+                if ($this->ion_auth->is_admin()) {
+            ?>
+                    <li>
+                        <a href="javascript:;"><span class="title">Preferensi</span>
+                        <span class=" arrow"></span></a>
+                        <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                        <ul class="sub-menu">
+                            <li class="">
+                                <a href="<?=base_url('Master/Currency')?>">Mata Uang</a>
+                            </li>
+                            <li class="">
+                                <a href="<?=base_url('Master/Supplier')?>">Supplier</a>
+                            </li>
+                            <li class="">
+                                <a href="<?=base_url('Master/Customer')?>">Customer</a>
+                            </li>
+                            <li class="">
+                                <a href="<?=base_url('Master/Satuan')?>">Satuan</a>
+                            </li>
+                            <li class="">
+                                <a href="<?=base_url('Master/Bahan_baku')?>">Bahan Baku</a>
+                            </li>
+                            <li class="">
+                                <a href="<?=base_url('Master/Akun')?>">Master Akun</a>
+                            </li>
+                            <li class="">
+                                <a href="<?=base_url('Master/Akun_default')?>">Akun Default</a>
+                            </li>
+                        </ul>
                     </li>
-                    <!-- <li class="">
-                        <a href="<?=base_url('Master/Supplier')?>">Supplier</a>
+            <?php
+                }
+            ?>
+
+            <?php
+                if ($group_name == 'deskprint') {
+            ?>
+                    <li>
+                        <a href="javascript:;"><span class="title">Deskprint</span>
+                        <span class=" arrow"></span></a>
+                        <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                        <ul class="sub-menu">
+                            <li class="">
+                                <a href="javascript:;">Penjualan Langsung</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Data Base Customer</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Pembuatan Faktur Penjualan</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Data Produksi</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="">
-                        <a href="<?=base_url('Master/Customer')?>">Customer</a>
+            <?php
+                }
+            ?>
+
+            <?php
+                if ($group_name == 'kasir') {
+            ?>
+                    <li>
+                        <a href="javascript:;"><span class="title">Kasir</span>
+                        <span class=" arrow"></span></a>
+                        <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                        <ul class="sub-menu">
+                            <li class="">
+                                <a href="javascript:;">Validasi Faktur Penjualan</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">List Data Penjualan</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Aproval Produksi</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Data Pemasukan Tunai/Debit</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Cetak Faktur Penjualan</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Data Produksi</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="">
-                        <a href="<?=base_url('Master/Subcon')?>">Subcon</a>
-                    </li> -->
-                    <li class="">
-                        <a href="<?=base_url('Master/Satuan')?>">Satuan</a>
+            <?php
+                }
+            ?>
+
+            <?php
+                if ($group_name == 'management') {
+            ?>
+                    <li>
+                        <a href="javascript:;"><span class="title">Management</span>
+                        <span class=" arrow"></span></a>
+                        <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                        <ul class="sub-menu">
+                            <li class="">
+                                <a href="javascript:;">Database Customer</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Database Penjualan</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Data Hutang - Piutang</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Data Akutansi</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Database Pricelist Jual</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Database Pricelist Modal Pembuatan Product</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Account Pembuatan Product</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Database Purchasing</a>
+                            </li>
+                        </ul>
                     </li>
-                    <!-- <li class="">
-                        <a href="<?=base_url('Master/Bahan_baku')?>">Bahan Baku & Penolong</a>
+            <?php
+                }
+            ?>
+
+            <?php
+                if ($group_name == 'operasional') {
+            ?>
+                    <li>
+                        <a href="javascript:;"><span class="title">Operasional</span>
+                        <span class=" arrow"></span></a>
+                        <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                        <ul class="sub-menu">
+                            <li class="">
+                                <a href="javascript:;">Database Bahan Baku</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Account Pembuatan Product</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Data Stock Bahan Baku</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Data Base Operasional Kantor</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="">
-                    <a href="<?=base_url('Master/Barang_jadi')?>">Barang Jadi</a>
+            <?php
+                }
+            ?>
+
+            <?php
+                if ($group_name == 'produksi') {
+            ?>
+                    <li>
+                        <a href="javascript:;"><span class="title">Produksi</span>
+                        <span class=" arrow"></span></a>
+                        <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                        <ul class="sub-menu">
+                            <li class="">
+                                <a href="javascript:;">Data Produksi</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Update Status Produksi Selesai</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:;">Mencetak SPK Produksi</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="">
-                        <a href="<?=base_url('Master/Barang_sisa')?>">Barang Sisa</a>
-                    </li> -->
-                    <li class="">
-                        <a href="<?=base_url('Master/Akun')?>">Master Akun</a>
-                    </li>
-                    <li class="">
-                        <a href="<?=base_url('Master/Akun_default')?>">Akun Default</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;"><span class="title">Deskprint</span>
-                <span class=" arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="javascript:;">Data Penjualan Langsung</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Data Base Customer</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Pembuatan Faktur Penjualan</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Data Produksi</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;"><span class="title">Kasir</span>
-                <span class=" arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="javascript:;">Validasi Faktur Penjualan</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">List Data Penjualan</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Aproval Produksi</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Pemasukan Tunai/Debit</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Cetak Faktur Penjualan</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Data Produksi</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;"><span class="title">Management</span>
-                <span class=" arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="javascript:;">Database Customer</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Database Penjualan</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Data Hutang - Piutang</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Data Akutansi</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Database Pricelist Jual</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Database Pricelist Modal Pembuatan Product</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Account Pembuatan Product</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Database Purchasing</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;"><span class="title">Operasional</span>
-                <span class=" arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="javascript:;">Database Bahan Baku</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Account Pembuatan Product</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Data Stock Bahan Baku</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Data Base Operasional Kantor</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;"><span class="title">Produksi</span>
-                <span class=" arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="javascript:;">Data Produksi</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Update Status Produksi Selesai</a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">Mencetak SPK Produksi</a>
-                    </li>
-                </ul>
-            </li>
+            <?php
+                }
+            ?>
+            
             <!-- <li>
                 <a href="javascript:;"><span class="title">Pembelian</span>
                 <span class=" arrow"></span></a>
@@ -283,30 +321,38 @@
                     </li>
                 </ul>
             </li> -->
-            <li>
+            <!-- <li>
                 <a href="javascript:;"><span class="title">Laporan</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
                          <a href="<?=base_url('Laporan/Keuangan')?>">Laporan Keuangan</a>
-                        <!-- <span class="icon-thumbnail">c</span> -->
                     </li>
-                    <!-- <li class="">
-                        <a href="<?=base_url('Laporan/Lap_IT_Inventory')?>">Laporan IT Inventory</a>
-                    </li> -->
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;"><span class="title">Utility</span>
-                <span class=" arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
-                <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url('Auth')?>">User</a>
+                        <a href="<?=base_url('Laporan/Lap_IT_Inventory')?>">Laporan Inventory</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
+            <?php
+                if ($this->ion_auth->is_admin()) {
+            ?>
+                    <li>
+                        <a href="javascript:;"><span class="title">Utility</span>
+                        <span class=" arrow"></span></a>
+                        <span class="icon-thumbnail"><i class="pg-tables"></i></span>
+                        <ul class="sub-menu">
+                            <li class="">
+                                <a href="<?=base_url('Auth')?>">User</a>
+                            </li>
+                            <li class="">
+                                <a href="<?=base_url('Auth')?>">Group</a>
+                            </li>
+                        </ul>
+                    </li>
+            <?php
+                }
+            ?>
         </ul>
         <div class="clearfix"></div>
     </div>

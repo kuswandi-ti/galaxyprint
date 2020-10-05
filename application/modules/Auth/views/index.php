@@ -8,7 +8,6 @@
                     <div class="clearfix"></div>
                     <div class="card-body">
                         <div class="col-xs-12">
-
 							<p><?php echo lang('index_subheading');?></p>
 
 							<div id="infoMessage"><?php echo $message;?></div>
