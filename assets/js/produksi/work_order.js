@@ -78,14 +78,12 @@ function add_detail() {
     $row.append($("<td class='text-center'>").html('<label>'+$('#kode_barang').val()+'</label><input type="hidden" name="kode_barang_detail[]" class="" readonly value="'+$('#kode_barang').val()+'">'));
     $row.append($("<td>").html('<label>'+$('#spesifikasi_barang').val()+'</label><input type="hidden" name="spesifikasi_barang_detail[]" class="" readonly value="'+$('#spesifikasi_barang').val()+'">'));
     $row.append($("<td class='text-center'>").html('<label>'+$('#hs_barang').val()+'</label><input type="hidden" name="hs_barang_detail[]" class="" readonly value="'+$('#hs_barang').val()+'">'));
+    $row.append($("<td class='text-center'>").html('<label>'+$('#hs_barang').val()+'</label><input type="hidden" name="hs_barang_detail[]" class="" readonly value="'+$('#hs_barang').val()+'">'));
     $row.append($("<td class='text-right'>").html('<label>'+$('#qty').val()+'</label><input type="hidden" name="qty_detail[]" class="" readonly value="'+$('#qty').val()+'">'));
     $row.append($("<td class='text-center'>").html('<label>'+$('#satuan').val()+'</label><input type="hidden" name="satuan_detail[]" class="" readonly value="'+$('#satuan').val()+'">'));
-    $row.append($("<td class='text-right'>").html('<label>'+$('#harga_barang').val()+'</label><input type="hidden" name="harga_barang_detail[]" class="" readonly value="'+$('#harga_barang').val()+'">'));
-    $row.append($("<td class='text-center'>").html('<label>'+$('#currency').val()+'</label><input type="hidden" name="currency_detail[]" class="" readonly value="'+$('#currency').val()+'">'));    
+    $row.append($("<td class='text-center'>").html('<label>'+$('#currency').val()+'</label><input type="hidden" name="currency_detail[]" class="" readonly value="'+$('#currency').val()+'">')); 
+    $row.append($("<td class='text-right'>").html('<label>'+$('#harga_barang').val()+'</label><input type="hidden" name="harga_barang_detail[]" class="" readonly value="'+$('#harga_barang').val()+'">'));   
     $row.append($("<td class='text-right'>").html('<label>'+$('#material').val()+'</label><input type="hidden" name="material_detail[]" class="" readonly value="'+$('#material').val()+'">'));
-    $row.append($("<td class='text-right'>").html('<label>'+$('#tkl').val()+'</label><input type="hidden" name="tkl_detail[]" class="" readonly value="'+$('#tkl').val()+'">'));
-    $row.append($("<td class='text-right'>").html('<label>'+$('#bop').val()+'</label><input type="hidden" name="bop_detail[]" class="" readonly value="'+$('#bop').val()+'">'));
-    $row.append($("<td class='text-right'>").html('<label>'+$('#hpp').val()+'</label><input type="hidden" name="hpp_detail[]" class="" readonly value="'+$('#hpp').val()+'">'));
     $row.append($("<td>").html('<button class="btn btn-danger btn-xs text-right remove-row"> <i class="fa fa-trash"></i> </button>'));
     $row.appendTo($("#tbl_detail tbody"));
     numberRows($("#tbl_detail"));

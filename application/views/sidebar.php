@@ -47,6 +47,9 @@
                                 <a href="<?=base_url('Master/Bahan_baku')?>">Bahan Baku</a>
                             </li>
                             <li class="">
+                                <a href="<?=base_url('Master/barang_jadi')?>">Barang Jadi</a>
+                            </li>
+                            <li class="">
                                 <a href="<?=base_url('Master/Akun')?>">Master Akun</a>
                             </li>
                             <li class="">
@@ -235,34 +238,22 @@
                     </li>
                 </ul>
             </li> -->
-            <!-- <li>
+            <li>
                 <a href="javascript:;"><span class="title">Produksi</span>
                 <span class=" arrow"></span></a>
                 <span class="icon-thumbnail"><i class="pg-tables"></i></span>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="<?=base_url('Produksi/Work_Order')?>">Work Order</a>
-                    </li>
-                    <li class="">
                         <a href="<?=base_url('Produksi/Bill_of_material')?>">Bill of Material Master</a>
                     </li>
                     <li class="">
-                    <a href="<?=base_url('Produksi/Permintaan')?>">Permintaan Bahan Baku</a>
-                    </li>
-                    <li class="">
-                        <a href="<?=base_url('Produksi/Masuk_Scrap')?>">Pencatatan Scrap</a>
-                    </li>
-                    <li class="">
-                        <a href="<?=base_url('Produksi/Keluar_Scrap')?>">Penyelesaian Scrap</a>
-                    </li>
-                    <li class="">
-                        <a href="<?=base_url('Produksi/Sto_Scrap')?>">SO Scrap</a>
+                        <a href="<?=base_url('Produksi/Work_Order')?>">Work Order</a>
                     </li>
                     <li class="">
                         <a href="<?=base_url('Produksi/Hasil_Produksi')?>">Hasil Produksi</a>
                     </li>
                 </ul>
-            </li> -->
+            </li>
             <!-- <li>
                 <a href="javascript:;"><span class="title">Penjualan</span>
                 <span class=" arrow"></span></a>

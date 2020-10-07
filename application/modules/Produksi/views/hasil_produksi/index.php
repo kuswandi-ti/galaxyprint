@@ -16,7 +16,7 @@
                                         <th>Tanggal</th>
                                         <th>Kode Produksi</th>
                                         <th>Nomor WO</th>
-                                        <th>Jml Detail</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -29,7 +29,7 @@
                                         <th>Tanggal</th>
                                         <th>Kode Produksi</th>
                                         <th>Nomor WO</th>
-                                        <th>Jml Detail</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
@@ -119,7 +119,7 @@
                     <hr>
 
                     <div class="table-responsive">
-                        <table style="width: 100%">
+                        <!-- <table style="width: 100%">
                             <tr class="bg-success-darker text-white">
                                 <th style="width:30%">Keterangan Barang</th>
                                 <th style="width:10%; text-align:center">Kode</th>
@@ -179,25 +179,28 @@
                                     <button type="button" id="" onclick="add_detail()" class="btn btn-warning">Add</button>
                                 </td>
                             </tr>
-                        </table>
+                        </table> -->
                         <br />
                         <table id="tbl_detail" style="width: 100%">
                             <thead>
                                 <tr class="bg-success-darker text-white">
                                     <th style="width:5%;">No</th>
                                     <th style="width:25%">Keterangan Barang</th>
-                                    <th style="width:10%; text-align:center">Kode</th>
+                                    <th style="width:10%; text-align:center">Kode Bahan</th>
+                                    <th style="width:10%">Jenis Bahan</th>
+                                    <th style="width:5%; text-align:center">Jumlah Sisi</th>
+                                    <th style="width:5%; text-align:center">Jenis Finishing</th>
                                     <th style="width:10%; text-align:right">Qty</th>
                                     <th style="width:15%; text-align:center">Sat</th>
-                                    <th style="width:10%; text-align:right">Harga</th>
-                                    <th style="width:15%; text-align:right">Total</th>
-                                    <th style="width:15%; text-align:center">Valas</th>
+                                    <!-- <th style="width:10%; text-align:right">Harga</th> -->
+                                    <!-- <th style="width:15%; text-align:right">Total</th> -->
+                                    <!-- <th style="width:15%; text-align:center">Valas</th> -->
                                     <th style="width:5%; text-align:center">Actions</th>
                                 </tr>
                             <thead>
                             <tbody id="show_detail">
                             </tbody>
-                            <tfoot>
+                            <!-- <tfoot>
                                 <tr>
                                     <td colspan="8" class="text-right">&nbsp;</td>
                                 </tr>
@@ -207,7 +210,7 @@
                                         <input name="total_hasil_produksi" id="total_hasil_produksi" placeholder="" class="form-control text-right" type="text" value="0" readonly>
                                     </td>
                                 </tr>
-                            </tfoot>
+                            </tfoot> -->
                         </table>
                     </div>                        
                 </form>

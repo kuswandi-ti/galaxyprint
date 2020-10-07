@@ -16,7 +16,9 @@
                                         <th>No. WO</th>
                                         <th>Tgl. WO</th>
                                         <th>Customer</th>
-                                        <th>No. PO</th>
+                                        <th>Status</th>
+                                        <th>Tgl Pengambilan</th>
+                                        <th>Keterangan</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -26,10 +28,12 @@
                                 <tfoot>
                                     <tr>
                                         <th style="visibility:hidden;">ID</th>
-                                        <th>No. WO</th>
+                                         <th>No. WO</th>
                                         <th>Tgl. WO</th>
                                         <th>Customer</th>
-                                        <th>No. PO</th>
+                                        <th>Status</th>
+                                        <th>Tgl Pengambilan</th>
+                                        <th>Keterangan</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
@@ -58,6 +62,15 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
+
+                                    <div class="row">
+                                        <label class="control-label col-md-3">No. WO</label>
+                                        <div class="col-md-9">
+                                            <input id="no_wo" name="no_wo" placeholder="No. WO" class="form-control" type="text">
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+
                                     <div class="row">
                                         <label class="control-label col-md-3">Tgl WO</label>
                                         <div class="col-md-9">
@@ -70,6 +83,7 @@
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <label class="control-label col-md-3">Customer</label>
                                         <div class="col-md-9">
@@ -84,14 +98,8 @@
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <label class="control-label col-md-3">No. WO</label>
-                                        <div class="col-md-9">
-                                            <input id="no_wo" name="no_wo" placeholder="No. WO" class="form-control" type="text">
-                                            <span class="help-block"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
+
+                                    <div class="row" style="display: none">
                                         <label class="control-label col-md-3">No. PO</label>
                                         <div class="col-md-9">
                                             <input id="customer_po" name="customer_po" placeholder="No. PO Customer" class="form-control" type="text">
@@ -108,18 +116,16 @@
                     <div class="table-responsive">
                         <table style="width: 100%">
                             <tr class="bg-success-darker text-white">
-                                <th style="width:25%">Nama Barang</th>
-                                <th style="width:10%; text-align:center">Kode Barang</th>
-                                <th style="width:10%">Spesifikasi</th>
-                                <th style="width:5%; text-align:center">HS</th>
+                                <th style="width:25%">Nama Produk</th>
+                                <th style="width:10%; text-align:center">Kode Bahan</th>
+                                <th style="width:10%">Jenis Bahan</th>
+                                <th style="width:5%; text-align:center">Jumlah Sisi</th>
+                                <th style="width:5%; text-align:center">Jenis Finishing</th>
                                 <th style="width:5%; text-align:right">Qty</th>
                                 <th style="width:5%; text-align:center">Satuan</th>
+                                <th style="width:5%; text-align:center">Kurs</th>
                                 <th style="width:10%; text-align:right">Harga</th>
-                                <th style="width:5%; text-align:center">Curr</th>
-                                <th style="width:5%; text-align:right">Bahan Baku</th>
-                                <th style="width:5%; text-align:right">TKL(%)</th>
-                                <th style="width:5%; text-align:right">BOP(%)</th>
-                                <th style="width:5%; text-align:right">HPP</th>
+                                <th style="width:5%; text-align:right">Nama File</th>
                                 <th style="width:5%; text-align:center">Actions</th>
                             </tr>
                             <tr>
@@ -135,15 +141,19 @@
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
-                                    <input name="kode_barang" id="kode_barang" placeholder="Kode Barang" class="form-control" type="text" readonly>                                    
+                                    <input name="kode_barang" id="kode_barang" placeholder="Kode Bahan" class="form-control" type="text" readonly>                                    
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:10%">
-                                    <input name="spesifikasi_barang" id="spesifikasi_barang" placeholder="Spesifikasi" class="form-control" type="text" readonly>
+                                    <input name="spesifikasi_barang" id="spesifikasi_barang" placeholder="Jenis Bahan" class="form-control" type="text">
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:5%">
-                                    <input name="hs_barang" id="hs_barang" placeholder="HS" class="form-control" type="text" readonly>
+                                    <input name="hs_barang" id="hs_barang" placeholder="Jumlah Sisi" class="form-control" type="text">
+                                    <span class="help-block"></span>
+                                </td>
+                                <td style="width:5%">
+                                    <input name="hs_barang" id="hs_barang" placeholder="Jenis Finishing" class="form-control" type="text">
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:5%">
@@ -154,28 +164,16 @@
                                     <input name="satuan" id="satuan" placeholder="Satuan" class="form-control" type="text" readonly>
                                     <span class="help-block"></span>
                                 </td>
+                                <td style="width:5%">
+                                    <input name="currency" id="currency" placeholder="Curr" class="form-control text-right" type="text">
+                                    <span class="help-block"></span>
+                                </td>
                                 <td style="width:10%">
-                                    <input name="harga_barang" id="harga_barang" placeholder="0" class="form-control text-right" type="text" readonly>
+                                    <input name="harga_barang" id="harga_barang" placeholder="0" class="form-control text-right" type="text">
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:5%">
-                                    <input name="currency" id="currency" placeholder="Curr" class="form-control text-right" type="text" readonly>
-                                    <span class="help-block"></span>
-                                </td>
-                                <td style="width:5%">
-                                    <input name="material" id="material" placeholder="0" class="form-control text-right" type="text" value="0">
-                                    <span class="help-block"></span>
-                                </td>
-                                <td style="width:5%">
-                                    <input name="tkl" id="tkl" placeholder="0" class="form-control text-right" type="text" value="0">
-                                    <span class="help-block"></span>
-                                </td>
-                                <td style="width:5%">
-                                    <input name="bop" id="bop" placeholder="0" class="form-control text-right" type="text" value="0">
-                                    <span class="help-block"></span>
-                                </td>
-                                <td style="width:5%">
-                                    <input name="hpp" id="hpp" placeholder="0" class="form-control text-right" type="text" value="0">
+                                    <input name="material" id="nama_file" placeholder="0" class="form-control text-right" type="text" value="0">
                                     <span class="help-block"></span>
                                 </td>
                                 <td style="width:5%">
@@ -187,19 +185,16 @@
                         <table id="tbl_detail" style="width: 100%">
                             <thead>
                                 <tr class="bg-success-darker text-white">
-                                    <th style="width:5%; text-align:center">No</th>
-                                    <th style="width:20%">Nama Barang</th>
-                                    <th style="width:10%; text-align:center">Kode Barang</th>
-                                    <th style="width:10%">Spesifikasi</th>
-                                    <th style="width:5%; text-align:center">HS</th>
+                                    <th style="width:25%">Nama Produk</th>
+                                    <th style="width:10%; text-align:center">Kode Bahan</th>
+                                    <th style="width:10%">Jenis Bahan</th>
+                                    <th style="width:5%; text-align:center">Jumlah Sisi</th>
+                                    <th style="width:5%; text-align:center">Jenis Finishing</th>
                                     <th style="width:5%; text-align:right">Qty</th>
                                     <th style="width:5%; text-align:center">Satuan</th>
+                                    <th style="width:5%; text-align:center">Kurs</th>
                                     <th style="width:10%; text-align:right">Harga</th>
-                                    <th style="width:5%; text-align:center">Curr</th>
-                                    <th style="width:5%; text-align:right">Bahan Baku</th>
-                                    <th style="width:5%; text-align:right">TKL(%)</th>
-                                    <th style="width:5%; text-align:right">BOP(%)</th>
-                                    <th style="width:5%; text-align:right">HPP</th>
+                                    <th style="width:5%; text-align:right">Nama File</th>
                                     <th style="width:5%; text-align:center">Actions</th>
                                 </tr>
                             <thead>

@@ -34,7 +34,9 @@ class Work_Order extends MX_Controller {
             $row[] = $r->id;
             $row[] = $r->no_wo;
             $row[] = $r->tgl_wo;
-            $row[] = $r->customer_code . ' - ' . $r->customer_name;
+            $row[] = $r->customer_name;
+            $row[] = $r->wo_status;
+            $row[] = '-';
             $row[] = $r->customer_po;
  
             //add html for action
@@ -214,7 +216,7 @@ class Work_Order extends MX_Controller {
                 $data['res_spesifikasi_barang'] = $row['spesifikasi_barang'];
                 $data['res_hs_barang'] = $row['hs_barang'];
                 $data['res_satuan'] = $row['satuan'];
-                $data['res_harga_barang'] = $row['harga_barang'];
+                $data['res_harga_barang'] = number_format($row['harga_barang'], 0, ',','.');
                 $data['res_currency'] = $row['currency'];
             }
         } else {

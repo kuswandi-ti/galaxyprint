@@ -172,9 +172,9 @@ class Hasil_Produksi extends MX_Controller {
                 echo    '</td>';
                 echo    '<td class="text-right"><label>'.$row->qty.'</label><input type="hidden" name="qty_detail[]" class="" readonly value="'.$row->qty.'"></td>';                
                 echo    '<td class="text-center"><label>'.$row->satuan_barang.'</label><input type="hidden" name="satuan_barang_detail[]" class="" readonly value="'.$row->satuan_barang.'"></td>';                
-                echo    '<td class="text-right"><label>'.$row->harga_barang.'</label><input type="hidden" name="harga_barang_detail[]" class="" readonly value="'.$row->harga_barang.'"></td>';
-                echo    '<td class="text-right"><label>'.$row->total.'</label><input type="hidden" name="total_detail[]" class="" readonly value="'.$row->total.'"></td>';
-                echo    '<td class="text-center"><label>'.$row->currency.'</label><input type="hidden" name="currency_detail[]" class="" readonly value="'.$row->currency.'"></td>';
+                // echo    '<td class="text-right"><label>'.$row->harga_barang.'</label><input type="hidden" name="harga_barang_detail[]" class="" readonly value="'.$row->harga_barang.'"></td>';
+                // echo    '<td class="text-right"><label>'.$row->total.'</label><input type="hidden" name="total_detail[]" class="" readonly value="'.$row->total.'"></td>';
+                // echo    '<td class="text-center"><label>'.$row->currency.'</label><input type="hidden" name="currency_detail[]" class="" readonly value="'.$row->currency.'"></td>';
                 echo    '<td><button class="btn btn-danger btn-xs text-right remove-row"> <i class="fa fa-trash"></i> </button>';
 				echo '</tr>';				
 				$i++;
