@@ -8,8 +8,8 @@
                     </div>
                     <div class="card-body">
                         <div class="col-xs-12">
-                            <!-- <button class="btn btn-success" onclick="add()"><i class="fa fa-plus"></i> Tambah Bill Of Material</button> -->
-                            <!-- <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> Refresh</button> -->
+                            <button class="btn btn-success" onclick="add()"><i class="fa fa-plus"></i> Tambah Bill Of Material</button>
+                            <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> Refresh</button>
                             <table id="table" class="table table-condensed" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>

@@ -50,6 +50,9 @@
                                 <a href="<?=base_url('Master/barang_jadi')?>">Barang Jadi</a>
                             </li>
                             <li class="">
+                                <a href="<?=base_url('Produksi/Bill_of_material')?>">Bill of Material</a>
+                            </li>
+                            <li class="">
                                 <a href="<?=base_url('Master/Akun')?>">Master Akun</a>
                             </li>
                             <li class="">

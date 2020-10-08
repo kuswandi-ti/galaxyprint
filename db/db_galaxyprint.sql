@@ -4063,7 +4063,7 @@ INSERT INTO `users_groups` VALUES (4, 3, 2);
 -- View structure for akun_level_2
 -- ----------------------------
 DROP VIEW IF EXISTS `akun_level_2`;
-CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `akun_level_2` AS select `acc_master_akun`.`kode_akun` AS `kode_akun`,`acc_master_akun`.`nama_akun` AS `nama_akun`,`acc_master_type`.`nama_akun` AS `induk`,`acc_master_type`.`kode_akun` AS `kode_induk` from (`acc_master_akun` join `acc_master_type` on(`acc_master_type`.`kode_akun` = `acc_master_akun`.`level_1`)) where `acc_master_akun`.`level` = 2 ; ;
+CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `akun_level_2` AS select `acc_master_akun`.`kode_akun` AS `kode_akun`,`acc_master_akun`.`nama_akun` AS `nama_akun`,`acc_master_type`.`nama_akun` AS `induk`,`acc_master_type`.`kode_akun` AS `kode_induk` from (`acc_master_akun` join `acc_master_type` on(`acc_master_type`.`kode_akun` = `acc_master_akun`.`level_1`)) where `acc_master_akun`.`level` = 2 ;
 
 -- ----------------------------
 -- View structure for qacc_penerimaan_header
@@ -4092,7 +4092,7 @@ FROM
 	acc_penerimaan_header a
 	LEFT JOIN master_customer b ON a.kode_customer = b.customer_id
 	LEFT JOIN acc_master_akun c ON a.kode_akun_debet = c.nama_akun
-	LEFT JOIN acc_master_akun d ON a.kode_akun_kredit = d.nama_akun ; ;
+	LEFT JOIN acc_master_akun d ON a.kode_akun_kredit = d.nama_akun ;
 
 -- ----------------------------
 -- View structure for qjurnal_umum
@@ -4143,7 +4143,7 @@ CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER V
 	a.status_input
 FROM
 	trans_wo_header a
-	LEFT JOIN master_customer b ON a.customer = b.customer_id ; ;
+	LEFT JOIN master_customer b ON a.customer = b.customer_id ;
 
 -- ----------------------------
 -- View structure for view_penerima
